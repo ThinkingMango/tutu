@@ -1,0 +1,338 @@
+{
+  "santa-wave": {
+    "image": "0dd4343a46d9",
+    "areas": {
+      "1": "Santa beard",
+      "2": "Snowy bush",
+      "3": "Snowy bush",
+      "4": "Belt",
+      "5": "Hat",
+      "6": "Hat brim",
+      "7": "Waving arm",
+      "8": "Arm",
+      "9": "Santa face",
+      "10": "Right boot",
+      "11": "Left boot",
+      "12": "Holly leaf",
+      "13": "Mitten",
+      "14": "Coat",
+      "15": "Holly leaf",
+      "16": "Coat",
+      "17": "Holly berry",
+      "18": "Coat hem",
+      "19": "Coat hem"
+    }
+  },
+  "elf-wrapping": {
+    "image": "64784a7d4718",
+    "areas": {
+      "1": "Elf face",
+      "2": "Hat",
+      "3": "Hat brim",
+      "4": "Collar",
+      "5": "Present",
+      "6": "Arm",
+      "7": "Snowdrift",
+      "8": "Present",
+      "9": "Arm",
+      "10": "Ribbon",
+      "11": "Holly leaf",
+      "12": "Holly leaf",
+      "13": "Holly leaf",
+      "14": "Holly leaf",
+      "15": "Left shoe",
+      "16": "Right shoe"
+    }
+  },
+  "candy-cane-bow": {
+    "image": "b513a696bd05",
+    "areas": {
+      "1": "Snowy bush",
+      "2": "Bow knot",
+      "3": "Bow loop",
+      "4": "Bow loop",
+      "5": "Ribbon end",
+      "6": "Ribbon end",
+      "7": "Cane stripe",
+      "8": "Cane stripe",
+      "9": "Cane stripe",
+      "10": "Cane stripe",
+      "11": "Cane stripe",
+      "12": "Cane stripe",
+      "13": "Cane stripe",
+      "14": "Cane stripe"
+    }
+  },
+  "candle-trio": {
+    "image": "dbb788226a8e",
+    "areas": {
+      "1": "Short candle",
+      "2": "Tall candle",
+      "3": "Snowdrift",
+      "4": "Middle candle",
+      "5": "Top of the tall candle",
+      "6": "Holly leaf",
+      "7": "Top of the middle candle",
+      "8": "Holly leaf",
+      "9": "Holly leaf",
+      "10": "Holly leaf",
+      "11": "Holly leaf",
+      "12": "Holly leaf",
+      "13": "Candle band",
+      "14": "Holly leaf",
+      "15": "Holly berry",
+      "16": "Holly berry",
+      "17": "Flame",
+      "18": "Holly leaf",
+      "19": "Holly leaf"
+    }
+  },
+  "mitten-pair": {
+    "image": "17a7d027fcb8",
+    "areas": {
+      "1": "Right mitten",
+      "2": "Left mitten",
+      "3": "Snowy bush",
+      "4": "Snowy bush",
+      "5": "Snow",
+      "6": "Left cuff",
+      "7": "Right cuff",
+      "8": "Snowy peak",
+      "9": "Heart",
+      "10": "Snowball",
+      "11": "Snowy bush",
+      "12": "Star",
+      "13": "Snowy bush",
+      "14": "Holly leaf"
+    }
+  },
+  "owl-hat": {
+    "image": "8a39c3e19f1e",
+    "areas": {
+      "1": "Owl belly",
+      "2": "Owl face",
+      "3": "Hat brim",
+      "4": "Branch",
+      "5": "Hat",
+      "6": "Snowy bush",
+      "7": "Wing",
+      "8": "Chest",
+      "9": "Side of the face",
+      "10": "Scarf",
+      "11": "Eye ring",
+      "12": "Eye ring",
+      "13": "Side of the face",
+      "14": "Leaf",
+      "15": "Wing tip",
+      "16": "Wing tip",
+      "17": "Holly leaf",
+      "18": "Snow cap",
+      "19": "Holly leaf",
+      "20": "Leaf",
+      "21": "Pompom"
+    }
+  },
+  "teddy-gift": {
+    "image": "98817955d328",
+    "areas": {
+      "1": "Teddy head",
+      "2": "Teddy body",
+      "3": "Box lid",
+      "4": "Box",
+      "5": "Snowy bush",
+      "6": "Back of the lid",
+      "7": "Ribbon",
+      "8": "Paw",
+      "9": "Side of the box",
+      "10": "Holly leaf",
+      "11": "Holly leaf",
+      "12": "Bow",
+      "13": "Holly leaf",
+      "14": "Ribbon",
+      "15": "Snout"
+    }
+  },
+  "nutcracker-friend": {
+    "image": "d5d164f1e1fa",
+    "areas": {
+      "1": "Tall hat",
+      "2": "Jacket",
+      "3": "Nutcracker face",
+      "4": "Snowy bush",
+      "5": "Snowy bush",
+      "6": "Arm",
+      "7": "Arm",
+      "8": "Belt",
+      "9": "Belt",
+      "10": "Snow cap",
+      "11": "Snow cap",
+      "12": "Boot",
+      "13": "Boot",
+      "14": "Leg",
+      "15": "Leg",
+      "16": "Hat band"
+    }
+  },
+  "cookies-milk": {
+    "image": "4df31edfffe9",
+    "areas": {
+      "1": "Plate rim",
+      "2": "Milk",
+      "3": "Cookie",
+      "4": "Glass",
+      "5": "Snowy bush",
+      "6": "Cookie",
+      "7": "Star cookie",
+      "8": "Cookie",
+      "9": "Middle of the plate",
+      "10": "Snowy bush",
+      "11": "Middle of the plate",
+      "12": "Top of the milk"
+    }
+  },
+  "snow-bunny": {
+    "image": "057ced3352e3",
+    "areas": {
+      "1": "Snowy bush",
+      "2": "Bunny face",
+      "3": "Snow",
+      "4": "Scarf",
+      "5": "Snowy bush",
+      "6": "Snowy bush",
+      "7": "Snowball",
+      "8": "Right ear",
+      "9": "Snow",
+      "10": "Earmuff",
+      "11": "Left ear",
+      "12": "Earmuff band",
+      "13": "Earmuff",
+      "14": "Scarf end",
+      "15": "Inside of the ear"
+    }
+  },
+  "kitten-bauble": {
+    "image": "9eb325c80ff1",
+    "areas": {
+      "1": "Kitten",
+      "2": "Tail",
+      "3": "Bauble stripe",
+      "4": "Bauble stripe",
+      "5": "Bauble stripe",
+      "6": "Little snowball",
+      "7": "Kitten leg",
+      "8": "Holly leaf",
+      "9": "Paw",
+      "10": "Snowdrift",
+      "11": "Holly leaf",
+      "12": "Holly leaf",
+      "13": "Holly leaf",
+      "14": "Bauble stripe",
+      "15": "Top of the bauble",
+      "16": "Snowdrift",
+      "17": "Snow cap"
+    }
+  },
+  "toy-train": {
+    "image": "34f3cec3ded4",
+    "areas": {
+      "1": "Front of the engine",
+      "2": "Boiler",
+      "3": "Cabin",
+      "4": "Wagon",
+      "5": "Big wheel",
+      "6": "Presents",
+      "7": "Front bumper",
+      "8": "Wheel",
+      "9": "Chimney",
+      "10": "Top of the chimney",
+      "11": "Train base",
+      "12": "Cabin roof",
+      "13": "Cabin",
+      "14": "Window",
+      "15": "Dome",
+      "16": "Smoke puff"
+    }
+  },
+  "rocking-horse": {
+    "image": "0e096adca074",
+    "areas": {
+      "1": "Rocker",
+      "2": "Horse body",
+      "3": "Leg",
+      "4": "Horse head",
+      "5": "Leg",
+      "6": "Neck",
+      "7": "Saddle",
+      "8": "End of the rocker",
+      "9": "Belly stripe",
+      "10": "Mane",
+      "11": "Rocker base",
+      "12": "Tail",
+      "13": "Back of the saddle",
+      "14": "Nose",
+      "15": "Belly band",
+      "16": "Mane",
+      "17": "Tail",
+      "18": "Mane",
+      "19": "Mane",
+      "20": "Tail tip"
+    }
+  },
+  "winter-cabin": {
+    "image": "db688cce5f52",
+    "areas": {
+      "1": "Snowy roof",
+      "2": "Front wall",
+      "3": "Side wall",
+      "4": "Door",
+      "5": "Bottom of the tree",
+      "6": "Middle of the tree",
+      "7": "Smoke puff",
+      "8": "Top of the tree",
+      "9": "Wreath",
+      "10": "Snowy bush",
+      "11": "Round window",
+      "12": "Snowy bush",
+      "13": "Chimney"
+    }
+  },
+  "toy-drum": {
+    "image": "d23c0e20ad57",
+    "areas": {
+      "1": "Drum",
+      "2": "Top of the drum",
+      "3": "Top band",
+      "4": "Bottom band",
+      "5": "Snowy bush",
+      "6": "Drumstick",
+      "7": "Snowy bush",
+      "8": "Drum rim",
+      "9": "Bottom rim",
+      "10": "Drumstick",
+      "11": "Zigzag",
+      "12": "Zigzag"
+    }
+  },
+  "snowflake-bloom": {
+    "image": "2ef94804c52e",
+    "areas": {
+      "1": "Snowflake center",
+      "2": "Top arm",
+      "3": "Bottom arm",
+      "4": "Arm",
+      "5": "Arm",
+      "6": "Arm",
+      "7": "Arm",
+      "8": "Snowball",
+      "9": "Small arm",
+      "10": "Small arm",
+      "11": "Small arm",
+      "12": "Small arm",
+      "13": "Small arm",
+      "14": "Small arm",
+      "15": "Holly leaf",
+      "16": "Holly leaf",
+      "17": "Snowball"
+    }
+  }
+}

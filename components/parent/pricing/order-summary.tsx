@@ -1,0 +1,152 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+import { Lock, Sparkles } from 'lucide-react'
+import type { CheckoutOutcome } from '@/app/actions/checkout'
+import { CheckoutDialog } from '@/components/parent/pricing/checkout-dialog'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { useParentUser } from '@/lib/auth/client'
+import {
+  STANDARD_UNLOCK_CENTS,
+  bundleNudge,
+  formatPrice,
+  quotePacks,
+  type PackOffer,
+} from '@/lib/billing/pricing'
+import { REFUNDS_HREF, REFUND_WINDOW_DAYS } from '@/lib/legal'
+import type { Pack } from '@/lib/packs'
+import { cn } from '@/lib/utils'
+
+type OrderSummaryProps = {
+  packs: readonly Pack[]
+  withStandard: boolean
+  /** How many packs the parent could still add, including those already chosen. */
+  buyable: number
+  onPurchased: (outcome: CheckoutOutcome) => void
+}
+
+function groupOffers(offers: readonly PackOffer[]) {
+  const groups = new Map<string, { offer: PackOffer; count: number }>()
+  for (const offer of offers) {
+    const group = groups.get(offer.id)
+    if (group) group.count++
+    else groups.set(offer.id, { offer, count: 1 })
+  }
+  return [...groups.values()]
+}
+
+export function OrderSummary({ packs, withStandard, buyable, onPurchased }: OrderSummaryProps) {
+  const user = useParentUser()
+  const [checkoutOpen, setCheckoutOpen] = useState(false)
+  const quote = quotePacks(packs.length)
+  const totalCents = quote.totalCents + (withStandard ? STANDARD_UNLOCK_CENTS : 0)
+  const empty = packs.length === 0 && !withStandard
+  const nudge = packs.length > 0 ? bundleNudge(packs.length, buyable) : null
+
+  return (
+    <aside
+      aria-labelledby="order-title"
+      className="flex flex-col gap-5 rounded-3xl border-2 border-primary bg-card p-6 md:sticky md:top-24"
+    >
+      <h2 id="order-title" className="text-xl font-black">
+        Your order
+      </h2>
+
+      <div aria-live="polite" className="flex flex-col gap-5">
+        {empty ? (
+          <p className="leading-relaxed text-muted-foreground">
+            Add the packs you want. The lowest bundle price is worked out for you.
+          </p>
+        ) : (
+          <>
+            {packs.length > 0 && (
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {new Intl.ListFormat('en', { type: 'conjunction' }).format(packs.map((p) => p.name))}
+              </p>
+            )}
+
+            <dl className="flex flex-col gap-3 text-sm">
+              {groupOffers(quote.offers).map(({ offer, count }) => (
+                <div key={offer.id} className="flex items-baseline justify-between gap-3">
+                  <dt className="font-semibold">{count > 1 ? `${offer.name} × ${count}` : offer.name}</dt>
+                  <dd className="font-bold tabular-nums">{formatPrice(offer.priceCents * count)}</dd>
+                </div>
+              ))}
+              {withStandard && (
+                <div className="flex items-baseline justify-between gap-3">
+                  <dt className="font-semibold">Standard pack unlock</dt>
+                  <dd className="font-bold tabular-nums">{formatPrice(STANDARD_UNLOCK_CENTS)}</dd>
+                </div>
+              )}
+            </dl>
+
+            <div className="flex flex-col gap-1 border-t pt-4">
+              <p className="flex items-baseline justify-between gap-3">
+                <span className="font-extrabold">Total</span>
+                <span className="text-3xl font-black tabular-nums">{formatPrice(totalCents)}</span>
+              </p>
+              <p className="text-sm text-muted-foreground">
+                {quote.savingsCents > 0
+                  ? `One time. You save ${formatPrice(quote.savingsCents)} with the bundle.`
+                  : 'One time. Yours to keep.'}
+              </p>
+            </div>
+          </>
+        )}
+
+        {nudge && (
+          <p className="flex items-start gap-2 rounded-2xl bg-secondary p-3 text-sm leading-relaxed">
+            <Sparkles className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+            <span>
+              {`Add ${nudge.morePacks === 1 ? 'one more pack' : `${nudge.morePacks} more packs`} for just ${formatPrice(nudge.extraCents)} more and get ${nudge.offer.name.toLowerCase()}.`}
+            </span>
+          </p>
+        )}
+      </div>
+
+      {!user ? (
+        <Link
+          href="/parent/sign-in?next=/parent/billing"
+          className={cn(buttonVariants(), 'h-12 w-full rounded-full text-base font-bold')}
+        >
+          Sign in to buy
+        </Link>
+      ) : (
+        <div className="flex flex-col gap-2">
+          <Button
+            disabled={empty}
+            onClick={() => setCheckoutOpen(true)}
+            className="h-12 w-full rounded-full text-base font-bold"
+          >
+            {empty ? 'Buy' : `Buy for ${formatPrice(totalCents)}`}
+          </Button>
+          <p className="flex items-center justify-center gap-1.5 text-center text-sm text-muted-foreground">
+            <Lock className="size-3.5" aria-hidden="true" />
+            Secure one-time payment with Stripe
+          </p>
+          <CheckoutDialog
+            open={checkoutOpen}
+            onOpenChange={setCheckoutOpen}
+            order={{ packIds: packs.map((pack) => pack.id), withStandard }}
+            totalLabel={formatPrice(totalCents)}
+            onFinished={(outcome) => {
+              setCheckoutOpen(false)
+              onPurchased(outcome)
+            }}
+          />
+        </div>
+      )}
+
+      <p className="text-center text-sm leading-relaxed text-muted-foreground">
+        {`Changed your mind? Full refund within ${REFUND_WINDOW_DAYS} days. `}
+        <Link
+          href={REFUNDS_HREF}
+          className="font-bold text-foreground underline underline-offset-4 outline-none focus-visible:rounded-sm focus-visible:ring-3 focus-visible:ring-ring/50"
+        >
+          Refund policy
+        </Link>
+      </p>
+    </aside>
+  )
+}

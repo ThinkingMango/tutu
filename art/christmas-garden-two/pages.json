@@ -1,0 +1,28 @@
+{
+  "pack": "christmas-garden-two",
+  "name": "Christmas Garden 2",
+  "description": "Sixteen more Christmas pictures: Santa, an elf, candy canes, candles, mittens, an owl in a hat, a teddy in a gift box, a nutcracker, cookies and milk, a snow bunny, a kitten with a bauble, a toy train, a rocking horse, a snowy cabin, a toy drum and a big snowflake.",
+  "icon": "snowflake",
+  "order": 9,
+  "status": "published",
+  "generator": "v0 built-in image generation",
+  "style": "Children's coloring book page, square 1:1. Pure white background with a wide empty white margin on all sides; nothing touches the edges. Bold uniform thick black outlines, same weight everywhere. No shading, no grey, no texture, no fur, no hatching, no black fills except tiny eye dots, no snowflake dots, no text, no border frame. Every shape fully closed. One large friendly Christmas subject, centered, in a simple snowy garden with holly and round snowy bushes. About 16 large closed areas to color. Eyes are small solid black dots, smile is one short line. Very simple, cute, for a 3-year-old.",
+  "pages": [
+    { "id": "santa-wave", "name": "Santa Wave", "subject": "a whole jolly round Santa standing and waving one mitten, with a hat and pompom, a rounded beard, a coat with a wide belt and buckle, mittens and boots, beside two round snowy bushes. Floating on plain white, no background panel, no sky, no square frame, holly leaves are outlined not filled" },
+    { "id": "elf-wrapping", "name": "Elf Helper", "subject": "a little smiling elf in a pointed hat and a collar of wide points, holding a big wrapped present with a bow" },
+    { "id": "candy-cane-bow", "name": "Candy Canes", "subject": "two big candy canes crossed with a few very wide stripes, tied with a large bow and two holly leaves", "minArea": 0.008 },
+    { "id": "candle-trio", "name": "Candle Trio", "subject": "three chunky candles of different heights with rounded flames, standing in a ring of big holly leaves and berries" },
+    { "id": "mitten-pair", "name": "Mitten Pair", "subject": "two big mittens joined by a string, each with a wide cuff and one big heart or star on the back" },
+    { "id": "owl-hat", "name": "Owl in a Hat", "subject": "a big round owl filling most of the page, with a separate face disc, two big round eye rings, a small beak, a belly patch, two wings, a knitted hat with a wide cuff and a round pompom, and a striped scarf, sitting on a thick closed branch with two holly leaves. No open lines" },
+    { "id": "teddy-gift", "name": "Teddy Gift", "subject": "a teddy bear with a bow tie sitting inside an open present box, with the lid and a big ribbon beside it" },
+    { "id": "nutcracker-friend", "name": "Nutcracker Friend", "subject": "a smiling toy nutcracker soldier with a tall hat, a jacket with three big buttons, a belt and boots" },
+    { "id": "cookies-milk", "name": "Cookies and Milk", "subject": "seen from the front, a big flat plate drawn as one simple oval with one inner oval, holding three big plain round cookies and one big plain star cookie drawn with a single outline, each cookie with one wide icing swirl; a tall glass of milk beside it with the milk as one big shape; two big outlined holly leaves with three round berries. Floating on plain white, no table, no chocolate chips, no double outlines, no thin rims, no crumbs", "minArea": 0.008 },
+    { "id": "snow-bunny", "name": "Snow Bunny", "subject": "a bunny in a striped scarf and earmuffs holding a big snowball, beside a round snowy bush" },
+    { "id": "kitten-bauble", "name": "Kitten Bauble", "subject": "a playful kitten batting a big round striped bauble hanging from a pine branch" },
+    { "id": "toy-train", "name": "Toy Train", "subject": "a toy train engine with a big chimney and round wheels pulling one wagon full of wrapped presents" },
+    { "id": "rocking-horse", "name": "Rocking Horse", "subject": "a wooden rocking horse with a big rounded mane, a saddle and a bow, on curved rockers" },
+    { "id": "winter-cabin", "name": "Winter Cabin", "subject": "a big cozy cabin filling most of the page, with a thick rounded snowy roof, one big plain round window, one wide plain door with no frame and one big round wreath on it, a chimney with two big round smoke puffs, and one chunky pine tree of three wide tiers beside it. Walls are plain, no log lines, no bricks, no double lines" },
+    { "id": "toy-drum", "name": "Toy Drum", "subject": "a big toy drum with wide zigzag bands, two drumsticks with round ends and a holly sprig on top", "minArea": 0.005 },
+    { "id": "snowflake-bloom", "name": "Snowflake Bloom", "subject": "one big six-armed snowflake like a mandala, each arm made of a few wide rounded shapes, with a round center" }
+  ]
+}

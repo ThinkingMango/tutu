@@ -1,0 +1,335 @@
+{
+  "tree-star": {
+    "image": "58908946f006",
+    "areas": {
+      "1": "Bottom of the tree",
+      "2": "Middle of the tree",
+      "3": "Right bush",
+      "4": "Left bush",
+      "5": "Top of the tree",
+      "6": "Tree base",
+      "7": "Star",
+      "8": "Little star",
+      "9": "Pot",
+      "10": "Snow",
+      "11": "Top of the left bush",
+      "12": "Top of the right bush"
+    }
+  },
+  "snowman-scarf": {
+    "image": "1a5e09be876e",
+    "areas": {
+      "1": "Snowman body",
+      "2": "Snowman head",
+      "3": "Left bush",
+      "4": "Right bush",
+      "5": "Top hat",
+      "6": "Right mitten",
+      "7": "Left mitten",
+      "8": "Scarf end",
+      "9": "Hat brim",
+      "10": "Scarf",
+      "11": "Hat band",
+      "12": "Scarf knot",
+      "13": "Carrot nose"
+    }
+  },
+  "reindeer-bells": {
+    "image": "b1c632966b5f",
+    "areas": {
+      "1": "Reindeer body",
+      "2": "Reindeer head",
+      "3": "Left bush",
+      "4": "Right bush",
+      "5": "Left antler",
+      "6": "Right antler",
+      "7": "Reindeer muzzle",
+      "8": "Collar",
+      "9": "Snow on the right bush",
+      "10": "Snow on the left bush",
+      "11": "Reindeer nose",
+      "12": "Right hoof",
+      "13": "Left hoof",
+      "14": "Right ear",
+      "15": "Left ear"
+    }
+  },
+  "gingerbread-house": {
+    "image": "34927555769d",
+    "areas": {
+      "1": "House",
+      "2": "Middle of the roof",
+      "3": "Snowy ground",
+      "4": "Top of the roof",
+      "5": "Roof edge",
+      "6": "Bush",
+      "7": "Door",
+      "8": "Left lollipop",
+      "9": "Right lollipop",
+      "10": "Chimney top",
+      "11": "Chimney",
+      "12": "Left window top right",
+      "13": "Left window bottom right",
+      "14": "Right window top right",
+      "15": "Right window bottom right",
+      "16": "Right window top left",
+      "17": "Right window bottom left",
+      "18": "Left window bottom left",
+      "19": "Left window top left"
+    }
+  },
+  "penguin-gift": {
+    "image": "78e0a305dce3",
+    "areas": {
+      "1": "Snow mound",
+      "2": "Penguin body",
+      "3": "Penguin face",
+      "4": "Present",
+      "5": "Left bush",
+      "6": "Ribbon",
+      "7": "Right bush",
+      "8": "Hat",
+      "9": "Penguin tummy",
+      "10": "Hat bobble",
+      "11": "Top of the left bush"
+    }
+  },
+  "poinsettia-bloom": {
+    "image": "feb6679b800f",
+    "areas": {
+      "1": "Petal 8",
+      "2": "Petal 9",
+      "3": "Petal 1",
+      "4": "Petal 16",
+      "5": "Petal 4",
+      "6": "Petal 12",
+      "7": "Petal 13",
+      "8": "Petal 5",
+      "9": "Petal 14",
+      "10": "Petal 6",
+      "11": "Petal 11",
+      "12": "Petal 3",
+      "13": "Petal 2",
+      "14": "Petal 15",
+      "15": "Petal 7",
+      "16": "Petal 10"
+    }
+  },
+  "stocking-pair": {
+    "image": "02808e51020c",
+    "areas": {
+      "1": "Right cuff",
+      "2": "Left cuff",
+      "3": "Left stocking",
+      "4": "Right stocking",
+      "5": "Left holly leaf",
+      "6": "Right holly leaf",
+      "7": "Far right holly leaf",
+      "8": "Far left holly leaf",
+      "9": "Right stocking stripe",
+      "10": "Left stocking stripe",
+      "11": "Left toe",
+      "12": "Right toe",
+      "13": "Left heel",
+      "14": "Left toe stripe",
+      "15": "Right toe stripe",
+      "16": "Right heel",
+      "17": "Right cuff edge",
+      "18": "Left cuff edge",
+      "19": "Left berry",
+      "20": "Right berry",
+      "21": "Top berry"
+    }
+  },
+  "holly-wreath": {
+    "image": "64100a8a2fd0",
+    "areas": {
+      "1": "Middle of the wreath",
+      "2": "Right bell",
+      "3": "Left bell",
+      "4": "Left bow loop",
+      "5": "Right bow loop",
+      "6": "Top left leaf",
+      "7": "Top right leaf",
+      "8": "Right leaf",
+      "9": "Left leaf",
+      "10": "Right inner leaf",
+      "11": "Left inner leaf",
+      "12": "Far left leaf",
+      "13": "Far right leaf",
+      "14": "Upper right leaf",
+      "15": "Upper left leaf",
+      "16": "Top left berry",
+      "17": "Top right berry",
+      "18": "Bottom left leaf",
+      "19": "Bottom right leaf"
+    }
+  },
+  "robin-holly": {
+    "image": "1b631c4eacff",
+    "areas": {
+      "1": "Robin",
+      "2": "Branch",
+      "3": "Robin chest",
+      "4": "Snow on the branch",
+      "5": "Left leaf",
+      "6": "Second leaf",
+      "7": "Right leaf",
+      "8": "Wing",
+      "9": "Bottom right leaf",
+      "10": "Top left leaf",
+      "11": "Top right leaf",
+      "12": "Top leaf"
+    }
+  },
+  "sleigh-gifts": {
+    "image": "15e6df6bbe1e",
+    "areas": {
+      "1": "Snow mound",
+      "2": "Sleigh",
+      "3": "Sleigh seat",
+      "4": "Sleigh runner",
+      "5": "Bush",
+      "6": "Middle present",
+      "7": "Left present",
+      "8": "Right present",
+      "9": "Sleigh base",
+      "10": "Small present",
+      "11": "Snow on the bush"
+    }
+  },
+  "polar-bear-cocoa": {
+    "image": "e04807f57722",
+    "areas": {
+      "1": "Bear head",
+      "2": "Cocoa mug",
+      "3": "Bear body",
+      "4": "Bear foot",
+      "5": "Left bush",
+      "6": "Middle bush",
+      "7": "Hat bobble",
+      "8": "Hat",
+      "9": "Right bush",
+      "10": "Bear ear",
+      "11": "Far right bush",
+      "12": "First scarf stripe",
+      "13": "Fourth scarf stripe",
+      "14": "Second scarf stripe",
+      "15": "Third scarf stripe",
+      "16": "Snow on the left bush",
+      "17": "Scarf tip",
+      "18": "Snow on the right bush",
+      "19": "Scarf end"
+    }
+  },
+  "snow-globe": {
+    "image": "09326209212c",
+    "areas": {
+      "1": "Inside the globe",
+      "2": "Snowy hill",
+      "3": "Base",
+      "4": "Cottage",
+      "5": "Bottom of the tree",
+      "6": "Roof",
+      "7": "Right bow loop",
+      "8": "Left bow loop",
+      "9": "Middle of the tree",
+      "10": "Top of the tree",
+      "11": "Door",
+      "12": "Left band",
+      "13": "Right band",
+      "14": "Right ribbon",
+      "15": "Left ribbon"
+    }
+  },
+  "gingerbread-friend": {
+    "image": "68620b067f6b",
+    "areas": {
+      "1": "Gingerbread body",
+      "2": "Snow mound",
+      "3": "Gingerbread head",
+      "4": "Bush",
+      "5": "Present",
+      "6": "Present ribbon",
+      "7": "Present lid",
+      "8": "Right foot",
+      "9": "Left foot",
+      "10": "Back present",
+      "11": "Right bow tie",
+      "12": "Top of the back present",
+      "13": "Left bow tie"
+    }
+  },
+  "bells-bow": {
+    "image": "4ab033768b44",
+    "areas": {
+      "1": "Right holly leaf",
+      "2": "Right bell",
+      "3": "Left holly leaf",
+      "4": "Left bow loop",
+      "5": "Right bow loop",
+      "6": "Left bell band",
+      "7": "Far left leaf",
+      "8": "Far right leaf",
+      "9": "Right bell band",
+      "10": "Left bell",
+      "11": "Middle ribbon",
+      "12": "Left bell stripe",
+      "13": "Right bell stripe",
+      "14": "Bow knot",
+      "15": "Right ribbon",
+      "16": "Ribbon loop",
+      "17": "Left ribbon",
+      "18": "Left bell rim",
+      "19": "Right bell rim",
+      "20": "Left bell edge",
+      "21": "Left clapper",
+      "22": "Right clapper",
+      "23": "Right bell edge"
+    }
+  },
+  "ornament-bloom": {
+    "image": "210bdda3d0ef",
+    "areas": {
+      "1": "Star band",
+      "2": "Flower band",
+      "3": "Top of the zigzag",
+      "4": "Zigzag",
+      "5": "Bottom of the zigzag",
+      "6": "Top of the bauble",
+      "7": "Right flower",
+      "8": "Left flower",
+      "9": "Middle flower",
+      "10": "Bottom of the bauble",
+      "11": "Right bow loop",
+      "12": "Left bow loop",
+      "13": "Bauble cap",
+      "14": "First star",
+      "15": "Fourth star",
+      "16": "Second star",
+      "17": "Third star"
+    }
+  },
+  "fox-lantern": {
+    "image": "513a656cb9c7",
+    "areas": {
+      "1": "Fox body",
+      "2": "Fox head",
+      "3": "Fox muzzle",
+      "4": "Fox tail",
+      "5": "Round bush",
+      "6": "Left bush",
+      "7": "Snow",
+      "8": "Fox paw",
+      "9": "Bottom of the tree",
+      "10": "Middle bush",
+      "11": "Left snow",
+      "12": "Right ear",
+      "13": "Left ear",
+      "14": "Middle of the tree",
+      "15": "Inside the left ear",
+      "16": "Inside the right ear",
+      "17": "Top of the tree"
+    }
+  }
+}

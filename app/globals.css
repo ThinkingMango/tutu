@@ -1,0 +1,261 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --font-sans: var(--font-nunito), ui-rounded, system-ui, sans-serif;
+
+  --color-canvas: var(--canvas);
+  --color-ink: var(--ink);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-swatch-red: var(--swatch-red);
+  --color-swatch-pink: var(--swatch-pink);
+  --color-swatch-orange: var(--swatch-orange);
+  --color-swatch-peach: var(--swatch-peach);
+  --color-swatch-yellow: var(--swatch-yellow);
+  --color-swatch-lime: var(--swatch-lime);
+  --color-swatch-green: var(--swatch-green);
+  --color-swatch-sky: var(--swatch-sky);
+  --color-swatch-blue: var(--swatch-blue);
+  --color-swatch-purple: var(--swatch-purple);
+  --color-swatch-brown: var(--swatch-brown);
+  --color-swatch-gray: var(--swatch-gray);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+
+  /* Chrome: white, ink, soft gray, friendly blue, amber status */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.29 0.03 265);
+  --canvas: oklch(1 0 0);
+  --ink: oklch(0.29 0.03 265);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.29 0.03 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.29 0.03 265);
+  --primary: oklch(0.53 0.17 255);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.965 0.007 265);
+  --secondary-foreground: oklch(0.29 0.03 265);
+  --muted: oklch(0.965 0.007 265);
+  --muted-foreground: oklch(0.48 0.025 265);
+  --accent: oklch(0.965 0.007 265);
+  --accent-foreground: oklch(0.29 0.03 265);
+  --destructive: oklch(0.577 0.21 27);
+  --border: oklch(0.915 0.01 265);
+  --input: oklch(0.88 0.012 265);
+  --ring: oklch(0.53 0.17 255);
+
+  --warning: oklch(0.95 0.07 88);
+  --warning-foreground: oklch(0.42 0.09 65);
+
+  /* The twelve crayons */
+  --swatch-red: oklch(0.65 0.21 25);
+  --swatch-pink: oklch(0.78 0.13 355);
+  --swatch-orange: oklch(0.77 0.16 60);
+  --swatch-peach: oklch(0.85 0.08 55);
+  --swatch-yellow: oklch(0.89 0.17 96);
+  --swatch-lime: oklch(0.86 0.18 128);
+  --swatch-green: oklch(0.72 0.17 150);
+  --swatch-sky: oklch(0.82 0.1 225);
+  --swatch-blue: oklch(0.66 0.15 248);
+  --swatch-purple: oklch(0.6 0.17 305);
+  --swatch-brown: oklch(0.55 0.09 55);
+  --swatch-gray: oklch(0.72 0.01 265);
+
+  /* Grown-up pencils, pale to deep per family. Keep in step with lib/cloud-sync/artwork-svg.ts. */
+  --swatch-rose-pale: #fbd5dd;
+  --swatch-rose-soft: #f49db2;
+  --swatch-rose-mid: #e0566f;
+  --swatch-rose-deep: #a3304a;
+  --swatch-sun-pale: #fdeba5;
+  --swatch-sun-soft: #f8c940;
+  --swatch-sun-mid: #f08c2c;
+  --swatch-sun-deep: #b85a22;
+  --swatch-leaf-pale: #e0f0b4;
+  --swatch-leaf-soft: #a9d56a;
+  --swatch-leaf-mid: #58ab52;
+  --swatch-leaf-deep: #2f7747;
+  --swatch-sea-pale: #c8ecf0;
+  --swatch-sea-soft: #63c6d2;
+  --swatch-sea-mid: #3190c6;
+  --swatch-sea-deep: #2c58a3;
+  --swatch-violet-pale: #e4d9f5;
+  --swatch-violet-soft: #b89de3;
+  --swatch-violet-mid: #8a5ec6;
+  --swatch-violet-deep: #5d3b90;
+  --swatch-earth-pale: #efe4d1;
+  --swatch-earth-soft: #bdb5aa;
+  --swatch-earth-mid: #a26d48;
+  --swatch-earth-deep: #604434;
+
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@page {
+  margin: 14mm;
+}
+
+@media print {
+  html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* A chunky, toy-like button that presses down when tapped. */
+@utility tactile {
+  box-shadow: 0 6px 0 0 var(--tactile-edge, var(--border));
+  transition:
+    transform 120ms ease-out,
+    box-shadow 120ms ease-out;
+  &:active:not(:disabled) {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 0 var(--tactile-edge, var(--border));
+  }
+}
+
+/* A pack's crayon, softened for surfaces and deepened for pressed edges. Set --pack on the same element. */
+@utility pack-theme {
+  --pack-tint: color-mix(in oklch, var(--pack) 22%, var(--background));
+  --pack-edge: color-mix(in oklch, var(--pack) 58%, var(--ink));
+}
+
+.mandala-region {
+  cursor: pointer;
+  outline: none;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: fill 160ms ease-out;
+}
+.mandala-region:focus-visible {
+  stroke: var(--primary);
+  stroke-width: 16;
+}
+[data-line='fine'] .mandala-region:focus-visible {
+  stroke-width: 8;
+}
+
+@keyframes bubble-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.7) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(20deg);
+  }
+}
+
+/* Points a child at Undo right after a clear. */
+@keyframes attention {
+  50% {
+    outline-offset: 10px;
+  }
+}
+
+.attention {
+  outline: 4px solid var(--primary);
+  outline-offset: 4px;
+  animation: attention 1.1s ease-in-out infinite;
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes slow-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-bubble-in {
+  animation: bubble-in 220ms ease-out both;
+}
+.animate-twinkle {
+  animation: twinkle 1.4s ease-in-out infinite;
+}
+/* Backwards fill only, so the finished card hands its transform back to the tactile press. */
+.animate-pop-in {
+  animation: pop-in 440ms cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+.animate-slow-spin {
+  animation: slow-spin 60s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-bubble-in,
+  .animate-twinkle,
+  .animate-pop-in,
+  .animate-slow-spin,
+  .attention {
+    animation: none;
+  }
+  .tactile,
+  .mandala-region {
+    transition: none;
+  }
+}

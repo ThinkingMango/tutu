@@ -1,0 +1,28 @@
+{
+  "pack": "ocean-friends-two",
+  "name": "Ocean Friends 2",
+  "description": "Sixteen more sea friends: a walrus, a narwhal, a manatee, a lobster, a puffin, a hermit crab, an angelfish, a nautilus, a sunfish, a little submarine, a beluga, an orca, a seagull with a sandcastle, a shrimp, a flying fish and a pelican.",
+  "icon": "shell",
+  "order": 7,
+  "status": "published",
+  "generator": "v0 built-in image generation",
+  "style": "Children's coloring book page, square 1:1. Pure white background with a wide empty white margin on all sides; nothing touches the edges. Bold uniform thick black outlines, same weight everywhere. No shading, no grey, no texture, no hatching, no black fills except tiny eye dots, no text, no border frame. Every shape fully closed. One large friendly sea subject, centered, filling most of the page. Around it only a few separate closed shapes: big round bubbles, a closed seaweed leaf, a closed rock. No open lines at all: no water lines, no wave strokes, no ground lines, no sand ripples, no loose squiggles. The subject itself is split into about 16 large closed areas to color (body, belly, fins, tail, stripes or patches). Eyes are small solid black dots, smile is one short line. Nothing scary, no teeth, no sharp spikes. Very simple, cute, for a 3-year-old.",
+  "pages": [
+    { "id": "walrus-wave", "name": "Walrus Wave", "subject": "a chubby smiling walrus with two short rounded tusks and big flippers, lying on an ice floe beside one big wave" },
+    { "id": "narwhal-swirl", "name": "Narwhal Swirl", "subject": "a round happy narwhal with a short rounded striped horn, a separate belly and a big tail, with three big bubbles" },
+    { "id": "manatee-munch", "name": "Manatee Munch", "subject": "a gentle round manatee with a paddle tail and two flippers, munching a tuft of wide sea grass" },
+    { "id": "lobster-hello", "name": "Lobster Hello", "subject": "a smiling lobster with two big rounded claws raised to wave, a tail of wide segments and four short legs, on sand" },
+    { "id": "puffin-rock", "name": "Puffin Rock", "subject": "a puffin with a big striped beak, a separate white chest and orange feet, standing on a round rock above waves" },
+    { "id": "hermit-crab-shell", "name": "Hermit Crab Home", "subject": "a hermit crab peeking out of a big spiral shell with wide bands, with two claws and a small starfish beside it" },
+    { "id": "angelfish-reef", "name": "Angelfish Reef", "subject": "an angelfish with tall top and bottom fins and three wide stripes, swimming past two chunky coral branches" },
+    { "id": "nautilus-spiral", "name": "Nautilus Spiral", "subject": "a nautilus with a big round spiral shell of wide chambers, a small face and a few short rounded tentacles" },
+    { "id": "sunfish-drift", "name": "Sunfish Drift", "subject": "a big round ocean sunfish with a tall top fin and a tall bottom fin, and a ring of big bubbles around it" },
+    { "id": "submarine-peek", "name": "Submarine Peek", "subject": "a round little submarine with three big round windows, a periscope and a propeller, with a small fish looking in", "minArea": 0.01 },
+    { "id": "beluga-bubbles", "name": "Beluga Bubbles", "subject": "a smiling beluga whale with a round forehead, two flippers and a tail, blowing three big bubble rings", "minArea": 0.008 },
+    { "id": "orca-splash", "name": "Orca Bubbles", "subject": "a friendly orca whale seen from the side, swimming left, clearly whale-shaped with a long rounded body, a tall curved back fin, two side flippers and a big two-lobed tail. Its mouth is closed with no teeth. Big separate closed patches: an oval patch behind the eye, a long belly patch, and a saddle patch behind the back fin. Three big round bubbles above it. The body is not filled black, only outlined", "minArea": 0.006 },
+    { "id": "seagull-sandcastle", "name": "Seagull Sandcastle", "subject": "a seagull standing beside a sandcastle with two towers, a door and a small flag, with a bucket" },
+    { "id": "shrimp-curl", "name": "Shrimp Curl", "subject": "a big chubby curled shrimp filling most of the page, with a round head, a body of five very wide segments, a wide fan tail of three parts, four short rounded legs and two thick curly antennae, beside two big round bubbles", "minArea": 0.006 },
+    { "id": "flying-fish", "name": "Flying Fish", "subject": "a flying fish with two big wing-like fins spread wide, leaping over two rolling waves under a round sun" },
+    { "id": "pelican-post", "name": "Pelican Post", "subject": "a pelican with a big beak and pouch, sitting on a wooden post with wide planks, beside a big wave" }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "fish-flower": {
+    "image": "8dd9b86209f8",
+    "areas": {
+      "1": "Fish face",
+      "2": "Petal 2",
+      "3": "Fish body",
+      "4": "Petal 6",
+      "5": "Petal 1",
+      "6": "Petal 7",
+      "7": "Fish tail",
+      "8": "Petal 8",
+      "9": "Petal 4",
+      "10": "Petal 9",
+      "11": "Petal 11",
+      "12": "Petal 10",
+      "13": "Petal 3",
+      "14": "Petal 5",
+      "15": "Top of tail",
+      "16": "Bottom of tail",
+      "17": "Side fin",
+      "18": "Bottom fin",
+      "19": "Top fin",
+      "20": "Small top fin"
+    }
+  },
+  "turtle-flower": {
+    "image": "adac933caee8",
+    "areas": {
+      "1": "Shell ring",
+      "2": "Right front flipper",
+      "3": "Left front flipper",
+      "4": "Turtle head",
+      "5": "Shell middle",
+      "6": "Shell petal 1",
+      "7": "Shell petal 2",
+      "8": "Shell petal 8",
+      "9": "Shell petal 3",
+      "10": "Shell petal 7",
+      "11": "Shell petal 5",
+      "12": "Shell petal 4",
+      "13": "Shell petal 6",
+      "14": "Right back flipper",
+      "15": "Turtle tail",
+      "16": "Left back flipper",
+      "17": "Shell edge 5",
+      "18": "Turtle neck",
+      "19": "Shell edge 1",
+      "20": "Shell edge 7",
+      "21": "Shell edge 3",
+      "22": "Shell edge 4",
+      "23": "Shell edge 6",
+      "24": "Shell edge 2"
+    }
+  },
+  "shell-bloom": {
+    "image": "e4942a9d1d2f",
+    "areas": {
+      "1": "Bottom shell",
+      "2": "Shell stripe 3",
+      "3": "Shell stripe 4",
+      "4": "Shell stripe 2",
+      "5": "Left sea plant",
+      "6": "Shell stripe 1",
+      "7": "Shell stripe 5",
+      "8": "Pearl",
+      "9": "Right sea plant",
+      "10": "Right bubble",
+      "11": "Shell edge middle",
+      "12": "Left bubble",
+      "13": "Shell edge left",
+      "14": "Shell edge right",
+      "15": "Small sea plant",
+      "16": "Top bubble"
+    }
+  },
+  "starfish-waves": {
+    "image": "8ed94041d643",
+    "areas": {
+      "1": "Starfish face",
+      "2": "Back wave",
+      "3": "Right arm",
+      "4": "Left arm",
+      "5": "Bottom arms",
+      "6": "Top arm, right side",
+      "7": "Top arm, left side",
+      "8": "Middle wave",
+      "9": "Right wave",
+      "10": "Left wave",
+      "11": "Top right bubble",
+      "12": "Right bubble",
+      "13": "Left bubble",
+      "14": "Top left bubble"
+    }
+  },
+  "octopus-hug": {
+    "image": "88e65f6d942a",
+    "areas": {
+      "1": "Octopus",
+      "2": "Left arm",
+      "3": "Right arm",
+      "4": "Top right arm",
+      "5": "Top left arm",
+      "6": "Bottom left bubble",
+      "7": "Curly arm tip",
+      "8": "Top bubble",
+      "9": "Bottom right bubble",
+      "10": "Small bubble"
+    }
+  },
+  "puffer-bloom": {
+    "image": "857970dfbe0c",
+    "areas": {
+      "1": "Puffer fish",
+      "2": "Puffer belly",
+      "3": "Tail fin",
+      "4": "Petal 1",
+      "5": "Petal 3",
+      "6": "Side fin",
+      "7": "Petal 9",
+      "8": "Petal 14",
+      "9": "Petal 2",
+      "10": "Petal 8",
+      "11": "Petal 13",
+      "12": "Petal 15",
+      "13": "Petal 10",
+      "14": "Petal 4",
+      "15": "Petal 7",
+      "16": "Petal 12",
+      "17": "Petal 6",
+      "18": "Petal 5",
+      "19": "Petal 11"
+    }
+  },
+  "whale-circle": {
+    "image": "838545c842df",
+    "areas": {
+      "1": "Whale",
+      "2": "Whale belly",
+      "3": "Right wave",
+      "4": "Top right bubble",
+      "5": "Left bubble",
+      "6": "Left wave",
+      "7": "Bottom right bubble",
+      "8": "Top left bubble",
+      "9": "Bottom left bubble",
+      "10": "Right bubble",
+      "11": "Middle water drop",
+      "12": "Left water drop",
+      "13": "Right water drop"
+    }
+  },
+  "crab-cove": {
+    "image": "ede198d51c71",
+    "areas": {
+      "1": "Crab",
+      "2": "Sand",
+      "3": "Right rock",
+      "4": "Left claw",
+      "5": "Right claw",
+      "6": "Left rock",
+      "7": "Crab belly",
+      "8": "Right bubble",
+      "9": "Left bubble",
+      "10": "Left eye",
+      "11": "Right eye",
+      "12": "Pebble"
+    }
+  },
+  "seahorse-sway": {
+    "image": "a4ecba4ac3ea",
+    "areas": {
+      "1": "Seahorse",
+      "2": "Tall seaweed, right side",
+      "3": "Tall seaweed, left side",
+      "4": "Back fin",
+      "5": "Blue seaweed edge",
+      "6": "Blue seaweed",
+      "7": "Belly stripe 3",
+      "8": "Belly stripe 2",
+      "9": "Left bubble",
+      "10": "Small seaweed top",
+      "11": "Top bubble",
+      "12": "Small seaweed bottom",
+      "13": "Belly stripe 1",
+      "14": "Small seaweed middle",
+      "15": "Belly stripe 4",
+      "16": "Small bubble"
+    }
+  },
+  "jelly-dance": {
+    "image": "7c04bb83a567",
+    "areas": {
+      "1": "Jellyfish",
+      "2": "Wavy arm 4",
+      "3": "Wavy arm 3",
+      "4": "Wavy arm 2",
+      "5": "Wavy arm 5",
+      "6": "Wavy arm 1",
+      "7": "Left bubble",
+      "8": "Frill 2",
+      "9": "Frill 5",
+      "10": "Frill 3",
+      "11": "Frill 4",
+      "12": "Frill 6",
+      "13": "Frill 1",
+      "14": "Right bubble"
+    }
+  },
+  "dolphin-jump": {
+    "image": "f0caead1b64d",
+    "areas": {
+      "1": "Dolphin",
+      "2": "Outer rainbow",
+      "3": "Wave 4",
+      "4": "Wave 2",
+      "5": "Middle rainbow",
+      "6": "Wave 1",
+      "7": "Wave 3",
+      "8": "Inner rainbow",
+      "9": "Dolphin belly",
+      "10": "Right bubble",
+      "11": "Left bubble",
+      "12": "Small rainbow, right",
+      "13": "Small rainbow, left",
+      "14": "Middle bubble"
+    }
+  },
+  "seal-pup": {
+    "image": "6624cefc02b1",
+    "areas": {
+      "1": "Seal",
+      "2": "Ice top",
+      "3": "Ice side",
+      "4": "Ball stripe 3",
+      "5": "Seal flipper",
+      "6": "Ball stripe 2",
+      "7": "Ball stripe 4",
+      "8": "Ball stripe 1",
+      "9": "Ball stripe 5",
+      "10": "Bubble"
+    }
+  },
+  "clownfish-home": {
+    "image": "31dce86765b2",
+    "areas": {
+      "1": "Anemone",
+      "2": "Clownfish head",
+      "3": "First stripe",
+      "4": "Middle stripe",
+      "5": "Tail",
+      "6": "Last stripe",
+      "7": "Clownfish back",
+      "8": "Side fin",
+      "9": "Red frond",
+      "10": "Big bubble",
+      "11": "Top fin",
+      "12": "Green frond",
+      "13": "Right bubble",
+      "14": "Tail edge",
+      "15": "Purple frond",
+      "16": "Anemone bud",
+      "17": "Clownfish belly",
+      "18": "Tail stripe",
+      "19": "Bottom fin",
+      "20": "Small top fin",
+      "21": "Small top bubble",
+      "22": "Small right bubble"
+    }
+  },
+  "stingray-glide": {
+    "image": "a9c24768a6db",
+    "areas": {
+      "1": "Stingray",
+      "2": "Left wing",
+      "3": "Right wing",
+      "4": "Right wing edge",
+      "5": "Left wing edge",
+      "6": "Tail",
+      "7": "Left starfish",
+      "8": "Right starfish",
+      "9": "Top left bubble",
+      "10": "Bottom right bubble",
+      "11": "Right bubble",
+      "12": "Bottom bubble",
+      "13": "Top right bubble",
+      "14": "Left bubble",
+      "15": "Small top bubble"
+    }
+  },
+  "otter-float": {
+    "image": "2a960bf00a2d",
+    "areas": {
+      "1": "Otter body",
+      "2": "Wave",
+      "3": "Otter head",
+      "4": "Otter face",
+      "5": "Kelp leaf",
+      "6": "Clam shell",
+      "7": "Otter paw",
+      "8": "Left bubble",
+      "9": "Otter foot",
+      "10": "Middle bubble",
+      "11": "Top bubble",
+      "12": "Right bubble",
+      "13": "Little wave"
+    }
+  },
+  "shark-smile": {
+    "image": "7e36913157ca",
+    "areas": {
+      "1": "Shark",
+      "2": "Shark belly",
+      "3": "Left seaweed, middle leaf",
+      "4": "Right seaweed, middle leaf",
+      "5": "Top bubble",
+      "6": "Left seaweed, left leaf",
+      "7": "Left bubble",
+      "8": "Right seaweed, right leaf",
+      "9": "Left seaweed, right leaf",
+      "10": "Right seaweed, left leaf",
+      "11": "Right bubble"
+    }
+  }
+}

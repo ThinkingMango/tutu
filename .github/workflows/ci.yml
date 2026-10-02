@@ -1,0 +1,47 @@
+# Runs on every pull request and every push to main: the same checks a contributor runs locally.
+# A red X here means the change would break the app; don't merge until it's green.
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      # Installs the pnpm version named in package.json ("packageManager").
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Type check
+        run: pnpm typecheck
+
+      - name: Tests
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+          # Placeholders: the build never contacts Supabase, but the browser client needs a value.
+          NEXT_PUBLIC_SUPABASE_URL: http://localhost:54321
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder

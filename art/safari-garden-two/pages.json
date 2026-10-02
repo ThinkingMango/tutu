@@ -1,0 +1,28 @@
+{
+  "pack": "safari-garden-two",
+  "name": "Safari Garden 2",
+  "description": "Sixteen more wild friends among big flowers: a bear cub, a panda, a koala, a kangaroo, a camel, a crocodile, a sloth, a lemur, a peacock, a red panda, a tree frog, an okapi, an armadillo, a butterfly, a fennec fox and a warthog.",
+  "icon": "bird",
+  "order": 8,
+  "status": "published",
+  "generator": "v0 built-in image generation",
+  "style": "Children's coloring book page, square 1:1. Pure white background with a wide empty white margin on all sides; nothing touches the edges. Bold uniform thick black outlines, same weight everywhere. No shading, no grey, no texture, no fur, no hatching, no black fills except tiny eye dots, no text, no border frame. Every shape fully closed. One large friendly wild animal, centered, in a simple garden with big flowers and leaves. About 16 large closed areas to color. Eyes are small solid black dots, smile is one short line. Nothing scary, no teeth, no claws. Very simple, cute, for a 3-year-old.",
+  "pages": [
+    { "id": "bear-cub", "name": "Bear Cub", "subject": "a whole round bear cub sitting, seen from the front, with round ears, a pale muzzle, a big belly patch and round paws, beside two big flowers and leaves. No background panel, no frame", "minArea": 0.005 },
+    { "id": "panda-bamboo", "name": "Panda Bamboo", "subject": "a round panda sitting and holding a thick bamboo stalk with wide leaves, with separate dark ear, eye and arm patches as closed shapes" },
+    { "id": "koala-hug", "name": "Koala Hug", "subject": "a koala with big round ears hugging a thick tree branch with a few wide leaves" },
+    { "id": "kangaroo-pouch", "name": "Kangaroo Pouch", "subject": "a mother kangaroo standing with a baby joey peeking out of her pouch, beside a round bush" },
+    { "id": "camel-dunes", "name": "Camel Dunes", "subject": "a smiling camel with two round humps and a striped blanket, walking past a round cactus with one big flower", "minArea": 0.005 },
+    { "id": "crocodile-grin", "name": "Crocodile Grin", "subject": "a friendly crocodile lying down with its mouth closed and no teeth, a back of wide rounded bumps, beside a pond with a lily pad" },
+    { "id": "sloth-hang", "name": "Sloth Hang", "subject": "a sleepy sloth hanging upside down from one thick branch by its arms, with a pale face mask and big eye patches and a flower tucked behind its ear, two big leaves on the branch. Floating on plain white, no background panel, no sky, no square frame" },
+    { "id": "lemur-tail", "name": "Lemur Tail", "subject": "a ring-tailed lemur sitting on a rock with a long curled tail of a few very wide stripes", "minArea": 0.008 },
+    { "id": "peacock-fan", "name": "Peacock Fan", "subject": "a peacock with a big round fan tail of wide feather shapes, each with one big round eye spot, like a mandala", "minArea": 0.008 },
+    { "id": "red-panda-nap", "name": "Red Panda Nap", "subject": "a red panda lying asleep along one thick smooth branch, very few shapes: round head with two ears and a pale face patch, a body, two legs, and a tail of only four wide rings. One big flower and two big leaves on the branch. No fur tufts, no small details" },
+    { "id": "tree-frog-leaf", "name": "Tree Frog Leaf", "subject": "a smiling tree frog with big round toes sitting on one huge leaf, beside a big flower" },
+    { "id": "okapi-stripes", "name": "Okapi Stripes", "subject": "a gentle okapi with big ears and wide stripes only on its legs, standing among tall leaves" },
+    { "id": "armadillo-roll", "name": "Armadillo Roll", "subject": "a smiling armadillo standing on a small grassy mound, with a shell of four very wide bands, a rounded snout and big ears, beside three daisies. Floating on plain white, no background panel, no sky, no square frame", "minArea": 0.005 },
+    { "id": "butterfly-bloom", "name": "Butterfly Bloom", "subject": "one big butterfly with four wide wings, each with one big round spot, resting on a large flower" },
+    { "id": "fennec-fox", "name": "Fennec Fox", "subject": "a fennec fox with very big ears and a fluffy tail, sitting beside a round cactus flower and a sun" },
+    { "id": "warthog-puddle", "name": "Warthog Puddle", "subject": "a cheerful round warthog with short rounded tusks and a tufty mane, standing in a round mud puddle beside flowers" }
+  ]
+}
