@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: '帮助与支持',
-  description: `获取小小曼陀罗的帮助：画册、已保存的图画、登录和退款。请发邮件至 ${SUPPORT_EMAIL}。`,
+  description: `获取漫涂涂的帮助：画册、已保存的图画、登录和退款。请发邮件至 ${SUPPORT_EMAIL}。`,
 }
 
 const linkClass =
@@ -31,7 +31,7 @@ export default function SupportPage() {
         </div>
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-5">
           <a
-            href={supportMailto('小小曼陀罗帮助')}
+            href={supportMailto('漫涂涂帮助')}
             className={cn(buttonVariants(), 'h-12 rounded-full px-6 text-base font-bold')}
           >
             <Mail data-icon="inline-start" />
@@ -60,7 +60,7 @@ export default function SupportPage() {
           <p>
             图画保存在设备上，因此如果浏览器数据被清除，图画可能会丢失。iPhone、iPad 和 Mac 上的 Safari 会清除 7
             天未打开过的网站数据。为避免这种情况，在 iPhone 或 iPad 上请点击“分享”，再选择“添加到主屏幕”；在 Mac 上，请在 Safari
-            中选择“文件”，再选择“添加到程序坞”（macOS Sonoma 或更高版本）。之后从那里打开小小曼陀罗，并开启
+            中选择“文件”，再选择“添加到程序坞”（macOS Sonoma 或更高版本）。之后从那里打开漫涂涂，并开启
             <Link href="/parent/cloud-saving" className={linkClass}>
               云端保存
             </Link>

@@ -3,7 +3,7 @@ import { BillingView } from '@/components/parent/billing-view'
 
 export const metadata: Metadata = {
   title: '价格',
-  description: '小曼陀罗图画包：单个图画包 $4.99，任选三个 $12.99，任选五个 $19.99。',
+  description: '漫涂涂图画包：单个图画包 $4.99，任选三个 $12.99，任选五个 $19.99。',
 }
 
 export default function BillingPage() {

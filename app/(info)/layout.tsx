@@ -13,7 +13,7 @@ export default function InfoLayout({ children }: { children: React.ReactNode }) 
           {/* Plain links, so the children's screens start a fresh page without grown-up scripts. */}
           <a
             href="/"
-            aria-label="小小曼陀罗首页"
+            aria-label="漫涂涂首页"
             className="rounded-full outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           >
             <BrandMark compact />

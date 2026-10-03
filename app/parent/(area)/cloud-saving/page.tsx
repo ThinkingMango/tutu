@@ -9,7 +9,7 @@ export default function CloudSavingPage() {
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-black">Cloud saving</h1>
         <p className="leading-relaxed text-muted-foreground text-pretty">
-          可选功能。将花园图画备份到你的家长账号。不开启也能完整使用小小曼陀罗。
+          可选功能。将花园图画备份到你的家长账号。不开启也能完整使用漫涂涂。
         </p>
       </div>
       <CloudSavingView />

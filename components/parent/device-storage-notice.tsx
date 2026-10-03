@@ -39,17 +39,17 @@ function currentDevice() {
 const TIPS: Record<HomeScreenDevice, { title: string; steps: string; icon: typeof Share }> = {
   iphone: {
     title: '在这台 iPhone 上保护好花园',
-    steps: '点击“分享”，再选择“添加到主屏幕”，之后从主屏幕打开小小曼陀罗。',
+    steps: '点击“分享”，再选择“添加到主屏幕”，之后从主屏幕打开漫涂涂。',
     icon: Share,
   },
   ipad: {
     title: '在这台 iPad 上保护好花园',
-    steps: '点击“分享”，再选择“添加到主屏幕”，之后从主屏幕打开小小曼陀罗。',
+    steps: '点击“分享”，再选择“添加到主屏幕”，之后从主屏幕打开漫涂涂。',
     icon: Share,
   },
   mac: {
     title: '在这台 Mac 上保护好花园',
-    steps: '在 Safari 中选择“文件”，再选择“添加到程序坞”（macOS Sonoma 或更高版本），之后从程序坞打开小小曼陀罗。',
+    steps: '在 Safari 中选择“文件”，再选择“添加到程序坞”（macOS Sonoma 或更高版本），之后从程序坞打开漫涂涂。',
     icon: AppWindowMac,
   },
 }
@@ -84,7 +84,7 @@ export function DeviceStorageNotice() {
           <p className="font-bold text-destructive">{"涂色没有被保存"}</p>
           <p className="text-sm leading-relaxed text-foreground">
             {
-              "这台设备上留给小小曼陀罗的空间已用完，新的涂色无法保存。请在下方清除已保存的涂色，或释放设备空间。"
+              "这台设备上留给漫涂涂的空间已用完，新的涂色无法保存。请在下方清除已保存的涂色，或释放设备空间。"
             }
           </p>
         </div>

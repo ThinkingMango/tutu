@@ -1,4 +1,4 @@
-// Little Mandala's service worker: keeps the children's screens working without the internet.
+// 漫涂涂's service worker: keeps the children's screens working without the internet.
 //
 // Children's screens are fetched fresh while online and a copy is kept, so they still open offline.
 // Build files are content-hashed, so a kept copy never goes stale. The grown-up area, sign-in,

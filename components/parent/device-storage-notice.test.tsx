@@ -33,7 +33,7 @@ describe('which device the "keep the garden safe" tip names', () => {
     expect(device(CHROME_ANDROID, 'Linux armv81', 5)).toBeNull()
   })
 
-  it('is not shown once Little Mandala is opened from the Home Screen or the Dock', () => {
+  it('is not shown once 漫涂涂 is opened from the Home Screen or the Dock', () => {
     expect(device(SAFARI_IPHONE, 'iPhone', 5, true)).toBeNull()
     expect(device(SAFARI_MAC, 'MacIntel', 5, true)).toBeNull()
     expect(device(SAFARI_MAC, 'MacIntel', 0, true)).toBeNull()

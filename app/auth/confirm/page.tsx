@@ -29,14 +29,14 @@ export default async function ConfirmSignInPage({ searchParams }: Props) {
             <div className="flex flex-col gap-2">
               <h1 className="text-2xl font-black text-balance">完成登录</h1>
               <p className="leading-relaxed text-muted-foreground text-pretty">
-                点击按钮，在这台设备上打开你的小小曼陀罗家长账号。
+                点击按钮，在这台设备上打开你的漫涂涂家长账号。
               </p>
             </div>
             <form method="post" action="/auth/callback" className="flex w-full flex-col">
               <input type="hidden" name="token_hash" value={tokenHash} />
               <input type="hidden" name="type" value={type} />
               <Button type="submit" className="h-12 w-full rounded-full text-base font-bold">
-                登录小小曼陀罗
+                登录漫涂涂
               </Button>
             </form>
             <p className="text-sm leading-relaxed text-muted-foreground">

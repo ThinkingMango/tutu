@@ -36,7 +36,7 @@ const STANDARD: Pack = {
   icon: 'flower-2',
   status: 'published',
   audience: 'children',
-  artSource: '为小曼陀罗用代码绘制的原创几何图案。未使用任何第三方图片或授权。',
+  artSource: '为漫涂涂用代码绘制的原创几何图案。未使用任何第三方图片或授权。',
   soldSeparately: false,
 }
 
@@ -48,7 +48,7 @@ function tracedPack(source: TracedPack): Pack {
     icon: source.icon,
     status: source.status,
     audience: source.audience ?? 'children',
-    artSource: `为小曼陀罗使用 v0 图像生成制作的原创线稿，再由 scripts/trace-pack.mjs 描摹成可点按填色的区域。每张源图及其校验值均保存在 art/${source.id}/source 中。未使用任何第三方图片或授权。`,
+    artSource: `为漫涂涂使用 v0 图像生成制作的原创线稿，再由 scripts/trace-pack.mjs 描摹成可点按填色的区域。每张源图及其校验值均保存在 art/${source.id}/source 中。未使用任何第三方图片或授权。`,
     soldSeparately: true,
   }
 }

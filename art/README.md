@@ -35,7 +35,7 @@ This creates `art/farm-friends/pages.json` as a **draft**. Open it and:
 
 Page ids are lowercase words joined by dashes and must be unique across every pack. `pnpm packs icons` lists the icons you can use.
 
-**Packs are for children only.** Little Mandala doesn't plan adult packs (decided 2 October 2026), so create every new pack without `--audience`. The `--audience=grown-ups` option and the shelved Zen Mandalas draft are kept only in case that decision changes: they set adult art rules (40 to 320 areas, each at least 16 units wide) and a thinner outline, but the app never lists or sells grown-up packs while `GROWN_UPS_OFFERED` in `lib/packs.ts` is `false`. See "Product scope" in `docs/plan.md`.
+**Packs are for children only.** 漫涂涂 doesn't plan adult packs (decided 2 October 2026), so create every new pack without `--audience`. The `--audience=grown-ups` option and the shelved Zen Mandalas draft are kept only in case that decision changes: they set adult art rules (40 to 320 areas, each at least 16 units wide) and a thinner outline, but the app never lists or sells grown-up packs while `GROWN_UPS_OFFERED` in `lib/packs.ts` is `false`. See "Product scope" in `docs/plan.md`.
 
 ### 2. Draw
 

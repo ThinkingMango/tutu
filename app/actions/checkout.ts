@@ -100,7 +100,7 @@ export async function startPackCheckout(input: CheckoutInput): Promise<CheckoutS
         client_reference_id: parent.id,
         metadata: { parent_id: parent.id, pack_ids: order.grants.join(',') },
         payment_intent_data: {
-          description: `小曼陀罗：${order.summary}`.slice(0, 1000),
+          description: `漫涂涂：${order.summary}`.slice(0, 1000),
           metadata: { parent_id: parent.id },
         },
         ...(customer.data

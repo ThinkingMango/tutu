@@ -11,15 +11,15 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   title: {
-    default: '小曼陀罗 — 小手涂色',
-    template: '%s · 小曼陀罗',
+    default: '漫涂涂 — 小手涂色',
+    template: '%s · 漫涂涂',
   },
   description: '一款宁静的花朵曼陀罗涂色应用，专为 3 至 7 岁儿童设计，平板优先，并配有独立的家长区。',
-  applicationName: '小曼陀罗',
+  applicationName: '漫涂涂',
   generator: 'v0.app',
   appleWebApp: {
     capable: true,
-    title: '小曼陀罗',
+    title: '漫涂涂',
     statusBarStyle: 'default',
   },
 }

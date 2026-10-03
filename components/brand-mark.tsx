@@ -19,7 +19,7 @@ export function BrandMark({ className, compact = false }: { className?: string; 
     <span className={cn('flex items-center gap-3', className)}>
       <MandalaArt version={logo} fills={logoFills} className={compact ? 'size-9' : 'size-12'} />
       <span className={cn('font-black tracking-tight', compact ? 'text-xl' : 'text-2xl')}>
-        小曼陀罗
+        漫涂涂
       </span>
     </span>
   )

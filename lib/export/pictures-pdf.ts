@@ -33,9 +33,9 @@ export async function buildPicturesPdf(
 ) {
   if (pictures.length === 0) throw new Error('没有可导出的图画')
   const pdf = await PDFDocument.create()
-  pdf.setTitle('小曼陀罗图画')
-  pdf.setCreator('小曼陀罗')
-  pdf.setProducer('小曼陀罗')
+  pdf.setTitle('漫涂涂图画')
+  pdf.setCreator('漫涂涂')
+  pdf.setProducer('漫涂涂')
   pdf.setCreationDate(now)
   pdf.setModificationDate(now)
 
@@ -68,7 +68,7 @@ export async function buildPicturesPdf(
       color: MUTED,
     })
 
-    const footer = '小曼陀罗'
+    const footer = '漫涂涂'
     page.drawText(footer, {
       x: (PAGE.width - regular.widthOfTextAtSize(footer, 9)) / 2,
       y: MARGIN / 2,
@@ -83,5 +83,5 @@ export async function buildPicturesPdf(
 
 export function picturesPdfFileName(now = new Date()) {
   const day = [now.getFullYear(), now.getMonth() + 1, now.getDate()].map((n) => String(n).padStart(2, '0')).join('-')
-  return `little-mandala-pictures-${day}.pdf`
+  return `mantutu-pictures-${day}.pdf`
 }

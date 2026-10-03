@@ -1,4 +1,4 @@
-# Little Mandala — App Plan (tablet-first, ages 3–7)
+# 漫涂涂 — App Plan (tablet-first, ages 3–7)
 
 **Release 1.0, the first production release**, is live at **https://mandala.smartmango.ai** (merge commit `aca3375`, PR #11 on top of PR #10).
 
@@ -6,7 +6,7 @@ A mandala coloring app for young children with **real parent accounts on Supabas
 
 ## Product scope
 
-**Little Mandala is for children aged 3 to 7. Every picture pack is a children's pack. No adult (grown-up) coloring packs are planned** (decided 2 October 2026).
+**漫涂涂 is for children aged 3 to 7. Every picture pack is a children's pack. No adult (grown-up) coloring packs are planned** (decided 2 October 2026).
 
 - Parents still use the **grown-up area** (`/parent`) to sign in, buy their child's packs, turn on cloud saving and print pictures. "Grown-up" in this document means that parent area, not adult coloring.
 - Adult packs were explored before 1.0 and never offered. Their code is **switched off, not deleted**: `GROWN_UPS_OFFERED = false` in `lib/packs.ts` hides the adult shelf, the "For you" groups on Pricing and Overview, and the `/parent/grown-ups` and `/parent/color/[id]` pages (both return "Page not found"). The draft **Zen Mandalas** pack (`art/zen-mandalas`, 12 pages) is never listed, sold or opened.

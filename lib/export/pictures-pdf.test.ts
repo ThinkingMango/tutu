@@ -21,7 +21,7 @@ describe('buildPicturesPdf', () => {
     const pdf = await PDFDocument.load(bytes)
     expect(pdf.getPageCount()).toBe(2)
     expect(pdf.getPage(0).getSize()).toEqual({ width: 612, height: 792 })
-    expect(pdf.getTitle()).toBe('小曼陀罗图画')
+    expect(pdf.getTitle()).toBe('漫涂涂图画')
     expect(pdf.getAuthor()).toBeUndefined()
   })
 
@@ -47,6 +47,6 @@ describe('pdf helpers', () => {
   })
 
   it('names the file after the day', () => {
-    expect(picturesPdfFileName(new Date(2026, 8, 7))).toBe('little-mandala-pictures-2026-09-07.pdf')
+    expect(picturesPdfFileName(new Date(2026, 8, 7))).toBe('mantutu-pictures-2026-09-07.pdf')
   })
 })

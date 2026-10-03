@@ -11,7 +11,7 @@ import { REFUND_WINDOW_DAYS, supportMailto } from '@/lib/legal'
 
 export const metadata: Metadata = {
   title: '退款政策',
-  description: `对小小曼陀罗的画册改变主意了？购买后 ${REFUND_WINDOW_DAYS} 天内可全额退款，无需说明理由。`,
+  description: `对漫涂涂的画册改变主意了？购买后 ${REFUND_WINDOW_DAYS} 天内可全额退款，无需说明理由。`,
 }
 
 const REFUND_MAILTO = supportMailto('退款申请')

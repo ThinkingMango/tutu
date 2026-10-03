@@ -59,7 +59,7 @@ export function receiptFileName(givenAt: Date, timeZone: string) {
   const day = new Intl.DateTimeFormat('en-CA', { year: 'numeric', month: '2-digit', day: '2-digit', timeZone }).format(
     givenAt,
   )
-  return `little-mandala-cloud-saving-permission-${day}.pdf`
+  return `mantutu-cloud-saving-permission-${day}.pdf`
 }
 
 const PAGE_WIDTH = 595.28
@@ -236,7 +236,7 @@ function drawFooters(doc: PDFDocument, fonts: Fonts) {
       thickness: 0.75,
       color: COLORS.rule,
     })
-    page.drawText('小曼陀罗 · 云端保存授权记录', {
+    page.drawText('漫涂涂 · 云端保存授权记录', {
       x: MARGIN,
       y,
       size,
@@ -268,14 +268,14 @@ export async function buildConsentReceiptPdf(receipt: ConsentReceipt, fontBytes?
   doc.setTitle('云端保存授权记录')
   doc.setSubject(`云端保存授权，告知书第 ${notice.version} 版`)
   doc.setAuthor(OPERATOR_NAME)
-  doc.setCreator('小曼陀罗')
-  doc.setProducer('小曼陀罗')
+  doc.setCreator('漫涂涂')
+  doc.setProducer('漫涂涂')
   doc.setCreationDate(receipt.generatedAt)
   doc.setModificationDate(receipt.generatedAt)
 
   const pdf = new PdfWriter(doc, fonts)
 
-  pdf.text('LITTLE MANDALA', { font: bold, size: 9, color: COLORS.primary })
+  pdf.text('漫涂涂', { font: bold, size: 9, color: COLORS.primary })
   pdf.gap(4)
   pdf.text('云端保存授权记录', { font: bold, size: 22, color: COLORS.text, leading: 28 })
   pdf.text('您对云端保存的授权，以及您所同意的告知书原文。', {
@@ -367,7 +367,7 @@ export async function buildConsentReceiptPdf(receipt: ConsentReceipt, fontBytes?
 
   pdf.gap(22)
   pdf.text(
-    `本记录于 ${formatReceiptTime(receipt.generatedAt, timeZone)} 根据 ${OPERATOR_NAME} 的记录为 ${receipt.parentEmail} 生成。时间以 ${timeZone} 时区显示。小曼陀罗由 ${OPERATOR_NAME} 运营。如有疑问：${SUPPORT_EMAIL}。`,
+    `本记录于 ${formatReceiptTime(receipt.generatedAt, timeZone)} 根据 ${OPERATOR_NAME} 的记录为 ${receipt.parentEmail} 生成。时间以 ${timeZone} 时区显示。漫涂涂由 ${OPERATOR_NAME} 运营。如有疑问：${SUPPORT_EMAIL}。`,
     { font: regular, size: 9, color: COLORS.muted, leading: 14 },
   )
 

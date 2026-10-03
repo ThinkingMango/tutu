@@ -80,8 +80,8 @@ describe('resolveTimeZone', () => {
 describe('receiptFileName', () => {
   it('uses the day of agreement in the parent’s time zone', () => {
     const givenAt = new Date('2026-09-28T02:00:00Z')
-    expect(receiptFileName(givenAt, 'America/Los_Angeles')).toBe('little-mandala-cloud-saving-permission-2026-09-27.pdf')
-    expect(receiptFileName(givenAt, 'UTC')).toBe('little-mandala-cloud-saving-permission-2026-09-28.pdf')
+    expect(receiptFileName(givenAt, 'America/Los_Angeles')).toBe('mantutu-cloud-saving-permission-2026-09-27.pdf')
+    expect(receiptFileName(givenAt, 'UTC')).toBe('mantutu-cloud-saving-permission-2026-09-28.pdf')
   })
 })
 

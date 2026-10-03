@@ -30,7 +30,7 @@ export function InfoFooter() {
           })}
         </nav>
         <p className="text-sm text-muted-foreground">
-          {`小小曼陀罗 · 由 ${OPERATOR_NAME} 提供 · `}
+          {`漫涂涂 · 由 ${OPERATOR_NAME} 提供 · `}
           <a
             href={SUPPORT_MAILTO}
             className="font-bold underline-offset-4 outline-none hover:text-foreground hover:underline focus-visible:rounded-sm focus-visible:ring-3 focus-visible:ring-ring/50"

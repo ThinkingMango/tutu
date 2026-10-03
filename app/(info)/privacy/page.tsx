@@ -13,7 +13,7 @@ import { OPERATOR_NAME, supportMailto } from '@/lib/legal'
 export const metadata: Metadata = {
   title: '隐私声明',
   description:
-    '小小曼陀罗如何处理信息：孩子无需账号即可涂色，图画保存在设备上，由家长决定是否备份。',
+    '漫涂涂如何处理信息：孩子无需账号即可涂色，图画保存在设备上，由家长决定是否备份。',
 }
 
 const linkClass =
@@ -24,12 +24,12 @@ export default function PrivacyPage() {
     <PolicyCard>
       <PolicyHeader
         title="隐私声明"
-        intro="小小曼陀罗是一款为幼儿设计的涂色应用。我们在设计时尽量少收集信息：孩子从不需要创建账号，除非家长选择备份，否则他们的图画只保存在设备上。"
+        intro="漫涂涂是一款为幼儿设计的涂色应用。我们在设计时尽量少收集信息：孩子从不需要创建账号，除非家长选择备份，否则他们的图画只保存在设备上。"
       />
 
       <PolicySection id="who-we-are" title="我们是谁">
         <p>
-          {`小小曼陀罗由 ${OPERATOR_NAME} 运营。我们决定此处所述信息的使用方式，并负责妥善保管这些信息。如有任何隐私问题或请求，请发送邮件至 `}
+          {`漫涂涂由 ${OPERATOR_NAME} 运营。我们决定此处所述信息的使用方式，并负责妥善保管这些信息。如有任何隐私问题或请求，请发送邮件至 `}
           <SupportEmailLink href={supportMailto('隐私问题')} />。
         </p>
       </PolicySection>
@@ -48,7 +48,7 @@ export default function PrivacyPage() {
       <PolicySection id="on-device" title="哪些内容保存在你的设备上">
         <p>
           孩子涂色的图画、“我的花园”中的图画、你选择的设置以及是否通过了大人验证，都保存在你所用设备的浏览器存储中。我们无法看到这些信息。除非你开启云端保存，否则这些信息不会发送给我们。为了在没有网络时也能涂色，设备还会保存一份儿童页面的副本；在你登录期间，还会保存一份你账号所拥有画册的列表。该列表在离线状态下最多可信任
-          30 天，并会在你退出登录时删除。清除浏览器中小小曼陀罗的数据会删除以上全部内容。
+          30 天，并会在你退出登录时删除。清除浏览器中漫涂涂的数据会删除以上全部内容。
         </p>
       </PolicySection>
 
@@ -117,7 +117,7 @@ export default function PrivacyPage() {
               <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer" className={linkClass}>
                 Stripe 隐私政策
               </a>
-              。删除你的小小曼陀罗账号不会删除这些记录。如需咨询，请直接联系 Stripe。
+              。删除你的漫涂涂账号不会删除这些记录。如需咨询，请直接联系 Stripe。
             </>,
             <>
               <strong>Vercel</strong>：托管应用并提供上文所述的访问统计。
@@ -143,7 +143,7 @@ export default function PrivacyPage() {
       <PolicySection id="choices" title="你的选择与权利">
         <PolicyList
           items={[
-            '无需账号即可使用小小曼陀罗，不登录也能完整涂色。',
+            '无需账号即可使用漫涂涂，不登录也能完整涂色。',
             '可随时在家长区域关闭云端保存，这会删除你图画的所有云端副本。',
             '可随时在家长区域删除账号，这会删除你的登录信息、云端图画和账号记录，并锁定你购买的所有画册。你也可以选择从执行删除的设备上移除图画。',
             '可以要求我们提供我们所持有的关于你或你孩子的信息副本，或要求我们更正或删除这些信息。',

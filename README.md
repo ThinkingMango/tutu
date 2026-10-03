@@ -1,4 +1,4 @@
-# Little Mandala
+# 漫涂涂 (Mantutu)
 
 A calm, tablet-first coloring app for children aged 3 to 7, live at https://mandala.smartmango.ai. Children pick a picture from a pack, tap areas to fill them with color, and keep finished pictures in **My garden**. A separate area behind a grown-up check lets parents sign in, buy picture packs, turn on cloud saving, and print pictures. Every pack is a children's pack: there are no adult coloring packs.
 

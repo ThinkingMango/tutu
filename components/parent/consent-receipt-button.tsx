@@ -5,7 +5,7 @@ import { FileDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const RECEIPT_URL = '/api/consent/receipt'
-const FALLBACK_FILE_NAME = 'little-mandala-cloud-saving-permission.pdf'
+const FALLBACK_FILE_NAME = 'mantutu-cloud-saving-permission.pdf'
 const GENERIC_ERROR = '未能生成你的同意记录，请再试一次。'
 
 class ReceiptError extends Error {}
