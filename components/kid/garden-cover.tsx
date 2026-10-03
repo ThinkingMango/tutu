@@ -18,12 +18,12 @@ export function GardenCover() {
   const shown = hydrated ? artworks : []
   const newest = shown.slice(0, COVER_SLOTS)
   const emptySlots = COVER_SLOTS - newest.length
-  const summary = shown.length > 0 ? pictureCount(shown.length) : 'Finished pictures grow here'
+  const summary = shown.length > 0 ? pictureCount(shown.length) : '涂好的图画会长在这里'
 
   return (
     <Link
       href="/garden"
-      aria-label={shown.length > 0 ? `My garden, ${summary}` : 'My garden'}
+      aria-label={shown.length > 0 ? `我的花园，${summary}` : '我的花园'}
       style={GARDEN_STYLE}
       className="pack-theme tactile flex flex-col gap-5 rounded-[2.5rem] border-4 border-(--pack) bg-(--pack-tint) p-5 text-ink outline-none [--tactile-edge:var(--pack-edge)] focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-4 sm:flex-row sm:items-center sm:justify-between md:p-6 lg:flex-col lg:items-stretch lg:justify-center lg:gap-8"
     >
@@ -35,7 +35,7 @@ export function GardenCover() {
           <Sprout className="size-8" strokeWidth={2.5} />
         </span>
         <div className="flex min-w-0 flex-col gap-1">
-          <h2 className="text-2xl font-black text-balance md:text-3xl">My garden</h2>
+          <h2 className="text-2xl font-black text-balance md:text-3xl">我的花园</h2>
           <p className="min-h-7 text-base font-bold text-ink/75 text-pretty md:text-lg">{hydrated ? summary : ''}</p>
         </div>
       </div>

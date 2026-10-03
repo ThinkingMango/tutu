@@ -64,7 +64,7 @@ export function ColoringScreen({ mandala, gardenArtworkId = null, lockedView }: 
     const changed = erasing ? coloring.erase(region.id) : coloring.fill(region.id, tool)
     if (!changed) return
     setUndoHint(false)
-    setAnnouncement(erasing ? `${region.label} is white again` : `${region.label} is now ${colorLabel(tool)}`)
+    setAnnouncement(erasing ? `${region.label}变回白色了` : `${region.label}涂成了${colorLabel(tool)}`)
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (settings.motion && !reduceMotion) {
@@ -78,22 +78,22 @@ export function ColoringScreen({ mandala, gardenArtworkId = null, lockedView }: 
   const handleClear = () => {
     if (!coloring.clear()) return
     setUndoHint(true)
-    setAnnouncement('Starting over. Tap undo to bring the colors back.')
+    setAnnouncement('重新开始。点“撤销”可以把颜色找回来。')
   }
 
   const handleUndo = () => {
     const undone = coloring.undo()
     setUndoHint(false)
-    if (undone === 'clear') setAnnouncement('Your colors are back.')
-    else if (undone === 'erase') setAnnouncement('The color is back.')
-    else if (undone === 'fill') setAnnouncement('Undone.')
+    if (undone === 'clear') setAnnouncement('颜色都回来啦。')
+    else if (undone === 'erase') setAnnouncement('颜色回来啦。')
+    else if (undone === 'fill') setAnnouncement('已撤销。')
   }
 
   const handleRedo = () => {
     const redone = coloring.redo()
     setUndoHint(false)
-    if (redone === 'clear') setAnnouncement('The flower is white again.')
-    else if (redone) setAnnouncement('Redone.')
+    if (redone === 'clear') setAnnouncement('花朵又变白了。')
+    else if (redone) setAnnouncement('已重做。')
   }
 
   const handleDone = () => {
@@ -104,20 +104,20 @@ export function ColoringScreen({ mandala, gardenArtworkId = null, lockedView }: 
 
   return (
     <main className="flex h-dvh flex-col gap-4 overflow-hidden p-4 md:gap-6 md:p-6 landscape:flex-row">
-      <h1 className="sr-only">{`Coloring ${mandala.name}`}</h1>
+      <h1 className="sr-only">{`正在涂「${mandala.name}」`}</h1>
 
       <nav
-        aria-label="Tools"
+        aria-label="工具"
         className="flex items-center justify-between gap-4 landscape:order-3 landscape:flex-col"
       >
         <div className="flex items-center gap-4 landscape:flex-col">
           <ToolLink
             href={fromGarden ? GARDEN_HREF : packHref(mandala.pack)}
-            label={fromGarden ? 'Back to My garden' : `Back to ${PACK_BY_ID[mandala.pack].name}`}
+            label={fromGarden ? '回到我的花园' : `回到「${PACK_BY_ID[mandala.pack].name}」`}
             icon={<House strokeWidth={2.5} />}
           />
           <ToolButton
-            label="Start over"
+            label="重新开始"
             icon={<RotateCcwSquare strokeWidth={2.5} />}
             onClick={() => setClearOpen(true)}
             disabled={!coloring.hasColor}
@@ -125,11 +125,11 @@ export function ColoringScreen({ mandala, gardenArtworkId = null, lockedView }: 
         </div>
         <div
           role="group"
-          aria-label="Undo and redo"
+          aria-label="撤销和重做"
           className="flex items-center gap-2 rounded-full bg-secondary p-2 landscape:flex-col"
         >
           <ToolButton
-            label="Undo"
+            label="撤销"
             icon={<Undo2 strokeWidth={2.75} />}
             variant="inset"
             onClick={handleUndo}
@@ -137,7 +137,7 @@ export function ColoringScreen({ mandala, gardenArtworkId = null, lockedView }: 
             className={undoHint ? 'attention' : undefined}
           />
           <ToolButton
-            label="Redo"
+            label="重做"
             icon={<Redo2 strokeWidth={2.75} />}
             variant="inset"
             onClick={handleRedo}
@@ -145,7 +145,7 @@ export function ColoringScreen({ mandala, gardenArtworkId = null, lockedView }: 
           />
         </div>
         <ToolButton
-          label="I'm done"
+          label="我涂好了"
           icon={<Check strokeWidth={3.25} />}
           variant="primary"
           onClick={handleDone}
@@ -157,7 +157,7 @@ export function ColoringScreen({ mandala, gardenArtworkId = null, lockedView }: 
         <MandalaArt
           version={coloring.version}
           fills={coloring.fills}
-          label={`${mandala.name} flower. ${erasing ? 'Tap a part to make it white again.' : 'Tap a part to color it.'}`}
+          label={`「${mandala.name}」花朵。${erasing ? '点一块，让它变回白色。' : '点一块，给它涂上颜色。'}`}
           onRegionTap={handleRegionTap}
           className="size-full max-h-full max-w-full"
         />
@@ -180,20 +180,20 @@ export function ColoringScreen({ mandala, gardenArtworkId = null, lockedView }: 
       <CrossCheckDialog
         open={clearOpen}
         onOpenChange={setClearOpen}
-        title="Start over?"
-        description="All the colors on this flower will go away. You can bring them back with undo."
+        title="要重新开始吗？"
+        description="这朵花上的颜色都会消失。你可以点“撤销”把它们找回来。"
         preview={<ClearPreview version={coloring.version} fills={coloring.fills} />}
-        cancelLabel="No, keep my colors"
-        confirmLabel="Yes, start over"
+        cancelLabel="不，留着我的颜色"
+        confirmLabel="好，重新开始"
         onConfirm={handleClear}
       />
       <DoneDialog
         moreHref={fromGarden ? GARDEN_HREF : packHref(mandala.pack)}
         savedNote={
           grownUps
-            ? 'Your page is saved. Pick another page or keep coloring.'
+            ? '这一页已保存。可以换一页，也可以继续涂。'
             : done.updated
-              ? 'Your garden picture is updated. Pick another picture or keep coloring.'
+              ? '花园里的图画已更新。可以换一幅，也可以继续涂。'
               : undefined
         }
         open={done.open}

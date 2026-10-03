@@ -71,8 +71,8 @@ export const paths = {
 }
 
 export const imageKey = (sha256: string) => sha256.slice(0, 12)
-export const placeholderLabel = (pageName: string, area: number) => `${pageName} area ${area}`
-export const isPlaceholder = (label: string) => label.trim() === '' || / area \d+$/.test(label)
+export const placeholderLabel = (pageName: string, area: number) => `${pageName} 区域 ${area}`
+export const isPlaceholder = (label: string) => label.trim() === '' || / (区域|area) \d+$/.test(label)
 export const promptFor = (manifest: PackManifest, page: ManifestPage) => `${manifest.style} Subject: ${page.subject}.`
 
 const readJson = <T>(file: string): T => JSON.parse(readFileSync(file, 'utf8')) as T

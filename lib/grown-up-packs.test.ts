@@ -47,7 +47,7 @@ describe('grown-up packs', () => {
     expect(SOLD_GROWN_UP_PACKS).toEqual([])
     expect(PACKS.some((p) => p.audience === 'grown-ups')).toBe(false)
     expect(SOLD_PACKS.some((p) => p.audience === 'grown-ups')).toBe(false)
-    expect(PACK_BY_ID['zen-mandalas'].name).toBe('Zen Mandalas')
+    expect(PACK_BY_ID['zen-mandalas'].name).toBe('禅意曼陀罗')
   })
 
   it('leaves children pages in the kids area', () => {

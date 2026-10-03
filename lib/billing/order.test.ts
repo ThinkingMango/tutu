@@ -16,8 +16,8 @@ describe('building an order on the server', () => {
     expect(ids.length).toBeGreaterThanOrEqual(4)
     const order = priced(ids.slice(0, 4))
     expect(order.lines).toEqual([
-      { name: 'Any three packs', unitCents: 1299, quantity: 1 },
-      { name: 'One pack', unitCents: 499, quantity: 1 },
+      { name: '任选三本', unitCents: 1299, quantity: 1 },
+      { name: '单本画册', unitCents: 499, quantity: 1 },
     ])
     expect(order.totalCents).toBe(1798)
     expect(order.grants).toEqual(ids.slice(0, 4))

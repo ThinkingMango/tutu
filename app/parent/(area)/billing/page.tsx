@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { BillingView } from '@/components/parent/billing-view'
 
 export const metadata: Metadata = {
-  title: 'Pricing',
-  description: 'Picture packs for Little Mandala: one pack for $4.99, any three for $12.99, any five for $19.99.',
+  title: '价格',
+  description: '小曼陀罗图画包：单个图画包 $4.99，任选三个 $12.99，任选五个 $19.99。',
 }
 
 export default function BillingPage() {

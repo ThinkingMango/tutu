@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { SignInForm, type LinkError } from '@/components/parent/sign-in-form'
 import { safeNext } from '@/lib/auth/redirect'
 
-export const metadata: Metadata = { title: 'Parent sign in' }
+export const metadata: Metadata = { title: '家长登录' }
 
 type Props = { searchParams: Promise<{ next?: string | string[]; error?: string | string[] }> }
 
@@ -20,7 +20,7 @@ export default async function SignInPage({ searchParams }: Props) {
         <div className="flex flex-col gap-2">
           <h1 className="text-2xl font-black">Parent sign in</h1>
           <p className="leading-relaxed text-muted-foreground">
-            Only grown-ups have accounts. Children never sign in.
+            只有大人才有账号，孩子无需登录。
           </p>
         </div>
         <SignInForm next={safeNext(next)} linkError={parseLinkError(error)} />

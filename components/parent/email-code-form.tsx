@@ -32,7 +32,7 @@ export function EmailCodeForm({ email, submitLabel, onVerified }: Props) {
       await authClient.verifyEmailCode(email, code)
       await onVerified()
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'That code didn’t work. Please try again.')
+      setError(err instanceof Error ? err.message : '验证码无效，请再试一次。')
     } finally {
       setPending(false)
     }
@@ -41,7 +41,7 @@ export function EmailCodeForm({ email, submitLabel, onVerified }: Props) {
   return (
     <form onSubmit={(e) => void submit(e)} className="flex flex-col gap-2" noValidate>
       <Label htmlFor={id} className="font-bold">
-        Email open on another device? Type the code from it.
+        邮件在其他设备上打开？请输入其中的验证码。
       </Label>
       <div className="flex flex-wrap gap-3">
         <Input
@@ -62,7 +62,7 @@ export function EmailCodeForm({ email, submitLabel, onVerified }: Props) {
         />
         <Button type="submit" variant="outline" disabled={pending} className="h-11 rounded-full px-5 font-bold">
           <KeyRound data-icon="inline-start" />
-          {pending ? 'Checking…' : submitLabel}
+          {pending ? '正在验证…' : submitLabel}
         </Button>
       </div>
       {error && (

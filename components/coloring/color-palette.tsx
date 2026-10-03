@@ -25,12 +25,12 @@ function swatchClass(selected: boolean, className?: string) {
 
 export function ColorPalette({ value, onChange, className }: ColorPaletteProps) {
   const radio = usePaletteRadios(TOOLS, value, onChange)
-  const eraser = radio(ERASER, 'Eraser')
+  const eraser = radio(ERASER, '橡皮擦')
 
   return (
     <div
       role="radiogroup"
-      aria-label="Colors and eraser"
+      aria-label="颜色和橡皮擦"
       className={cn(
         'flex items-center justify-center gap-2 rounded-[2.5rem] bg-secondary p-2 sm:gap-3 sm:p-4',
         className,

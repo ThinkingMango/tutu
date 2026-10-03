@@ -14,10 +14,10 @@ export function PicturesCard() {
   const { state } = useArtworkLibrary()
   const count = state.gallery.length
   const description = !hydrated
-    ? 'Checking this device…'
+    ? '正在检查这台设备…'
     : count === 0
-      ? 'No finished pictures yet. When there are, you can print them or save a PDF.'
-      : `${pictureCount(count)} on this device. Print them or save a PDF, and see which are in your account.`
+      ? '还没有完成的图画。完成后可以打印或保存为 PDF。'
+      : `这台设备上有 ${pictureCount(count)}。可以打印或保存为 PDF，并查看哪些已保存到你的账号。`
 
   return (
     <ParentCard title="Pictures" description={description}>
@@ -26,7 +26,7 @@ export function PicturesCard() {
         className={cn(buttonVariants({ variant: 'outline' }), 'h-11 self-start rounded-full px-5 font-bold')}
       >
         <Printer data-icon="inline-start" />
-        Print or save as PDF
+        打印或保存为 PDF
       </Link>
     </ParentCard>
   )

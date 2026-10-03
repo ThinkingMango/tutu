@@ -52,36 +52,36 @@ describe('the "On this device" card', () => {
   it('on a Mac in Safari, says "Mac" and explains Add to Dock, never "tablet" or "iPad"', () => {
     pretendToBe(SAFARI_MAC, 0)
     const { container } = render(<DeviceSettingsCard />)
-    expect(screen.getByText('Keep the garden safe on this Mac')).toBeInTheDocument()
-    expect(screen.getByText(/choose File, then Add to Dock/)).toBeInTheDocument()
-    expect(container.textContent).not.toMatch(/tablet|iPad/i)
+    expect(screen.getByText('在这台 Mac 上保护好花园')).toBeInTheDocument()
+    expect(screen.getByText(/选择“文件”，再选择“添加到程序坞”/)).toBeInTheDocument()
+    expect(container.textContent).not.toMatch(/平板|iPad/i)
   })
 
   it('on a Mac in Chrome, shows no tip and doesn’t mention a tablet', () => {
     pretendToBe(CHROME_MAC, 0)
     const { container } = render(<DeviceSettingsCard />)
-    expect(screen.getByText(/Artwork is kept on this device/)).toBeInTheDocument()
-    expect(screen.queryByText(/Keep the garden safe/)).toBeNull()
-    expect(container.textContent).not.toMatch(/tablet|iPad/i)
+    expect(screen.getByText(/作品只保存在这台设备上/)).toBeInTheDocument()
+    expect(screen.queryByText(/保护好花园/)).toBeNull()
+    expect(container.textContent).not.toMatch(/平板|iPad/i)
   })
 
   it('offers "Vibrate on tap" only where something can buzz', () => {
     Object.defineProperty(navigator, 'vibrate', { value: () => true, configurable: true })
     pretendToBe(CHROME_MAC, 0)
     const { unmount } = render(<DeviceSettingsCard />)
-    expect(screen.queryByText('Vibrate on tap')).toBeNull()
+    expect(screen.queryByText('点击时振动')).toBeNull()
     unmount()
 
     pretendToBe(CHROME_ANDROID, 5)
     render(<DeviceSettingsCard />)
-    expect(screen.getByText('Vibrate on tap')).toBeInTheDocument()
+    expect(screen.getByText('点击时振动')).toBeInTheDocument()
     delete (navigator as { vibrate?: unknown }).vibrate
   })
 
   it('on an iPad, still explains Add to Home Screen', () => {
     pretendToBe(SAFARI_MAC, 5)
     render(<DeviceSettingsCard />)
-    expect(screen.getByText('Keep the garden safe on this iPad')).toBeInTheDocument()
-    expect(screen.getByText(/Tap Share, then Add to Home Screen/)).toBeInTheDocument()
+    expect(screen.getByText('在这台 iPad 上保护好花园')).toBeInTheDocument()
+    expect(screen.getByText(/点击“分享”，再选择“添加到主屏幕”/)).toBeInTheDocument()
   })
 })

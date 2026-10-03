@@ -1,7 +1,7 @@
 import { STANDARD_UNLOCK_CENTS, quotePacks, type PackOffer } from '@/lib/billing/pricing'
 import { PACK_BY_ID, SOLD_PACKS, type PackId } from '@/lib/packs'
 
-export const STANDARD_UNLOCK_NAME = 'Standard pack unlock'
+export const STANDARD_UNLOCK_NAME = '标准画册解锁'
 /** More than every pack there is, so a real order never reaches it. */
 export const MAX_ORDER_PACKS = 40
 
@@ -56,7 +56,7 @@ export function buildOrder(request: OrderRequest, owned: ReadonlySet<string>): {
       grants,
       lines,
       totalCents: quote.totalCents + (request.withStandard ? STANDARD_UNLOCK_CENTS : 0),
-      summary: grants.map((id) => (id === 'standard' ? STANDARD_UNLOCK_NAME : PACK_BY_ID[id].name)).join(', '),
+      summary: grants.map((id) => (id === 'standard' ? STANDARD_UNLOCK_NAME : PACK_BY_ID[id].name)).join('、'),
     },
   }
 }

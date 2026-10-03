@@ -82,7 +82,7 @@ export function ClearPreview({ version, fills }: { version: TemplateVersion; fil
   return (
     <div
       role="img"
-      aria-label="Your colored flower will turn all white"
+      aria-label="涂好的花朵会全部变成白色"
       className="flex items-center justify-center gap-3 md:gap-5"
     >
       <MandalaArt version={version} fills={fills} className="size-32 md:size-40" />
@@ -94,7 +94,7 @@ export function ClearPreview({ version, fills }: { version: TemplateVersion; fil
 
 export function RemovePreview({ version, fills }: { version: TemplateVersion; fills: Fills }) {
   return (
-    <div role="img" aria-label="This flower will leave your garden" className="relative size-40">
+    <div role="img" aria-label="这朵花会离开你的花园" className="relative size-40">
       <MandalaArt version={version} fills={fills} className="size-full" />
       <span className="absolute -right-2 -bottom-2 flex size-14 items-center justify-center rounded-full bg-destructive text-primary-foreground">
         <Trash2 className="size-7" strokeWidth={2.75} aria-hidden="true" />
@@ -123,7 +123,7 @@ export function DoneDialog({
   fills,
   onFinish,
   moreHref,
-  savedNote = 'Your picture is saved in your garden. Pick another picture or keep coloring.',
+  savedNote = '你的图画已经保存在花园里。可以换一幅，也可以继续涂。',
 }: DoneDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -146,7 +146,7 @@ export function DoneDialog({
             aria-hidden="true"
           />
         </div>
-        <DialogTitle className="text-4xl font-black text-balance">Beautiful!</DialogTitle>
+        <DialogTitle className="text-4xl font-black text-balance">真漂亮！</DialogTitle>
         <DialogDescription className="sr-only">{savedNote}</DialogDescription>
         <div className="flex w-full flex-col gap-4 sm:flex-row">
           <button
@@ -155,7 +155,7 @@ export function DoneDialog({
             className={cn(bigButton, 'bg-secondary text-foreground [--tactile-edge:var(--border)]')}
           >
             <Paintbrush aria-hidden="true" strokeWidth={2.5} />
-            Keep going
+            继续涂
           </button>
           <Link
             href={moreHref}
@@ -166,7 +166,7 @@ export function DoneDialog({
             )}
           >
             <LayoutGrid aria-hidden="true" strokeWidth={2.5} />
-            More pictures
+            更多图画
           </Link>
         </div>
       </DialogContent>

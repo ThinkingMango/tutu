@@ -10,18 +10,18 @@ import { cn } from '@/lib/utils'
 const NOTICES: Record<CheckoutOutcome, { icon: typeof Info; title: string; body: string }> = {
   granted: {
     icon: CircleCheck,
-    title: 'Thank you! Your packs are ready.',
-    body: 'They’re yours to keep, on every device you sign in on. A receipt is on its way to your email.',
+    title: '谢谢！你的画册已准备好。',
+    body: '在你登录的每台设备上都可以永久使用。收据正在发送到你的邮箱。',
   },
   pending: {
     icon: Clock,
-    title: 'Your payment is on its way.',
-    body: 'Some payment methods take a little while. Your packs open as soon as it clears.',
+    title: '付款正在处理中。',
+    body: '部分付款方式需要一些时间。付款完成后画册会立即解锁。',
   },
   failed: {
     icon: Info,
-    title: 'We couldn’t confirm that payment yet.',
-    body: 'If you were charged, your packs will open shortly. You can refresh this page to check.',
+    title: '暂时无法确认这笔付款。',
+    body: '如果已经扣款，画册很快就会解锁。你可以刷新页面查看。',
   },
 }
 

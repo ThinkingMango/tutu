@@ -37,7 +37,7 @@ export function ParentGate({ next }: { next: string }) {
       router.replace(next)
       return
     }
-    setError('Not quite. Here is a new one.')
+    setError('不太对哦，换一道新题。')
     setAnswer('')
     setProblem(newProblem())
   }
@@ -47,13 +47,13 @@ export function ParentGate({ next }: { next: string }) {
       <div className="flex flex-col gap-3">
         <h1 className="text-3xl font-black text-balance">Grown-ups only</h1>
         <p className="leading-relaxed text-muted-foreground text-pretty">
-          Settings and picture packs live here. Answer the question to continue.
+          设置和画册都在这里。回答问题即可继续。
         </p>
       </div>
 
       <form onSubmit={submitAnswer} className="flex w-full flex-col gap-3 text-left" aria-busy={!problem}>
         <Label htmlFor="gate-answer" className="min-h-7 text-lg font-bold">
-          {problem ? `What is ${problem.a} × ${problem.b}?` : ''}
+          {problem ? `${problem.a} × ${problem.b} 等于多少？` : ''}
         </Label>
         <div className="flex gap-3">
           <Input
@@ -73,7 +73,7 @@ export function ParentGate({ next }: { next: string }) {
             autoFocus
           />
           <Button type="submit" disabled={!problem} className="h-12 rounded-xl px-6 text-base font-bold">
-            Continue
+            继续
           </Button>
         </div>
         {error && (

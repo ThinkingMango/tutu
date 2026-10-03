@@ -25,7 +25,7 @@ function PageTile({ mandala, locked }: { mandala: Mandala; locked: boolean }) {
           <MandalaArt version={latestVersion(mandala)} fills={EMPTY_FILLS} className="size-full opacity-35" />
           <span className="absolute top-2 right-2 flex size-8 items-center justify-center rounded-full bg-foreground text-background">
             <Lock className="size-4" strokeWidth={2.5} aria-hidden="true" />
-            <span className="sr-only">Locked</span>
+            <span className="sr-only">已锁定</span>
           </span>
         </div>
         <span className="truncate text-sm font-bold text-muted-foreground">{mandala.name}</span>
@@ -36,7 +36,7 @@ function PageTile({ mandala, locked }: { mandala: Mandala; locked: boolean }) {
   return (
     <Link
       href={colorHref(mandala)}
-      aria-label={`Color ${mandala.name}`}
+      aria-label={`给${mandala.name}涂色`}
       className="group flex flex-col gap-2 rounded-2xl outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
     >
       <div className={cn(artBox, 'group-hover:border-primary')}>
@@ -56,17 +56,17 @@ function PackSection({ pack }: { pack: Pack }) {
   }
 
   const open = pages.filter(isUnlocked).length
-  const status = open === pages.length ? 'Open' : open === 0 ? 'Locked' : `${open} of ${pages.length} open`
+  const status = open === pages.length ? '已解锁' : open === 0 ? '已锁定' : `已解锁 ${open} / ${pages.length}`
 
   return (
     <ParentCard
       title={pack.name}
-      description={`${pack.description} ${pages.length} pages.`}
+      description={`${pack.description}共 ${pages.length} 页。`}
       badge={
         <div className="flex shrink-0 items-center gap-2">
           {pack.status === 'draft' && (
             <span className="rounded-full border border-dashed px-3 py-1 text-xs font-bold text-muted-foreground">
-              Draft
+              草稿
             </span>
           )}
           <span
@@ -80,7 +80,7 @@ function PackSection({ pack }: { pack: Pack }) {
         </div>
       }
     >
-      <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4" aria-label={`Pages in ${pack.name}`}>
+      <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4" aria-label={`${pack.name}中的图画`}>
         {pages.map((mandala) => (
           <li key={mandala.id}>
             <PageTile mandala={mandala} locked={!isUnlocked(mandala)} />
@@ -89,7 +89,7 @@ function PackSection({ pack }: { pack: Pack }) {
       </ul>
       {open < pages.length && (
         <Link href={`/parent/billing#${FOR_YOU_ANCHOR}`} className={cn(buttonVariants(), 'h-11 self-start rounded-full px-5 font-bold')}>
-          {`Get ${pack.name} for ${formatPrice(PACK_PRICE_CENTS)}`}
+          {`以 ${formatPrice(PACK_PRICE_CENTS)} 获取${pack.name}`}
         </Link>
       )}
     </ParentCard>
@@ -100,8 +100,8 @@ export function GrownUpShelf() {
   if (GROWN_UP_PACKS.length === 0) {
     return (
       <ParentCard
-        title="Nothing here yet"
-        description="Grown-up packs will appear here once they are published."
+        title="这里还没有内容"
+        description="大人画册发布后会出现在这里。"
       />
     )
   }

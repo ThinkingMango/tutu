@@ -21,13 +21,13 @@ export function AskGrownUp({ mandala }: { mandala: Mandala }) {
           <Lock className="size-12" strokeWidth={2.5} aria-hidden="true" />
         </span>
       </div>
-      <h1 className="text-4xl font-black text-balance">Ask a grown-up</h1>
+      <h1 className="text-4xl font-black text-balance">请大人帮忙</h1>
       <p className="max-w-sm text-lg font-bold leading-relaxed text-ink/75 text-pretty">
-        This picture is still sleeping. A grown-up can wake it up.
+        这幅画还在睡觉，大人可以把它叫醒。
       </p>
       <ToolLink
         href={packHref(mandala.pack)}
-        label={`Back to ${pack.name}`}
+        label={`回到「${pack.name}」`}
         icon={<House strokeWidth={2.5} />}
         variant="primary"
       />

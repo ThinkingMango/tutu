@@ -1,7 +1,7 @@
 {
   "pack": "zen-mandalas",
-  "name": "Zen Mandalas",
-  "description": "Twelve detailed mandalas for grown-ups to color: rings of lotus petals, ferns, cherry blossom, ginkgo, peonies, roses, tropical leaves, wildflowers, dahlias, irises, poppies, and lavender with olive, with finer areas and lighter outlines than the children's packs.",
+  "name": "禅意曼陀罗",
+  "description": "十二幅适合大人涂色的精细曼陀罗：莲花瓣、蕨叶、樱花、银杏、牡丹、玫瑰、热带叶子、野花、大丽花、鸢尾花、罂粟花，以及薰衣草与橄榄组成的花环，区域更细、线条更轻，与儿童画册不同。",
   "icon": "leaf",
   "order": 5,
   "status": "draft",
@@ -9,17 +9,17 @@
   "generator": "v0 built-in image generation",
   "style": "Adult coloring book page, square 1:1. Pure white background with a clear empty white margin on all sides; the design never touches the edges. One large circular mandala, centered, perfectly radially symmetric, filling about 90% of the page. Crisp black line art drawn with one medium line weight everywhere, never hairline. Every shape is fully closed so it can be filled. Intricate but clean: many concentric rings of petals, leaves and bands, with no shape smaller than about 2% of the page width. No shading, no grey, no stippling, no dots, no hatching, no solid black fills, no text, no border frame, nothing outside the mandala.",
   "pages": [
-    { "id": "lotus-bloom", "name": "Lotus Bloom", "subject": "a lotus flower seen from above at the center, circled by three rings of pointed lotus petals, a ring of round lily pads and an outer ring of layered lotus petals" },
-    { "id": "fern-spiral", "name": "Fern Spiral", "subject": "a small daisy at the center with sixteen curling fern fronds radiating outward like a pinwheel, each frond split into separate leaflets, with a scalloped band between them" },
-    { "id": "cherry-blossom", "name": "Cherry Blossom", "subject": "a ring of five-petal cherry blossoms around a central blossom, with small almond leaves between the flowers and an outer ring of alternating blossoms and buds" },
-    { "id": "ginkgo-wheel", "name": "Ginkgo Wheel", "subject": "fan-shaped ginkgo leaves with veined sections arranged in two concentric rings around a circle of teardrop petals, with a wavy band between the rings" },
-    { "id": "peony-medallion", "name": "Peony Medallion", "subject": "a large layered peony at the center with ruffled petals in several rows, surrounded by a ring of peony leaves and an outer ring of small peony buds and scallops" },
-    { "id": "rose-window", "name": "Rose Window", "subject": "a spiral rose at the center, a ring of eight smaller roses with serrated rose leaves between them, and an outer band of heart-shaped petals like a cathedral rose window" },
-    { "id": "tropical-leaves", "name": "Tropical Leaves", "subject": "a hibiscus flower at the center, surrounded by eight monstera leaves with their holes and splits, and an outer ring of long split palm leaflets" },
-    { "id": "wildflower-ring", "name": "Wildflower Ring", "subject": "a sunflower center with seed-like segments, a ring of cosmos flowers, a ring of pointed willow leaves and an outer ring of bell-shaped wildflowers and tulips" },
-    { "id": "dahlia-burst", "name": "Dahlia Burst", "subject": "a large pompom dahlia at the center made of many rows of rounded tube-shaped petals, surrounded by a ring of pointed dahlia petals and an outer ring of small dahlias alternating with oval leaves" },
-    { "id": "iris-crown", "name": "Iris Crown", "subject": "a small star-shaped flower at the center, circled by eight iris blooms with three upright petals and three falling petals each, long sword-shaped iris leaves between them and an outer scalloped band" },
-    { "id": "poppy-circle", "name": "Poppy Circle", "subject": "a poppy seed head with a ribbed star-shaped cap at the center, a ring of wide crinkled poppy petals, a ring of feathery poppy leaves and an outer ring of poppy buds and open poppies" },
-    { "id": "lavender-olive", "name": "Lavender & Olive", "subject": "a rosette of rounded petals at the center, eight bold lavender sprigs radiating outward, each sprig a thick stem lined with large separate teardrop-shaped buds, a wide olive branch between each pair of sprigs with broad outlined leaves and big oval olives, a ring of rounded scallops filling the space between the branches, and an outer braided band" }
+    {"id": "lotus-bloom", "name": "莲花绽放", "subject": "a lotus flower seen from above at the center, circled by three rings of pointed lotus petals, a ring of round lily pads and an outer ring of layered lotus petals"},
+    {"id": "fern-spiral", "name": "蕨叶螺旋", "subject": "a small daisy at the center with sixteen curling fern fronds radiating outward like a pinwheel, each frond split into separate leaflets, with a scalloped band between them"},
+    {"id": "cherry-blossom", "name": "樱花", "subject": "a ring of five-petal cherry blossoms around a central blossom, with small almond leaves between the flowers and an outer ring of alternating blossoms and buds"},
+    {"id": "ginkgo-wheel", "name": "银杏花轮", "subject": "fan-shaped ginkgo leaves with veined sections arranged in two concentric rings around a circle of teardrop petals, with a wavy band between the rings"},
+    {"id": "peony-medallion", "name": "牡丹圆章", "subject": "a large layered peony at the center with ruffled petals in several rows, surrounded by a ring of peony leaves and an outer ring of small peony buds and scallops"},
+    {"id": "rose-window", "name": "玫瑰花窗", "subject": "a spiral rose at the center, a ring of eight smaller roses with serrated rose leaves between them, and an outer band of heart-shaped petals like a cathedral rose window"},
+    {"id": "tropical-leaves", "name": "热带叶子", "subject": "a hibiscus flower at the center, surrounded by eight monstera leaves with their holes and splits, and an outer ring of long split palm leaflets"},
+    {"id": "wildflower-ring", "name": "野花环", "subject": "a sunflower center with seed-like segments, a ring of cosmos flowers, a ring of pointed willow leaves and an outer ring of bell-shaped wildflowers and tulips"},
+    {"id": "dahlia-burst", "name": "大丽花绽放", "subject": "a large pompom dahlia at the center made of many rows of rounded tube-shaped petals, surrounded by a ring of pointed dahlia petals and an outer ring of small dahlias alternating with oval leaves"},
+    {"id": "iris-crown", "name": "鸢尾花冠", "subject": "a small star-shaped flower at the center, circled by eight iris blooms with three upright petals and three falling petals each, long sword-shaped iris leaves between them and an outer scalloped band"},
+    {"id": "poppy-circle", "name": "罂粟花圈", "subject": "a poppy seed head with a ribbed star-shaped cap at the center, a ring of wide crinkled poppy petals, a ring of feathery poppy leaves and an outer ring of poppy buds and open poppies"},
+    {"id": "lavender-olive", "name": "薰衣草与橄榄", "subject": "a rosette of rounded petals at the center, eight bold lavender sprigs radiating outward, each sprig a thick stem lined with large separate teardrop-shaped buds, a wide olive branch between each pair of sprigs with broad outlined leaves and big oval olives, a ring of rounded scallops filling the space between the branches, and an outer braided band"}
   ]
 }

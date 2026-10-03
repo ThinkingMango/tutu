@@ -16,7 +16,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { id } = await params
   const pack = findKidsPack(id)
-  return { title: pack ? pack.name : 'Pack not found' }
+  return { title: pack ? pack.name : '找不到这个图画包' }
 }
 
 export default async function PackPage({ params }: Params) {

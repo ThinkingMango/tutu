@@ -7,8 +7,8 @@ import { REFUNDS_HREF, REFUND_WINDOW_DAYS, SUPPORT_EMAIL, supportMailto } from '
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Help and support',
-  description: `Get help with Little Mandala: packs, saved pictures, signing in and refunds. Email ${SUPPORT_EMAIL}.`,
+  title: '帮助与支持',
+  description: `获取小小曼陀罗的帮助：画册、已保存的图画、登录和退款。请发邮件至 ${SUPPORT_EMAIL}。`,
 }
 
 const linkClass =
@@ -23,79 +23,74 @@ export default function SupportPage() {
       >
         <div className="flex flex-col gap-3">
           <h1 id="contact" className="text-3xl font-black text-balance md:text-4xl">
-            Help and support
+            帮助与支持
           </h1>
           <p className="text-lg leading-relaxed text-muted-foreground text-pretty">
-            Something not working, or a question about a purchase? Email us and a person will reply.
+            遇到问题，或对购买有疑问？给我们发邮件，会有真人回复你。
           </p>
         </div>
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-5">
           <a
-            href={supportMailto('Little Mandala help')}
+            href={supportMailto('小小曼陀罗帮助')}
             className={cn(buttonVariants(), 'h-12 rounded-full px-6 text-base font-bold')}
           >
             <Mail data-icon="inline-start" />
-            {`Email ${SUPPORT_EMAIL}`}
+            {`发邮件至 ${SUPPORT_EMAIL}`}
           </a>
         </div>
         <p className="text-sm leading-relaxed text-muted-foreground">
-          To help us answer quickly, include the email address you sign in with and the device you use, for example iPad, Android tablet or Mac.
-          Please don’t send card numbers.
+          为了帮助我们更快回复，请附上你登录时使用的电子邮箱以及你使用的设备，例如 iPad、安卓平板或 Mac。请不要发送银行卡号。
         </p>
       </section>
 
       <PolicyCard>
-        <h2 className="text-2xl font-black">Common questions</h2>
+        <h2 className="text-2xl font-black">常见问题</h2>
 
-        <PolicySection id="pack-locked" title="I paid, but the pack is still locked">
+        <PolicySection id="pack-locked" title="我已经付款，但画册仍然是锁定的">
           <PolicyList
             items={[
-              'Check you are signed in with the same email address you used to buy the pack.',
-              'Wait a minute, then reload the page. Packs usually open a few seconds after paying.',
-              'Still locked? Email us with the date you paid and we will open it or refund you.',
+              '请确认你登录的邮箱与购买画册时使用的邮箱相同。',
+              '稍等一分钟后刷新页面。画册通常会在付款后几秒内解锁。',
+              '仍然锁定？请发邮件告诉我们付款日期，我们会为你解锁或退款。',
             ]}
           />
         </PolicySection>
 
-        <PolicySection id="pictures-gone" title="My child’s pictures disappeared">
+        <PolicySection id="pictures-gone" title="孩子的图画不见了">
           <p>
-            Pictures are kept on the device, so they can be lost if the browser’s data is cleared. Safari on iPhone, iPad and Mac clears
-            sites that have not been opened for 7 days. To avoid this, on iPhone or iPad tap Share, then Add to Home Screen. On a Mac,
-            choose File, then Add to Dock in Safari (macOS Sonoma or later). Then open Little Mandala from there, and turn on{' '}
+            图画保存在设备上，因此如果浏览器数据被清除，图画可能会丢失。iPhone、iPad 和 Mac 上的 Safari 会清除 7
+            天未打开过的网站数据。为避免这种情况，在 iPhone 或 iPad 上请点击“分享”，再选择“添加到主屏幕”；在 Mac 上，请在 Safari
+            中选择“文件”，再选择“添加到程序坞”（macOS Sonoma 或更高版本）。之后从那里打开小小曼陀罗，并开启
             <Link href="/parent/cloud-saving" className={linkClass}>
-              cloud saving
-            </Link>{' '}
-            to back pictures up to your account.
-          </p>
-        </PolicySection>
-
-        <PolicySection id="sign-in" title="I can’t sign in">
-          <p>
-            There is no password. Enter your email in the parent area and we send you an email with a sign-in link and a code. Tap the
-            link on the device you want to sign in, or type the code on it, for example when the email is on your phone and you’re
-            signing in on your child’s tablet. If it doesn’t arrive within a few minutes, check your spam or promotions folder. You can
-            ask for a new one after a minute.
-          </p>
-        </PolicySection>
-
-        <PolicySection id="refund" title="I want a refund">
-          <p>
-            {`Email us within ${REFUND_WINDOW_DAYS} days of buying for a full refund, no questions asked. The `}
-            <Link href={REFUNDS_HREF} className={linkClass}>
-              refund policy
-            </Link>{' '}
-            explains how it works.
-          </p>
-        </PolicySection>
-
-        <PolicySection id="delete" title="How do I delete my account or my child’s pictures?">
-          <p>
-            Turning off cloud saving deletes every cloud copy of your pictures. Deleting your account removes your sign-in, cloud pictures
-            and account records. You can do both in the{' '}
-            <Link href="/parent/home" className={linkClass}>
-              parent area
+              云端保存
             </Link>
-            . You can also email us and we will do it for you.
+            ，将图画备份到你的账号。
+          </p>
+        </PolicySection>
+
+        <PolicySection id="sign-in" title="我无法登录">
+          <p>
+            登录不需要密码。在家长区域输入你的邮箱，我们会给你发送一封包含登录链接和验证码的邮件。在你想登录的设备上点击链接，或在该设备上输入验证码，例如邮件在你的手机上、而你要在孩子的平板上登录时。如果几分钟内没有收到邮件，请检查垃圾邮件或推广邮件文件夹。一分钟后可以重新申请。
+          </p>
+        </PolicySection>
+
+        <PolicySection id="refund" title="我想要退款">
+          <p>
+            {`在购买后 ${REFUND_WINDOW_DAYS} 天内发邮件给我们，即可全额退款，无需说明理由。`}
+            <Link href={REFUNDS_HREF} className={linkClass}>
+              退款政策
+            </Link>
+            中有详细说明。
+          </p>
+        </PolicySection>
+
+        <PolicySection id="delete" title="如何删除我的账号或孩子的图画？">
+          <p>
+            关闭云端保存会删除你图画的所有云端副本。删除账号会移除你的登录信息、云端图画和账号记录。这两项都可以在
+            <Link href="/parent/home" className={linkClass}>
+              家长区域
+            </Link>
+            中完成。你也可以发邮件给我们，由我们替你处理。
           </p>
         </PolicySection>
       </PolicyCard>

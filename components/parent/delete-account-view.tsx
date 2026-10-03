@@ -24,10 +24,10 @@ const RETURN_PATH = '/parent/delete-account'
 const LINK = 'font-bold underline decoration-2 underline-offset-4 outline-none focus-visible:rounded-sm focus-visible:ring-3 focus-visible:ring-ring/50'
 
 const DELETED = [
-  'Your sign-in and email address',
-  'Every cloud copy of your child’s pictures',
-  'Your cloud saving permission records',
-  'Every pack you bought, on every device',
+  '你的登录信息和电子邮箱',
+  '孩子图画的所有云端副本',
+  '你的云端保存授权记录',
+  '你在所有设备上购买的全部画册',
 ]
 
 type DevicePictures = 'keep' | 'remove'
@@ -35,11 +35,11 @@ type DevicePictures = 'keep' | 'remove'
 type Outcome = { removedFromDevice: boolean | null }
 
 const packLabel = (id: string): string[] => {
-  if (id === 'standard') return ['the Standard unlock']
+  if (id === 'standard') return ['标准版解锁']
   const pack = PACK_BY_ID[id as PackId] as (typeof PACK_BY_ID)[PackId] | undefined
   return pack ? [pack.name] : []
 }
-const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'}`
+const plural = (n: number, word: string) => `${n} 张${word}`
 
 export function DeleteAccountView() {
   const auth = useAuthState()
@@ -48,19 +48,19 @@ export function DeleteAccountView() {
   if (outcome) return <DeletedPanel outcome={outcome} />
 
   if (auth.status === 'loading') {
-    return <p className="leading-relaxed text-muted-foreground">{'Checking whether you’re signed in…'}</p>
+    return <p className="leading-relaxed text-muted-foreground">{'正在确认登录状态…'}</p>
   }
 
   if (auth.status === 'signed-out') {
     return (
       <section className={PANEL}>
-        <p className="leading-relaxed text-muted-foreground">Sign in to the account you want to delete.</p>
+        <p className="leading-relaxed text-muted-foreground">请登录你想删除的账号。</p>
         <Link
           href={`/parent/sign-in?next=${encodeURIComponent(RETURN_PATH)}`}
           className={cn(buttonVariants(), 'h-11 self-start rounded-full px-5 font-bold')}
         >
           <LogIn data-icon="inline-start" />
-          Sign in
+          登录
         </Link>
       </section>
     )
@@ -72,22 +72,22 @@ export function DeleteAccountView() {
 function DeletedPanel({ outcome }: { outcome: Outcome }) {
   const devicePart =
     outcome.removedFromDevice === null
-      ? 'Pictures on this device are still here, and your child can keep coloring the free pages.'
+      ? '这台设备上的图画仍然保留，孩子可以继续涂免费的图画。'
       : outcome.removedFromDevice
-        ? 'The pictures on this device were removed too. Your child can keep coloring the free pages.'
-        : 'We couldn’t remove the pictures on this device. Use Clear saved coloring on the Overview page to remove them.'
+        ? '这台设备上的图画也已删除。孩子可以继续涂免费的图画。'
+        : '我们无法删除这台设备上的图画。请在“概览”页面使用“清除已保存的涂色”来删除。'
 
   return (
     <section className={PANEL} role="status">
       <CircleCheck className="size-10 text-primary" strokeWidth={2.25} aria-hidden="true" />
       <div className="flex flex-col gap-2">
-        <h2 className="text-xl font-extrabold">Your account was deleted</h2>
+        <h2 className="text-xl font-extrabold">你的账号已删除</h2>
         <p className="leading-relaxed text-muted-foreground">
-          {`Your sign-in, cloud pictures, packs and records are gone. ${devicePart}`}
+          {`你的登录信息、云端图画、画册和记录都已删除。${devicePart}`}
         </p>
       </div>
       <a href="/" className={cn(buttonVariants(), 'h-11 self-start rounded-full px-5 font-bold')}>
-        Back to coloring
+        返回涂色
       </a>
     </section>
   )
@@ -124,7 +124,7 @@ function DeleteAccountForm({ userId, email, onDeleted }: FormProps) {
       await authClient.signOut().catch(() => {})
     } catch (err) {
       if (err instanceof AccountDeletionError && err.code === 'recent_sign_in_required') setServerSaysStale(true)
-      else setError(err instanceof Error ? err.message : 'Your account wasn’t deleted. Please try again.')
+      else setError(err instanceof Error ? err.message : '账号未能删除，请再试一次。')
     } finally {
       setPending(false)
       void cloudSync.resume()
@@ -135,7 +135,7 @@ function DeleteAccountForm({ userId, email, onDeleted }: FormProps) {
     <>
       <section className={PANEL} aria-labelledby="what-is-deleted">
         <h2 id="what-is-deleted" className="text-xl font-extrabold">
-          What gets deleted
+          会删除哪些内容
         </h2>
         <ul className="flex flex-col gap-2">
           {DELETED.map((item) => (
@@ -147,50 +147,50 @@ function DeleteAccountForm({ userId, email, onDeleted }: FormProps) {
         </ul>
         <PacksWarning />
         <p className="leading-relaxed text-muted-foreground">
-          {'If you ever bought a pack, we keep a record of each payment for accounting: the amount, date, packs and payment number. It no longer shows your email or links to you. Stripe, our payment provider, keeps your email address and payment history under its own privacy policy.'}
+          {'如果你曾购买画册，出于记账需要，我们会保留每笔付款的记录：金额、日期、画册和付款编号。这些记录不再显示你的邮箱，也不再与你关联。我们的支付服务商 Stripe 会依据其隐私政策保留你的邮箱和付款记录。'}
         </p>
         <p className="leading-relaxed text-muted-foreground">
-          {'Deletion happens right away and can’t be undone.'}
+          {'删除会立即生效，且无法撤销。'}
         </p>
       </section>
 
       <section className={PANEL} aria-labelledby="device-pictures">
         <h2 id="device-pictures" className="text-xl font-extrabold">
-          Pictures on this device
+          这台设备上的图画
         </h2>
         {hasPictures ? (
           <fieldset className="flex flex-col gap-3" disabled={pending}>
             <legend className="mb-3 leading-relaxed">
-              {`This device has ${[
-                garden > 0 && `${plural(garden, 'picture')} in My garden`,
-                unfinished > 0 && `${plural(unfinished, 'unfinished picture')}`,
+              {`这台设备上有${[
+                garden > 0 && `“我的花园”里的 ${plural(garden, '图画')}`,
+                unfinished > 0 && `${plural(unfinished, '未完成的图画')}`,
               ]
                 .filter(Boolean)
-                .join(' and ')}. Choose what happens to them.`}
+                .join('和')}。请选择如何处理它们。`}
             </legend>
             <DeviceOption
               value="keep"
               checked={devicePictures === 'keep'}
               onSelect={setDevicePictures}
-              title="Keep them on this device"
-              detail="Your child can still see and color them. Anyone who uses this device can see them too."
+              title="保留在这台设备上"
+              detail="孩子仍然可以查看和涂色。使用这台设备的任何人也都能看到。"
             />
             <DeviceOption
               value="remove"
               checked={devicePictures === 'remove'}
               onSelect={setDevicePictures}
-              title="Remove them from this device"
-              detail="Best for a shared or school device. They’re gone for good, because the cloud copies are deleted with your account. Pictures on your other devices stay there."
+              title="从这台设备上删除"
+              detail="适合共用设备或学校设备。由于云端副本会随账号一起删除，这些图画将永久消失。你其他设备上的图画会保留。"
             />
           </fieldset>
         ) : (
-          <p className="leading-relaxed text-muted-foreground">There are no saved pictures on this device.</p>
+          <p className="leading-relaxed text-muted-foreground">这台设备上没有已保存的图画。</p>
         )}
       </section>
 
       <section className={PANEL} aria-labelledby="confirm-deletion">
         <h2 id="confirm-deletion" className="text-xl font-extrabold">
-          Confirm
+          确认
         </h2>
         {fresh ? (
           <form
@@ -202,9 +202,9 @@ function DeleteAccountForm({ userId, email, onDeleted }: FormProps) {
           >
             <div className="flex flex-col gap-2">
               <Label htmlFor="confirm-email" className="flex-wrap font-bold">
-                {'Type '}
+                {'输入 '}
                 <span className="break-all">{email}</span>
-                {' to confirm'}
+                {' 以确认'}
               </Label>
               <Input
                 id="confirm-email"
@@ -224,14 +224,14 @@ function DeleteAccountForm({ userId, email, onDeleted }: FormProps) {
               className="h-12 self-start rounded-full px-6 text-base font-bold"
             >
               <Trash2 data-icon="inline-start" />
-              {pending ? 'Deleting…' : 'Delete my account'}
+              {pending ? '正在删除…' : '删除我的账号'}
             </Button>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              {`You have about ${Math.max(1, Math.round(remainingMs / 60_000))} min left with this sign-in.`}
+              {`本次登录大约还剩 ${Math.max(1, Math.round(remainingMs / 60_000))} 分钟。`}
             </p>
           </form>
         ) : (
-          <FreshSignInPrompt email={email} action="delete your account" returnPath={RETURN_PATH} />
+          <FreshSignInPrompt email={email} action="删除你的账号" returnPath={RETURN_PATH} />
         )}
         {error && (
           <p role="alert" className="text-sm font-semibold text-destructive">
@@ -251,29 +251,29 @@ function PacksWarning() {
     <div className="flex flex-col gap-3 rounded-2xl bg-warning p-4 leading-relaxed text-warning-foreground md:p-5">
       <p className="flex items-center gap-2 font-extrabold">
         <Lock className="size-4 shrink-0" aria-hidden="true" />
-        Packs you bought lock for good
+        已购买的画册将永久锁定
       </p>
       <p>
-        {'Deleting your account locks every paid pack straight away, on every device. They can’t be restored, not even if you sign up again with the same email, because your purchases are no longer linked to you.'}
+        {'删除账号后，所有付费画册会在所有设备上立即锁定。由于购买记录不再与你关联，即使用同一邮箱重新注册也无法恢复。'}
       </p>
       {owned.length > 0 && (
         <p>
-          <span className="font-bold">{'You’ll lose: '}</span>
-          {owned.join(', ')}.
+          <span className="font-bold">{'你将失去：'}</span>
+          {owned.join('、')}。
         </p>
       )}
       <p>
-        {`Would you rather have your money back? Ask for a refund before you delete your account. Within ${REFUND_WINDOW_DAYS} days of buying you get a full refund, no questions asked. After that, the `}
+        {`想要退款？请在删除账号之前申请。购买后 ${REFUND_WINDOW_DAYS} 天内可无理由全额退款。超过期限后，`}
         <Link href={REFUNDS_HREF} className={LINK}>
-          refund policy
+          退款政策
         </Link>
-        {' explains when we can still help.'}
+        {'说明了我们在哪些情况下仍可提供帮助。'}
       </p>
       <a
-        href={supportMailto('Refund request')}
+        href={supportMailto('退款申请')}
         className={cn(buttonVariants({ variant: 'outline' }), 'h-10 self-start rounded-full bg-card px-4 font-bold text-foreground')}
       >
-        Ask for a refund
+        申请退款
       </a>
     </div>
   )

@@ -3,7 +3,8 @@
 @import 'shadcn/tailwind.css';
 
 @theme inline {
-  --font-sans: var(--font-nunito), ui-rounded, system-ui, sans-serif;
+  --font-sans: var(--font-nunito), ui-rounded, 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC',
+    'Microsoft YaHei', system-ui, sans-serif;
 
   --color-canvas: var(--canvas);
   --color-ink: var(--ink);

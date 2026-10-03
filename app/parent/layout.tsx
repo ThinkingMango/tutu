@@ -3,7 +3,7 @@ import { GrownUpAnalytics } from '@/components/grown-up-analytics'
 import { GateGuard } from '@/components/parent/gate-guard'
 
 export const metadata: Metadata = {
-  title: 'Grown-ups',
+  title: '家长区',
   robots: { index: false },
 }
 

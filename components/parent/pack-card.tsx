@@ -71,7 +71,7 @@ export function PackCard({ pack, status, selected, onToggle, headingLevel: Headi
           className="h-12 self-start rounded-full px-6 text-base font-bold"
         >
           {selected ? <Check data-icon="inline-start" strokeWidth={3} /> : <Plus data-icon="inline-start" strokeWidth={3} />}
-          {selected ? 'In your order' : 'Add to order'}
+          {selected ? '已加入订单' : '加入订单'}
         </Button>
       )}
     </section>

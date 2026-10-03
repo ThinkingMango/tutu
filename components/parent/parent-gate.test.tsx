@@ -12,9 +12,9 @@ beforeEach(() => replace.mockClear())
 async function openGate() {
   const user = userEvent.setup()
   render(<ParentGate next="/parent/billing" />)
-  const label = await screen.findByText(/^What is \d+ × \d+\?$/)
+  const label = await screen.findByText(/^\d+ × \d+ 等于多少？$/)
   const [, a, b] = /(\d+) × (\d+)/.exec(label.textContent ?? '')!.map(Number)
-  return { user, answer: a * b, input: screen.getByLabelText(/What is/) }
+  return { user, answer: a * b, input: screen.getByLabelText(/等于多少/) }
 }
 
 describe('parent gate', () => {
@@ -35,7 +35,7 @@ describe('parent gate', () => {
   it('stays shut and asks a new question after a wrong answer', async () => {
     const { user, answer, input } = await openGate()
     await user.type(input, String(answer + 1))
-    await user.click(screen.getByRole('button', { name: 'Continue' }))
+    await user.click(screen.getByRole('button', { name: '继续' }))
     expect(screen.getByRole('alert')).toHaveTextContent('Not quite')
     expect(input).toHaveValue('')
     expect(parentGateStore.read()).toBe(false)
@@ -44,7 +44,7 @@ describe('parent gate', () => {
 
   it('stays shut when nothing is typed', async () => {
     const { user } = await openGate()
-    await user.click(screen.getByRole('button', { name: 'Continue' }))
+    await user.click(screen.getByRole('button', { name: '继续' }))
     expect(parentGateStore.read()).toBe(false)
     expect(replace).not.toHaveBeenCalled()
   })
@@ -52,7 +52,7 @@ describe('parent gate', () => {
   it('opens the grown-up area for the right answer', async () => {
     const { user, answer, input } = await openGate()
     await user.type(input, String(answer))
-    await user.click(screen.getByRole('button', { name: 'Continue' }))
+    await user.click(screen.getByRole('button', { name: '继续' }))
     expect(parentGateStore.read()).toBe(true)
     expect(replace).toHaveBeenCalledWith('/parent/billing')
   })

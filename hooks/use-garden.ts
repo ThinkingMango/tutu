@@ -15,5 +15,5 @@ export function useGarden() {
 }
 
 export function pictureCount(count: number) {
-  return `${count} ${count === 1 ? 'picture' : 'pictures'}`
+  return `${count} 张图画`
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { CloudSavingView } from '@/components/parent/cloud-saving-view'
 
-export const metadata: Metadata = { title: 'Cloud saving' }
+export const metadata: Metadata = { title: '云端保存' }
 
 export default function CloudSavingPage() {
   return (
@@ -9,7 +9,7 @@ export default function CloudSavingPage() {
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-black">Cloud saving</h1>
         <p className="leading-relaxed text-muted-foreground text-pretty">
-          Optional. Back up garden pictures to your parent account. Little Mandala works fully without it.
+          可选功能。将花园图画备份到你的家长账号。不开启也能完整使用小小曼陀罗。
         </p>
       </div>
       <CloudSavingView />

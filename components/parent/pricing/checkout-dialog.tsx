@@ -31,13 +31,13 @@ function stripeFor(publishableKey: string) {
 }
 
 const ERROR_MESSAGES: Record<CheckoutError, string> = {
-  empty: 'Choose at least one pack first.',
-  unknown_pack: 'One of those packs isn’t for sale any more. Please refresh the page and choose again.',
-  already_owned: 'You already have one of those packs. Please refresh the page to see your packs.',
-  too_many: 'That order has too many packs in it.',
-  not_signed_in: 'Please sign in again to buy packs.',
-  invalid: 'Something went wrong with that order. Please refresh the page and try again.',
-  unavailable: 'Checkout isn’t available right now. Please try again in a moment.',
+  empty: '请先选择至少一本画册。',
+  unknown_pack: '其中一本画册已停止销售。请刷新页面后重新选择。',
+  already_owned: '你已经拥有其中一本画册。请刷新页面查看你的画册。',
+  too_many: '这个订单中的画册太多了。',
+  not_signed_in: '请重新登录后再购买画册。',
+  invalid: '订单出了点问题。请刷新页面后再试。',
+  unavailable: '暂时无法结账，请稍后再试。',
 }
 
 type Order = { packIds: string[]; withStandard: boolean }
@@ -70,7 +70,7 @@ function CheckoutForm({ order, onFinished }: Pick<CheckoutDialogProps, 'order' |
     return (
       <p className="flex items-center justify-center gap-2 py-16 text-sm font-semibold text-muted-foreground">
         <Loader2 className="size-4 animate-spin" aria-hidden="true" />
-        Opening secure checkout
+        正在打开安全结账页面
       </p>
     )
   }
@@ -91,8 +91,8 @@ export function CheckoutDialog({ open, onOpenChange, order, totalLabel, onFinish
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[92vh] overflow-y-auto sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle className="text-xl font-black">Checkout</DialogTitle>
-          <DialogDescription>{`${totalLabel}, paid once. Card details go straight to Stripe.`}</DialogDescription>
+          <DialogTitle className="text-xl font-black">结账</DialogTitle>
+          <DialogDescription>{`${totalLabel}，一次性付款。银行卡信息会直接发送给 Stripe。`}</DialogDescription>
         </DialogHeader>
         {open && <CheckoutForm order={order} onFinished={onFinished} />}
       </DialogContent>

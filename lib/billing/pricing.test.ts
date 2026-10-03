@@ -18,9 +18,9 @@ describe('pack offers', () => {
       formatPrice(averagePerPackCents(offer)),
     ])
     expect(table).toEqual([
-      ['One pack', 1, '$4.99', '$4.99'],
-      ['Any three packs', 3, '$12.99', '$4.33'],
-      ['Any five packs', 5, '$19.99', '$4.00'],
+      ['单本画册', 1, '$4.99', '$4.99'],
+      ['任选三本', 3, '$12.99', '$4.33'],
+      ['任选五本', 5, '$19.99', '$4.00'],
     ])
     expect(formatPrice(STANDARD_UNLOCK_CENTS)).toBe('$1.99')
   })

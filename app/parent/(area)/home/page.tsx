@@ -5,7 +5,7 @@ import { DeviceSettingsCard } from '@/components/parent/device-settings-card'
 import { PicturesCard } from '@/components/parent/pictures-card'
 import { PlanSummaryCard } from '@/components/parent/plan-summary-card'
 
-export const metadata: Metadata = { title: 'Parent overview' }
+export const metadata: Metadata = { title: '家长概览' }
 
 export default function ParentHomePage() {
   return (

@@ -3,7 +3,7 @@ import { SOLD_PACKS } from '@/lib/packs'
 import { cn } from '@/lib/utils'
 
 const CRAYONS = ['bg-swatch-red', 'bg-swatch-orange', 'bg-swatch-yellow', 'bg-swatch-green', 'bg-swatch-blue']
-const WORDS: Record<number, string> = { 3: 'three', 5: 'five' }
+const WORDS: Record<number, string> = { 3: '三', 5: '五' }
 
 export function OfferGrid() {
   const available = SOLD_PACKS.length
@@ -24,7 +24,7 @@ export function OfferGrid() {
             <div className="flex flex-col gap-1">
               <h3 className="text-lg font-extrabold">{offer.name}</h3>
               <p className="text-sm text-muted-foreground">
-                {offer.packs === 1 ? '1 pack of your choice' : `${offer.packs} packs of your choice`}
+                {`任选 ${offer.packs} 本画册`}
               </p>
             </div>
 
@@ -34,7 +34,7 @@ export function OfferGrid() {
             </p>
 
             <div className="flex min-h-7 flex-wrap items-center gap-2 text-sm font-bold">
-              <span>{offer.packs === 1 ? 'Any pack you like' : `${formatPrice(averagePerPackCents(offer))} a pack`}</span>
+              <span>{offer.packs === 1 ? '任意一本' : `每本 ${formatPrice(averagePerPackCents(offer))}`}</span>
               {savings > 0 && (
                 <span className="rounded-full bg-secondary px-2.5 py-1 text-xs text-primary">{`Save ${formatPrice(savings)}`}</span>
               )}
@@ -42,7 +42,7 @@ export function OfferGrid() {
 
             {waiting && (
               <p className="text-sm leading-relaxed text-muted-foreground">
-                {`Opens once there are ${WORDS[offer.packs] ?? offer.packs} packs to choose from. There are ${available} so far.`}
+                {`可选画册达到${WORDS[offer.packs] ?? offer.packs}本后开放，目前已有 ${available} 本。`}
               </p>
             )}
           </li>

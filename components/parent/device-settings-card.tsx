@@ -24,12 +24,12 @@ import { settingsStore, type DeviceSettings } from '@/lib/device-stores'
 import { useLocalStore } from '@/lib/local-store'
 
 const TOGGLES: { key: keyof DeviceSettings; label: string; hint: string }[] = [
-  { key: 'motion', label: 'Bounce when coloring', hint: 'A small wiggle when a petal is filled.' },
-  { key: 'haptics', label: 'Vibrate on tap', hint: 'A tiny buzz each time a petal is filled.' },
+  { key: 'motion', label: '涂色时弹跳', hint: '每涂满一片花瓣都会轻轻晃动一下。' },
+  { key: 'haptics', label: '点击时振动', hint: '每涂满一片花瓣都会轻轻振动一下。' },
 ]
 
 /** Clearing can't be undone, so it takes a typed word rather than one tap a child might make. */
-const CLEAR_WORD = 'CLEAR'
+const CLEAR_WORD = '清除'
 
 const noSubscribe = () => () => {}
 /**
@@ -55,16 +55,16 @@ export function DeviceSettingsCard() {
   const { summary } = useCloudSync()
   const cloudLine =
     summary.state === 'signed-out' || summary.state === 'off'
-      ? 'Cloud saving is off, so there are no other copies. They will be gone for good.'
+      ? '云端保存已关闭，所以没有其他副本，删除后将永久消失。'
       : summary.saved > 0
-        ? `The ${summary.saved === 1 ? 'copy' : `${summary.saved} copies`} in your account will stay there. To delete ${summary.saved === 1 ? 'it' : 'those'}, turn off cloud saving.`
-        : 'Any copies already in your account will stay there. To delete those, turn off cloud saving.'
+        ? `你账号里的 ${summary.saved} 份副本会保留。如需删除，请关闭云端保存。`
+        : '你账号里已有的副本会保留。如需删除，请关闭云端保存。'
 
   return (
     <ParentCard
       id="this-device"
-      title="On this device"
-      description="Artwork is kept on this device unless you turn on cloud saving."
+      title="这台设备"
+      description="除非你开启云端保存，否则作品只保存在这台设备上。"
     >
       <DeviceStorageNotice />
       <div className="flex flex-col divide-y">
@@ -96,23 +96,23 @@ export function DeviceSettingsCard() {
           render={<Button variant="destructive" className="h-11 self-start rounded-full px-4 font-bold" />}
         >
           <Trash2 data-icon="inline-start" />
-          Clear saved coloring
+          清除已保存的涂色
         </DialogTrigger>
         <DialogContent className="rounded-3xl sm:max-w-md">
           <DialogHeader>
             <DialogTitle className="text-lg font-extrabold">
-              {cleared ? 'All clear' : 'Clear all saved coloring?'}
+              {cleared ? '已全部清除' : '要清除所有已保存的涂色吗？'}
             </DialogTitle>
             <DialogDescription className="leading-relaxed">
               {cleared
-                ? 'Every flower is white again and the garden is empty.'
-                : `Drafts and every picture in the garden will be removed from this device. This cannot be undone. ${cloudLine}`}
+                ? '每朵花都变回白色，花园也空了。'
+                : `草稿和花园里的所有图画都会从这台设备上删除，且无法撤销。${cloudLine}`}
             </DialogDescription>
           </DialogHeader>
           {!cleared && (
             <div className="flex flex-col gap-2">
               <Label htmlFor="clear-confirm" className="font-bold">
-                {`Type ${CLEAR_WORD} to confirm`}
+                {`输入“${CLEAR_WORD}”以确认`}
               </Label>
               <Input
                 id="clear-confirm"
@@ -127,7 +127,7 @@ export function DeviceSettingsCard() {
           )}
           <DialogFooter className="rounded-b-3xl">
             <DialogClose render={<Button variant="outline" className="h-10 rounded-full px-4" />}>
-              {cleared ? 'Done' : 'Cancel'}
+              {cleared ? '完成' : '取消'}
             </DialogClose>
             {!cleared && (
               <Button
@@ -139,7 +139,7 @@ export function DeviceSettingsCard() {
                   setCleared(true)
                 }}
               >
-                Clear everything
+                全部清除
               </Button>
             )}
           </DialogFooter>

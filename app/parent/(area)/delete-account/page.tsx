@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { DeleteAccountView } from '@/components/parent/delete-account-view'
 
-export const metadata: Metadata = { title: 'Delete account' }
+export const metadata: Metadata = { title: '删除账户' }
 
 export default function DeleteAccountPage() {
   return (
@@ -9,7 +9,7 @@ export default function DeleteAccountPage() {
       <div className="flex flex-col gap-2">
         <h1 className="text-3xl font-black">Delete your account</h1>
         <p className="leading-relaxed text-muted-foreground text-pretty">
-          Removes your parent account and your family’s data. Payment records are kept for accounting without your name or email. Coloring on this device keeps working.
+          删除你的家长账号和家庭数据。付款记录会出于记账需要保留，但不包含你的姓名或邮箱。这台设备上的涂色功能仍可正常使用。
         </p>
       </div>
       <DeleteAccountView />

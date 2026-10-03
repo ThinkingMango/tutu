@@ -1,6 +1,7 @@
 import { PDFDocument, StandardFonts, rgb, type PDFFont, type PDFPage, type RGB } from 'pdf-lib'
 import { agreementStatement, parseNoticeSections } from '@/lib/cloud-consent/notice'
 import { OPERATOR_NAME, SUPPORT_EMAIL } from '@/lib/legal'
+import { embedCjkFonts, printableWith, type CjkFontBytes } from '@/lib/pdf/cjk-fonts'
 
 export type ReceiptRecord = {
   id: string
@@ -43,11 +44,11 @@ export function resolveTimeZone(value: string | null | undefined): string {
 }
 
 export function formatReceiptTime(date: Date, timeZone: string) {
-  return new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeStyle: 'long', timeZone }).format(date)
+  return new Intl.DateTimeFormat('zh-CN', { dateStyle: 'long', timeStyle: 'long', timeZone }).format(date)
 }
 
 function formatReceiptDate(date: Date, timeZone: string) {
-  return new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone }).format(date)
+  return new Intl.DateTimeFormat('zh-CN', { dateStyle: 'long', timeZone }).format(date)
 }
 
 function formatUtc(date: Date) {
@@ -82,19 +83,14 @@ type RowValue = { text: string; style?: Partial<TextStyle> }
 
 const UNUSUAL_SPACES = /[\u00a0\u2000-\u200b\u202f\u205f\u3000]/g
 
-/** The built-in PDF fonts only cover Western European characters; anything else prints as "?". */
+/** Characters the embedded fonts can't draw print as "?" rather than failing the whole PDF. */
 function printable(font: PDFFont, text: string) {
-  let out = ''
-  for (const char of text.replace(UNUSUAL_SPACES, ' ')) {
-    try {
-      font.encodeText(char)
-      out += char
-    } catch {
-      out += '?'
-    }
-  }
-  return out
+  return printableWith(font, text.replace(UNUSUAL_SPACES, ' '), '?')
 }
+
+/** Chinese has no spaces between words, so each CJK character is its own breakable piece. */
+const WRAP_TOKENS = /\s+|[\u2e80-\u9fff\u3000-\u303f\uff00-\uffef]|[^\s\u2e80-\u9fff\u3000-\u303f\uff00-\uffef]+/g
+const NO_LINE_START = /^[，。、；：？！）」』》〉”’．,.;:?!)]/
 
 function splitLongWord(font: PDFFont, size: number, word: string, width: number) {
   if (font.widthOfTextAtSize(word, size) <= width) return [word]
@@ -115,15 +111,21 @@ function splitLongWord(font: PDFFont, size: number, word: string, width: number)
 function wrap(font: PDFFont, size: number, text: string, width: number) {
   const lines: string[] = []
   let line = ''
-  for (const word of printable(font, text).split(/\s+/).filter(Boolean)) {
-    for (const piece of splitLongWord(font, size, word, width)) {
-      const candidate = line ? `${line} ${piece}` : piece
-      if (!line || font.widthOfTextAtSize(candidate, size) <= width) {
+  let space = false
+  for (const token of printable(font, text).match(WRAP_TOKENS) ?? []) {
+    if (/^\s+$/.test(token)) {
+      space = Boolean(line)
+      continue
+    }
+    for (const piece of splitLongWord(font, size, token, width)) {
+      const candidate = line ? `${line}${space ? ' ' : ''}${piece}` : piece
+      if (!line || font.widthOfTextAtSize(candidate, size) <= width || NO_LINE_START.test(piece)) {
         line = candidate
       } else {
         lines.push(line)
         line = piece
       }
+      space = false
     }
   }
   if (line) lines.push(line)
@@ -234,14 +236,14 @@ function drawFooters(doc: PDFDocument, fonts: Fonts) {
       thickness: 0.75,
       color: COLORS.rule,
     })
-    page.drawText('Little Mandala · Cloud saving permission record', {
+    page.drawText('Little Mandala · 云端保存授权记录', {
       x: MARGIN,
       y,
       size,
       font: fonts.regular,
       color: COLORS.muted,
     })
-    const pageLabel = `Page ${index + 1} of ${pages.length}`
+    const pageLabel = `第 ${index + 1} 页，共 ${pages.length} 页`
     page.drawText(pageLabel, {
       x: PAGE_WIDTH - MARGIN - fonts.regular.widthOfTextAtSize(pageLabel, size),
       y,
@@ -252,19 +254,19 @@ function drawFooters(doc: PDFDocument, fonts: Fonts) {
   })
 }
 
-export async function buildConsentReceiptPdf(receipt: ConsentReceipt): Promise<Uint8Array> {
+export async function buildConsentReceiptPdf(receipt: ConsentReceipt, fontBytes?: CjkFontBytes): Promise<Uint8Array> {
   const { record, notice, timeZone } = receipt
   const doc = await PDFDocument.create()
+  const bytes = fontBytes ?? (await (await import('@/lib/pdf/cjk-fonts.server')).readCjkFonts())
   const fonts: Fonts = {
-    regular: await doc.embedFont(StandardFonts.Helvetica),
-    bold: await doc.embedFont(StandardFonts.HelveticaBold),
+    ...(await embedCjkFonts(doc, bytes)),
     mono: await doc.embedFont(StandardFonts.Courier),
   }
   const { regular, bold, mono } = fonts
   const muted = (size: number): Partial<TextStyle> => ({ font: regular, size, color: COLORS.muted })
 
-  doc.setTitle('Cloud saving permission record')
-  doc.setSubject(`Permission for cloud saving, notice version ${notice.version}`)
+  doc.setTitle('云端保存授权记录')
+  doc.setSubject(`云端保存授权，告知书第 ${notice.version} 版`)
   doc.setAuthor(OPERATOR_NAME)
   doc.setCreator('Little Mandala')
   doc.setProducer('Little Mandala')
@@ -275,8 +277,8 @@ export async function buildConsentReceiptPdf(receipt: ConsentReceipt): Promise<U
 
   pdf.text('LITTLE MANDALA', { font: bold, size: 9, color: COLORS.primary })
   pdf.gap(4)
-  pdf.text('Cloud saving permission record', { font: bold, size: 22, color: COLORS.text, leading: 28 })
-  pdf.text('Your permission for cloud saving, with the exact notice you agreed to.', {
+  pdf.text('云端保存授权记录', { font: bold, size: 22, color: COLORS.text, leading: 28 })
+  pdf.text('您对云端保存的授权，以及您所同意的告知书原文。', {
     font: regular,
     size: 11,
     color: COLORS.muted,
@@ -284,51 +286,51 @@ export async function buildConsentReceiptPdf(receipt: ConsentReceipt): Promise<U
   pdf.gap(14)
   pdf.text(
     record.withdrawnAt
-      ? `Permission withdrawn on ${formatReceiptDate(record.withdrawnAt, timeZone)}`
-      : 'Permission is active',
+      ? `授权已于 ${formatReceiptDate(record.withdrawnAt, timeZone)} 撤回`
+      : '授权有效中',
     { font: bold, size: 12, color: record.withdrawnAt ? COLORS.text : COLORS.primary },
   )
   pdf.gap(6)
   pdf.rule()
 
-  pdf.row('Parent account', [{ text: receipt.parentEmail }])
-  pdf.row('Permission for', [{ text: 'Cloud saving of the pictures in My garden' }])
-  pdf.row('Agreed on', [
+  pdf.row('家长账户', [{ text: receipt.parentEmail }])
+  pdf.row('授权内容', [{ text: '云端保存“我的花园”中的图画' }])
+  pdf.row('同意时间', [
     { text: formatReceiptTime(record.givenAt, timeZone), style: { font: bold } },
     { text: formatUtc(record.givenAt), style: muted(9) },
   ])
-  pdf.row('Notice agreed to', [
-    { text: `Version ${notice.version}: ${notice.title}` },
-    { text: `Approved ${formatReceiptDate(notice.approvedAt, timeZone)}`, style: muted(9) },
+  pdf.row('所同意的告知书', [
+    { text: `第 ${notice.version} 版：${notice.title}` },
+    { text: `批准于 ${formatReceiptDate(notice.approvedAt, timeZone)}`, style: muted(9) },
   ])
-  pdf.row('How it was confirmed', [
-    { text: 'Signed in with a fresh sign-in email (its link or code), then ticked the agreement box.' },
+  pdf.row('确认方式', [
+    { text: '通过一封新的登录邮件（其中的链接或验证码）重新登录，然后勾选了同意框。' },
     ...(record.signedInAt
-      ? [{ text: `Email sign-in used: ${formatReceiptTime(record.signedInAt, timeZone)}`, style: muted(9) }]
+      ? [{ text: `使用的邮件登录时间：${formatReceiptTime(record.signedInAt, timeZone)}`, style: muted(9) }]
       : []),
   ])
-  pdf.row('Status', [
+  pdf.row('状态', [
     {
       text: record.withdrawnAt
-        ? `Withdrawn on ${formatReceiptTime(record.withdrawnAt, timeZone)}`
-        : 'Active. It stays in effect until you turn off cloud saving.',
+        ? `已于 ${formatReceiptTime(record.withdrawnAt, timeZone)} 撤回`
+        : '有效。在您关闭云端保存之前持续有效。',
     },
   ])
-  pdf.row('Record reference', [{ text: record.id, style: { font: mono, size: 9 } }])
-  pdf.row('Notice fingerprint', [
+  pdf.row('记录编号', [{ text: record.id, style: { font: mono, size: 9 } }])
+  pdf.row('告知书指纹', [
     { text: notice.sha256, style: { font: mono, size: 8.5 } },
-    { text: 'SHA-256 of the notice text below. Any change to the wording changes it.', style: muted(9) },
+    { text: '下方告知书文本的 SHA-256 值。措辞的任何改动都会使其改变。', style: muted(9) },
   ])
 
   pdf.gap(22)
-  pdf.text('What you ticked', { font: bold, size: 13, color: COLORS.text })
+  pdf.text('您勾选的内容', { font: bold, size: 13, color: COLORS.text })
   pdf.gap(4)
-  pdf.panel(`“${agreementStatement(notice.version)}”`, { font: regular, size: 10.5, color: COLORS.text, leading: 16 })
+  pdf.panel(`「${agreementStatement(notice.version)}」`, { font: regular, size: 10.5, color: COLORS.text, leading: 16 })
 
   pdf.gap(24)
-  pdf.text('The notice you agreed to', { font: bold, size: 13, color: COLORS.text })
+  pdf.text('您所同意的告知书', { font: bold, size: 13, color: COLORS.text })
   pdf.gap(2)
-  pdf.text(`${notice.title} · Version ${notice.version} · Approved ${formatReceiptDate(notice.approvedAt, timeZone)}`, {
+  pdf.text(`${notice.title} · 第 ${notice.version} 版 · 批准于 ${formatReceiptDate(notice.approvedAt, timeZone)}`, {
     font: regular,
     size: 9.5,
     color: COLORS.muted,
@@ -344,8 +346,8 @@ export async function buildConsentReceiptPdf(receipt: ConsentReceipt): Promise<U
 
   if (receipt.history.length > 1) {
     pdf.gap(22)
-    pdf.text('Permission history', { font: bold, size: 13, color: COLORS.text })
-    pdf.text('Every time cloud saving was turned on for this account, newest first.', {
+    pdf.text('授权历史', { font: bold, size: 13, color: COLORS.text })
+    pdf.text('此账户每一次开启云端保存的记录，最新的在前。', {
       font: regular,
       size: 9.5,
       color: COLORS.muted,
@@ -353,10 +355,10 @@ export async function buildConsentReceiptPdf(receipt: ConsentReceipt): Promise<U
     pdf.gap(6)
     pdf.rule()
     for (const entry of receipt.history) {
-      pdf.row(`Notice version ${entry.noticeVersion}`, [
-        { text: `Agreed ${formatReceiptTime(entry.givenAt, timeZone)}` },
+      pdf.row(`告知书第 ${entry.noticeVersion} 版`, [
+        { text: `同意于 ${formatReceiptTime(entry.givenAt, timeZone)}` },
         {
-          text: entry.withdrawnAt ? `Withdrawn ${formatReceiptTime(entry.withdrawnAt, timeZone)}` : 'Still active',
+          text: entry.withdrawnAt ? `撤回于 ${formatReceiptTime(entry.withdrawnAt, timeZone)}` : '仍然有效',
           style: muted(9),
         },
       ])
@@ -365,7 +367,7 @@ export async function buildConsentReceiptPdf(receipt: ConsentReceipt): Promise<U
 
   pdf.gap(22)
   pdf.text(
-    `Created ${formatReceiptTime(receipt.generatedAt, timeZone)} from ${OPERATOR_NAME}’s records for ${receipt.parentEmail}. Times are shown in ${timeZone}. ${OPERATOR_NAME} operates Little Mandala. Questions: ${SUPPORT_EMAIL}.`,
+    `本记录于 ${formatReceiptTime(receipt.generatedAt, timeZone)} 根据 ${OPERATOR_NAME} 的记录为 ${receipt.parentEmail} 生成。时间以 ${timeZone} 时区显示。Little Mandala 由 ${OPERATOR_NAME} 运营。如有疑问：${SUPPORT_EMAIL}。`,
     { font: regular, size: 9, color: COLORS.muted, leading: 14 },
   )
 

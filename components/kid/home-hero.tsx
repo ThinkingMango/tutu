@@ -28,9 +28,9 @@ export function HomeHero() {
       <div className="flex items-center justify-between gap-4">
         <div className="flex min-w-0 flex-col gap-2">
           <h1 id="home-title" className="text-5xl font-black tracking-tight text-balance md:text-6xl">
-            Let&apos;s color!
+            一起涂色吧！
           </h1>
-          <p className="text-lg font-bold text-pretty md:text-xl">Tap a flower to start.</p>
+          <p className="text-lg font-bold text-pretty md:text-xl">点一朵花就能开始。</p>
         </div>
         <MandalaArt
           version={sample}
@@ -39,12 +39,12 @@ export function HomeHero() {
         />
       </div>
 
-      <ul aria-label="Free pictures" className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-5">
+      <ul aria-label="免费图画" className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-5">
         {QUICK_PICKS.map((mandala, i) => (
           <li key={mandala.id} className="animate-pop-in" style={{ '--i': i } as CSSProperties}>
             <Link
               href={colorHref(mandala)}
-              aria-label={`Color ${mandala.name}`}
+              aria-label={`给「${mandala.name}」涂色`}
               style={crayonStyle(TILE_CRAYONS[i % TILE_CRAYONS.length])}
               className="pack-theme tactile flex aspect-square items-center justify-center rounded-[2rem] border-4 border-(--pack) bg-card p-3 outline-none [--tactile-edge:var(--pack-edge)] focus-visible:ring-4 focus-visible:ring-ink focus-visible:ring-offset-4 focus-visible:ring-offset-swatch-yellow md:p-4"
             >

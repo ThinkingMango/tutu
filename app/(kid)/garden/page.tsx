@@ -4,7 +4,7 @@ import { KidPageHeader } from '@/components/kid/kid-page-header'
 import { MyGarden } from '@/components/kid/my-garden'
 import { GARDEN_CRAYON, crayonStyle } from '@/lib/pack-theme'
 
-export const metadata: Metadata = { title: 'My garden' }
+export const metadata: Metadata = { title: '我的花园' }
 
 export default function GardenPage() {
   return (
@@ -13,7 +13,7 @@ export default function GardenPage() {
       className="pack-theme mx-auto flex min-h-dvh w-full max-w-6xl flex-col gap-8 px-5 pt-6 pb-16 md:px-10 md:pt-8"
     >
       <KidPageHeader
-        title="My garden"
+        title="我的花园"
         icon={
           <span
             className="flex size-14 shrink-0 items-center justify-center rounded-full bg-(--pack)"

@@ -34,12 +34,12 @@ describe('sign-in page', () => {
     const user = userEvent.setup()
     render(<SignInForm next="/parent/cloud-saving" linkError={null} />)
 
-    await user.type(screen.getByLabelText('Email'), 'parent@example.com')
-    await user.click(screen.getByRole('button', { name: /Email me a sign-in link/ }))
-    expect(await screen.findByText(/sign-in link and code/)).toBeInTheDocument()
+    await user.type(screen.getByLabelText('电子邮箱'), 'parent@example.com')
+    await user.click(screen.getByRole('button', { name: /发送登录链接和验证码/ }))
+    expect(await screen.findByText(/登录链接和验证码发送到/)).toBeInTheDocument()
 
-    await user.type(screen.getByLabelText(/Type the code from it/), '482913')
-    await user.click(screen.getByRole('button', { name: 'Sign in' }))
+    await user.type(screen.getByLabelText(/请输入其中的验证码/), '482913')
+    await user.click(screen.getByRole('button', { name: '登录' }))
 
     expect(verifyEmailCode).toHaveBeenCalledWith('parent@example.com', '482913')
     expect(replace).toHaveBeenCalledWith('/parent/cloud-saving')
@@ -50,10 +50,10 @@ describe('sign-in page', () => {
     const user = userEvent.setup()
     render(<SignInForm next="/parent/home" linkError={null} />)
 
-    await user.type(screen.getByLabelText('Email'), 'parent@example.com')
-    await user.click(screen.getByRole('button', { name: /Email me a sign-in link/ }))
-    await user.type(await screen.findByLabelText(/Type the code from it/), '000000')
-    await user.click(screen.getByRole('button', { name: 'Sign in' }))
+    await user.type(screen.getByLabelText('电子邮箱'), 'parent@example.com')
+    await user.click(screen.getByRole('button', { name: /发送登录链接和验证码/ }))
+    await user.type(await screen.findByLabelText(/请输入其中的验证码/), '000000')
+    await user.click(screen.getByRole('button', { name: '登录' }))
 
     expect(await screen.findByRole('alert')).toHaveTextContent('That code didn’t work.')
     expect(replace).not.toHaveBeenCalled()
@@ -66,12 +66,12 @@ describe('fresh sign-in before cloud saving or deleting the account', () => {
     const user = userEvent.setup()
     render(<FreshSignInPrompt email="parent@example.com" action="turn on cloud saving" returnPath="/parent/cloud-saving" />)
 
-    expect(screen.queryByLabelText(/Type the code from it/)).not.toBeInTheDocument()
-    await user.click(screen.getByRole('button', { name: 'Email me a link and code' }))
+    expect(screen.queryByLabelText(/请输入其中的验证码/)).not.toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: '发送链接和验证码到我的邮箱' }))
     expect(sendEmailLink).toHaveBeenCalledWith('parent@example.com', '/parent/cloud-saving')
 
-    await user.type(await screen.findByLabelText(/Type the code from it/), '482913')
-    await user.click(screen.getByRole('button', { name: 'Confirm' }))
+    await user.type(await screen.findByLabelText(/请输入其中的验证码/), '482913')
+    await user.click(screen.getByRole('button', { name: '确认' }))
 
     expect(verifyEmailCode).toHaveBeenCalledWith('parent@example.com', '482913')
     expect(refreshRecentSignIn).toHaveBeenCalled()

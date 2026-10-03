@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
   const timeZone = resolveTimeZone(request.nextUrl.searchParams.get('tz'))
   const record = toRecord(active)
   const pdf = await buildConsentReceiptPdf({
-    parentEmail: typeof claims.email === 'string' && claims.email ? claims.email : 'Your parent account',
+    parentEmail: typeof claims.email === 'string' && claims.email ? claims.email : '您的家长账户',
     record,
     notice: {
       version: notice.version,

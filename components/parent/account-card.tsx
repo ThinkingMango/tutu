@@ -8,9 +8,9 @@ import { useAuthState } from '@/lib/auth/client'
 import { cn } from '@/lib/utils'
 
 const DESCRIPTIONS = {
-  loading: 'Checking sign-in…',
-  'signed-in': 'Signed in on this device with an email link or code.',
-  'signed-out': 'Sign in to buy packs and open them on every device.',
+  loading: '正在检查登录状态…',
+  'signed-in': '已通过邮件链接或验证码在这台设备上登录。',
+  'signed-out': '登录后即可购买画册，并在每台设备上使用。',
 } as const
 
 export function AccountCard() {
@@ -36,7 +36,7 @@ export function AccountCard() {
             href="/parent/delete-account"
             className="self-start text-sm font-semibold text-muted-foreground underline underline-offset-4 hover:text-destructive"
           >
-            Delete account
+            删除账号
           </Link>
         </div>
       ) : auth.status === 'signed-out' ? (
@@ -44,7 +44,7 @@ export function AccountCard() {
           href="/parent/sign-in"
           className={cn(buttonVariants(), 'h-11 self-start rounded-full px-5 font-bold')}
         >
-          Sign in
+          登录
         </Link>
       ) : null}
     </ParentCard>

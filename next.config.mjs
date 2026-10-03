@@ -8,6 +8,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  outputFileTracingIncludes: {
+    '/api/consent/receipt': ['./public/fonts/*.otf'],
+  },
   async headers() {
     return [
       {

@@ -8,7 +8,7 @@ import type { SyncSummary } from '@/lib/cloud-sync/engine'
 import { cn } from '@/lib/utils'
 
 function pictures(count: number) {
-  return count === 1 ? '1 garden picture' : `${count} garden pictures`
+  return `${count} 张花园图画`
 }
 
 function describe(summary: SyncSummary): { title: string; detail: string } {
@@ -16,48 +16,48 @@ function describe(summary: SyncSummary): { title: string; detail: string } {
   switch (state) {
     case 'syncing':
       return {
-        title: `Saving ${saved} of ${total}…`,
-        detail: 'Copying garden pictures from this device to your account.',
+        title: `正在保存第 ${saved} / ${total} 张…`,
+        detail: '正在把这台设备上的花园图画复制到你的账号。',
       }
     case 'synced':
       return total === 0
         ? {
-            title: 'Nothing to save yet',
-            detail: 'Pictures your child puts in My garden will be copied to your account.',
+            title: '暂时没有需要保存的图画',
+            detail: '孩子放进“我的花园”的图画会被复制到你的账号。',
           }
         : {
-            title: total === 1 ? 'Your garden picture is saved' : `All ${total} garden pictures are saved`,
-            detail: 'Every picture in My garden on this device is in your account.',
+            title: total === 1 ? '你的花园图画已保存' : `全部 ${total} 张花园图画已保存`,
+            detail: '这台设备上“我的花园”里的每张图画都已保存到你的账号。',
           }
     case 'waiting':
       return {
-        title: `${pictures(waiting)} not saved yet`,
-        detail: `${saved} of ${total} are in your account. We’ll keep trying on our own. Nothing is lost, the rest are still on this device.`,
+        title: `${pictures(waiting)}尚未保存`,
+        detail: `已有 ${saved} / ${total} 张保存到你的账号。我们会自动继续尝试。不会丢失任何图画，其余的仍在这台设备上。`,
       }
     case 'offline':
       return {
-        title: 'This device is offline',
+        title: '这台设备已离线',
         detail:
           waiting > 0
-            ? `${pictures(waiting)} will be saved when you’re back online. They’re safe on this device.`
-            : 'We’ll check for changes when you’re back online.',
+            ? `${pictures(waiting)}会在恢复联网后保存，它们在这台设备上很安全。`
+            : '恢复联网后我们会检查更新。',
       }
     case 'unavailable':
       return {
-        title: 'We couldn’t reach your cloud pictures',
-        detail: 'Nothing is lost. Pictures stay on this device and we’ll try again shortly.',
+        title: '暂时无法连接到你的云端图画',
+        detail: '不会丢失任何图画。图画仍在这台设备上，我们稍后会再试。',
       }
     default:
-      return { title: 'Checking your cloud pictures…', detail: 'This only takes a moment.' }
+      return { title: '正在检查你的云端图画…', detail: '只需要一小会儿。' }
   }
 }
 
 function checkedLabel(checkedAt: number | null, now: number) {
   if (!checkedAt) return null
   const minutes = Math.floor((now - checkedAt) / 60_000)
-  if (minutes < 1) return 'Checked just now'
-  if (minutes < 60) return `Checked ${minutes} min ago`
-  return `Checked at ${new Date(checkedAt).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}`
+  if (minutes < 1) return '刚刚检查过'
+  if (minutes < 60) return `${minutes} 分钟前检查过`
+  return `检查于 ${new Date(checkedAt).toLocaleTimeString('zh-CN', { hour: 'numeric', minute: '2-digit' })}`
 }
 
 const ICONS = {
@@ -107,11 +107,11 @@ export function CloudSyncStatus({ now }: { now: number }) {
       {summary.total > 0 && summary.state !== 'checking' && (
         <div
           role="progressbar"
-          aria-label="Garden pictures saved to your account"
+          aria-label="已保存到你账号的花园图画"
           aria-valuemin={0}
           aria-valuemax={summary.total}
           aria-valuenow={summary.saved}
-          aria-valuetext={`${summary.saved} of ${summary.total} saved`}
+          aria-valuetext={`已保存 ${summary.saved} / ${summary.total} 张`}
           className="h-2 overflow-hidden rounded-full bg-background"
         >
           <div
@@ -124,8 +124,8 @@ export function CloudSyncStatus({ now }: { now: number }) {
       {summary.removedElsewhere > 0 && (
         <p className="text-sm leading-relaxed text-muted-foreground">
           {summary.removedElsewhere === 1
-            ? '1 picture on this device was taken out of the garden on another device, so it isn’t saved to your account. It stays on this device.'
-            : `${summary.removedElsewhere} pictures on this device were taken out of the garden on another device, so they aren’t saved to your account. They stay on this device.`}
+            ? '这台设备上有 1 张图画已在另一台设备上从花园移出，因此不会保存到你的账号，但仍会保留在这台设备上。'
+            : `这台设备上有 ${summary.removedElsewhere} 张图画已在另一台设备上从花园移出，因此不会保存到你的账号，但仍会保留在这台设备上。`}
         </p>
       )}
 
@@ -138,7 +138,7 @@ export function CloudSyncStatus({ now }: { now: number }) {
           className="h-10 rounded-full bg-card px-4 font-bold"
         >
           <RotateCw data-icon="inline-start" className={cn(busy && 'animate-spin motion-reduce:animate-none')} />
-          {busy ? 'Syncing…' : 'Sync now'}
+          {busy ? '正在同步…' : '立即同步'}
         </Button>
       </div>
     </div>

@@ -21,9 +21,9 @@ import {
 } from '@/lib/packs'
 
 const HOW_BUYING_WORKS = [
-  'Choose your packs. Our server works out the price, so the total you see is the total you pay.',
-  'Pay once in a secure Stripe checkout. Your card details go to Stripe and never reach us.',
-  'Your packs open on your account straight away and stay yours on every device you sign in on.',
+  '选择你想要的画册。价格由我们的服务器计算，你看到的总价就是实际支付的金额。',
+  '在安全的 Stripe 结账页面一次性付款。你的银行卡信息只发送给 Stripe，我们不会接触到。',
+  '画册会立即在你的账号中解锁，在你登录的每台设备上都可以永久使用。',
 ]
 
 const STANDARD_PAID = packPages('standard').filter((page) => page.tier !== 'free')
@@ -42,7 +42,7 @@ export function BillingView() {
     void refreshEntitlements()
   }
 
-  const statusOf = (id: PackId) => (owned.has(id) ? 'Yours to keep' : null)
+  const statusOf = (id: PackId) => (owned.has(id) ? '已永久拥有' : null)
   const buyable = SOLD_PACKS.filter((pack) => !statusOf(pack.id))
   const inOrder = buyable.filter((pack) => chosen.has(pack.id))
   const standardUnlocked = STANDARD_PAID.every(isUnlocked)
@@ -69,9 +69,9 @@ export function BillingView() {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-4">
-        <h1 className="text-3xl font-black">Pricing</h1>
+        <h1 className="text-3xl font-black">价格</h1>
         <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty">
-          Buy picture packs once and keep them for good. There’s no subscription, and bundles bring the price down.
+          画册一次购买，永久拥有。没有订阅，组合购买更优惠。
         </p>
 
         {outcome ? (
@@ -84,7 +84,7 @@ export function BillingView() {
 
         {failed && (
           <p role="alert" className="text-sm font-semibold text-destructive">
-            {'We couldn’t check your purchases right now. Paid pictures stay locked until we can.'}
+            {'暂时无法查询你的购买记录。在查询成功之前，付费图画会保持锁定。'}
           </p>
         )}
       </div>
@@ -92,10 +92,10 @@ export function BillingView() {
       <section aria-labelledby="offers" className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
           <h2 id="offers" className="text-2xl font-black">
-            Picture packs
+            画册
           </h2>
           <p className="leading-relaxed text-muted-foreground">
-            {`Every pack is ${formatPrice(PACK_PRICE_CENTS)}, however many pictures it has. Mix and match any packs you like.`}
+            {`每本画册 ${formatPrice(PACK_PRICE_CENTS)}，无论包含多少张图画。可以随意自由搭配。`}
           </p>
         </div>
         <OfferGrid />
@@ -103,14 +103,14 @@ export function BillingView() {
 
       <section aria-labelledby="choose" className="flex flex-col gap-4">
         <h2 id="choose" className="text-2xl font-black">
-          Choose your packs
+          选择你的画册
         </h2>
 
         <div className="grid items-start gap-6 md:grid-cols-[minmax(0,1fr)_20rem]">
           <div className="flex flex-col gap-8">
             <PackGroup
-              title={hasGrownUpPacks ? 'For your child' : null}
-              description="Big, simple pictures for ages 3 to 7."
+              title={hasGrownUpPacks ? '给孩子' : null}
+              description="大而简单的图画，适合 3 到 7 岁。"
             >
               {SOLD_KIDS_PACKS.map(renderPack)}
               <StandardUnlockCard
@@ -123,8 +123,8 @@ export function BillingView() {
             {hasGrownUpPacks && (
               <PackGroup
                 id={FOR_YOU_ANCHOR}
-                title="For you"
-                description="Detailed mandalas for grown-ups, colored behind the parent gate. Same price, and they count toward bundles."
+                title="给你自己"
+                description="适合大人的精细曼陀罗，在家长验证后涂色。价格相同，也计入组合优惠。"
               >
                 {SOLD_GROWN_UP_PACKS.map(renderPack)}
               </PackGroup>
@@ -142,7 +142,7 @@ export function BillingView() {
 
       <section aria-labelledby="how-buying-works" className="flex flex-col gap-4 rounded-3xl border bg-card p-6">
         <h2 id="how-buying-works" className="font-extrabold">
-          How buying works
+          购买流程
         </h2>
         <ol className="flex flex-col gap-3">
           {HOW_BUYING_WORKS.map((step, i) => (

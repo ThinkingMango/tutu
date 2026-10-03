@@ -10,19 +10,19 @@ describe('clearing saved coloring', () => {
     const user = userEvent.setup()
     render(<DeviceSettingsCard />)
 
-    await user.click(screen.getByRole('button', { name: 'Clear saved coloring' }))
-    const clear = await screen.findByRole('button', { name: 'Clear everything' })
+    await user.click(screen.getByRole('button', { name: '清除已保存的涂色' }))
+    const clear = await screen.findByRole('button', { name: '全部清除' })
     expect(clear).toBeDisabled()
 
-    const confirm = screen.getByLabelText('Type CLEAR to confirm')
-    await user.type(confirm, 'clea')
+    const confirm = screen.getByLabelText('输入“清除”以确认')
+    await user.type(confirm, '清')
     expect(clear).toBeDisabled()
 
-    await user.type(confirm, 'r')
+    await user.type(confirm, '除')
     expect(clear).toBeEnabled()
     await user.click(clear)
 
-    expect(await screen.findByText('All clear')).toBeInTheDocument()
+    expect(await screen.findByText('已全部清除')).toBeInTheDocument()
     expect(window.localStorage.getItem(STORAGE_KEYS.gallery)).toBeNull()
   })
 })

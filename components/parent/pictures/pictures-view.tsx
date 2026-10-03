@@ -16,7 +16,7 @@ import { useHydrated } from '@/lib/local-store'
 import { getMandala } from '@/lib/mandalas'
 import { loadOutline } from '@/lib/templates/outlines'
 
-const longDate = new Intl.DateTimeFormat(undefined, { dateStyle: 'long' })
+const longDate = new Intl.DateTimeFormat('zh-CN', { dateStyle: 'long' })
 
 type PdfStatus =
   | { kind: 'idle' }
@@ -40,7 +40,7 @@ export function PicturesView() {
       {
         artwork,
         version,
-        name: getMandala(artwork.templateId)?.name ?? 'Garden picture',
+        name: getMandala(artwork.templateId)?.name ?? '花园图画',
         dateLabel: longDate.format(artwork.updatedAt || artwork.createdAt),
         saveState: pictureSaveState(snapshot, artwork.id),
       },
@@ -97,8 +97,8 @@ export function PicturesView() {
   if (!hydrated) {
     return (
       <main className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-5 py-8 md:px-8 md:py-10">
-        <h1 className="text-3xl font-black">Pictures</h1>
-        <p className="leading-relaxed text-muted-foreground">Loading pictures on this device…</p>
+        <h1 className="text-3xl font-black">图画</h1>
+        <p className="leading-relaxed text-muted-foreground">正在加载这台设备上的图画…</p>
       </main>
     )
   }
@@ -107,10 +107,9 @@ export function PicturesView() {
     <>
       <main className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-5 py-8 md:px-8 md:py-10 print:hidden">
         <header className="flex flex-col gap-2">
-          <h1 className="text-3xl font-black">Pictures</h1>
+          <h1 className="text-3xl font-black">图画</h1>
           <p className="max-w-2xl leading-relaxed text-muted-foreground text-pretty">
-            Print finished pictures from the garden, or keep them as a PDF. Only you can do this, from the parent
-            area. Your child never sees these options.
+            打印花园里完成的图画，或保存为 PDF。只有你能在家长区域进行这些操作，孩子不会看到这些选项。
           </p>
         </header>
 
@@ -118,16 +117,16 @@ export function PicturesView() {
 
         {pictures.length === 0 ? (
           <section className="flex flex-col gap-2 rounded-3xl border border-dashed bg-card p-6">
-            <h2 className="text-lg font-extrabold">No finished pictures yet</h2>
+            <h2 className="text-lg font-extrabold">还没有完成的图画</h2>
             <p className="leading-relaxed text-muted-foreground">
-              {'When your child taps \u201CI\u2019m done\u201D, the picture appears here, ready to print.'}
+              {'孩子点击“我画好啦”后，图画就会出现在这里，可以直接打印。'}
             </p>
           </section>
         ) : (
           <section aria-labelledby="choose-heading" className="flex flex-col gap-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 id="choose-heading" className="text-lg font-extrabold">
-                {`Choose pictures · ${selected.length} of ${pictures.length}`}
+                {`选择图画 · 已选 ${selected.length} / ${pictures.length}`}
               </h2>
               <Button
                 variant="ghost"
@@ -138,7 +137,7 @@ export function PicturesView() {
                 }
                 className="h-10 rounded-full px-4 font-bold"
               >
-                {selected.length === pictures.length ? 'Select none' : 'Select all'}
+                {selected.length === pictures.length ? '全部取消' : '全选'}
               </Button>
             </div>
 
@@ -151,16 +150,16 @@ export function PicturesView() {
             <div className="sticky bottom-4 z-10 flex flex-col gap-2 rounded-3xl border bg-card p-3 shadow-lg sm:flex-row sm:items-center sm:justify-between sm:pl-5">
               <p role="status" aria-live="polite" className="text-sm font-semibold text-muted-foreground">
                 {printFailed
-                  ? 'The pictures couldn’t be made ready to print. Check your connection and try again.'
+                  ? '图画未能准备好打印。请检查网络连接后再试。'
                   : pdf.kind === 'working'
-                  ? `Making PDF… ${pdf.done} of ${pdf.total}`
+                  ? `正在生成 PDF… ${pdf.done} / ${pdf.total}`
                   : pdf.kind === 'saved'
-                    ? `PDF saved with ${pdf.count} ${pdf.count === 1 ? 'picture' : 'pictures'}.`
+                    ? `PDF 已保存，共 ${pdf.count} 张图画。`
                     : pdf.kind === 'error'
-                      ? 'The PDF couldn’t be made. Please try again.'
+                      ? 'PDF 生成失败，请再试一次。'
                       : selected.length === 0
-                        ? 'Choose at least one picture.'
-                        : `One picture per page · ${selected.length} ${selected.length === 1 ? 'page' : 'pages'}`}
+                        ? '请至少选择一张图画。'
+                        : `每页一张图画 · 共 ${selected.length} 页`}
               </p>
               <div className="flex gap-2">
                 <Button
@@ -170,7 +169,7 @@ export function PicturesView() {
                   className="h-11 flex-1 rounded-full px-5 font-bold sm:flex-none"
                 >
                   <Printer data-icon="inline-start" />
-                  Print
+                  打印
                 </Button>
                 <Button
                   onClick={() => void downloadPdf()}
@@ -178,7 +177,7 @@ export function PicturesView() {
                   className="h-11 flex-1 rounded-full px-5 font-bold sm:flex-none"
                 >
                   <FileDown data-icon="inline-start" />
-                  {working ? 'Making PDF…' : 'Download PDF'}
+                  {working ? '正在生成 PDF…' : '下载 PDF'}
                 </Button>
               </div>
             </div>

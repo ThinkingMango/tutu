@@ -11,16 +11,15 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Little Mandala — Coloring for little hands',
-    template: '%s · Little Mandala',
+    default: '小曼陀罗 — 小手涂色',
+    template: '%s · 小曼陀罗',
   },
-  description:
-    'A calm, tablet-first flower mandala coloring app for children ages 3 to 7, with a separate grown-up area.',
-  applicationName: 'Little Mandala',
+  description: '一款宁静的花朵曼陀罗涂色应用，专为 3 至 7 岁儿童设计，平板优先，并配有独立的家长区。',
+  applicationName: '小曼陀罗',
   generator: 'v0.app',
   appleWebApp: {
     capable: true,
-    title: 'Little Mandala',
+    title: '小曼陀罗',
     statusBarStyle: 'default',
   },
 }
@@ -39,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${nunito.variable} bg-background`}>
+    <html lang="zh-CN" className={`${nunito.variable} bg-background`}>
       <body className="antialiased">
         {children}
         <CloudSyncRunner />

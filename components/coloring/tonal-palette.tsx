@@ -29,19 +29,19 @@ function chipClass(selected: boolean, className?: string) {
  */
 export function TonalPalette({ value, onChange, className }: TonalPaletteProps) {
   const radio = usePaletteRadios(TOOLS, value, onChange)
-  const eraser = radio(ERASER, 'Eraser')
+  const eraser = radio(ERASER, '橡皮擦')
 
   return (
     <div
       role="radiogroup"
-      aria-label="Colors and eraser"
+      aria-label="颜色和橡皮擦"
       className={cn('flex flex-col gap-2 rounded-[2rem] bg-secondary p-2 sm:gap-3 sm:p-4', className)}
     >
       <p
         aria-hidden="true"
         className="px-1 text-sm font-extrabold text-muted-foreground [@media(max-height:30rem)]:hidden"
       >
-        {value === ERASER ? 'Eraser' : colorLabel(value)}
+        {value === ERASER ? '橡皮擦' : colorLabel(value)}
       </p>
 
       <div className="flex items-center gap-2 sm:gap-3 landscape:flex-col">

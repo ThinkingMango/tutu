@@ -38,18 +38,18 @@ function currentDevice() {
 
 const TIPS: Record<HomeScreenDevice, { title: string; steps: string; icon: typeof Share }> = {
   iphone: {
-    title: 'Keep the garden safe on this iPhone',
-    steps: 'Tap Share, then Add to Home Screen, and open Little Mandala from there.',
+    title: '在这台 iPhone 上保护好花园',
+    steps: '点击“分享”，再选择“添加到主屏幕”，之后从主屏幕打开小小曼陀罗。',
     icon: Share,
   },
   ipad: {
-    title: 'Keep the garden safe on this iPad',
-    steps: 'Tap Share, then Add to Home Screen, and open Little Mandala from there.',
+    title: '在这台 iPad 上保护好花园',
+    steps: '点击“分享”，再选择“添加到主屏幕”，之后从主屏幕打开小小曼陀罗。',
     icon: Share,
   },
   mac: {
-    title: 'Keep the garden safe on this Mac',
-    steps: 'In Safari, choose File, then Add to Dock (macOS Sonoma or later), and open Little Mandala from the Dock.',
+    title: '在这台 Mac 上保护好花园',
+    steps: '在 Safari 中选择“文件”，再选择“添加到程序坞”（macOS Sonoma 或更高版本），之后从程序坞打开小小曼陀罗。',
     icon: AppWindowMac,
   },
 }
@@ -81,10 +81,10 @@ export function DeviceStorageNotice() {
       <div role="alert" className="flex gap-3 rounded-2xl bg-destructive/10 p-4">
         <CircleAlert className="mt-0.5 size-5 shrink-0 text-destructive" aria-hidden="true" />
         <div className="flex flex-col gap-1">
-          <p className="font-bold text-destructive">{"Coloring isn't being saved"}</p>
+          <p className="font-bold text-destructive">{"涂色没有被保存"}</p>
           <p className="text-sm leading-relaxed text-foreground">
             {
-              "This device has run out of space for Little Mandala, so new taps don't stick. Clear saved coloring below, or free up space on the device."
+              "这台设备上留给小小曼陀罗的空间已用完，新的涂色无法保存。请在下方清除已保存的涂色，或释放设备空间。"
             }
           </p>
         </div>
@@ -101,7 +101,7 @@ export function DeviceStorageNotice() {
       <div className="flex flex-col gap-1">
         <p className="font-bold">{title}</p>
         <p className="text-sm leading-relaxed text-muted-foreground">
-          {`Safari clears saved pictures from sites that go unused for 7 days. ${steps} Pictures colored in Safari don't move across, so turn on cloud saving to keep them.`}
+          {`Safari 会清除 7 天未使用的网站所保存的图画。${steps}在 Safari 中涂的图画不会自动转移，请开启云端保存来保留它们。`}
         </p>
       </div>
     </div>

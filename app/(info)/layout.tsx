@@ -13,7 +13,7 @@ export default function InfoLayout({ children }: { children: React.ReactNode }) 
           {/* Plain links, so the children's screens start a fresh page without grown-up scripts. */}
           <a
             href="/"
-            aria-label="Little Mandala home"
+            aria-label="小小曼陀罗首页"
             className="rounded-full outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           >
             <BrandMark compact />
@@ -23,7 +23,7 @@ export default function InfoLayout({ children }: { children: React.ReactNode }) 
             className={cn(buttonVariants({ variant: 'outline' }), 'h-11 rounded-full px-4 text-sm font-bold')}
           >
             <ArrowLeft data-icon="inline-start" />
-            Back to coloring
+            返回涂色
           </a>
         </div>
       </header>

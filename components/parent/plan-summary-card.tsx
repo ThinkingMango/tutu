@@ -15,7 +15,7 @@ function PackRows({ rows, label }: { rows: Row[]; label: string }) {
     <ul className="flex flex-col divide-y" aria-label={label}>
       {rows.map(({ pack, total, open }) => {
         const isOpen = open === total
-        const status = isOpen ? 'Open' : open === 0 ? 'Locked' : `${open} of ${total} free`
+        const status = isOpen ? '已解锁' : open === 0 ? '已锁定' : `${open} / ${total} 张免费`
         return (
           <li key={pack.id} className="py-1 first:pt-0 last:pb-0">
             {/* A plain link: most packs open on the children's screens, which need a fresh page. */}
@@ -25,7 +25,7 @@ function PackRows({ rows, label }: { rows: Row[]; label: string }) {
             >
               <div className="flex min-w-0 flex-col">
                 <span className="truncate font-bold">{pack.name}</span>
-                <span className="text-sm text-muted-foreground">{`${total} pictures`}</span>
+                <span className="text-sm text-muted-foreground">{`${total} 张图画`}</span>
               </div>
               <div className="flex shrink-0 items-center gap-2">
                 {isOpen ? (
@@ -61,24 +61,24 @@ export function PlanSummaryCard() {
   const allOpen = packsOpen === rows.length
 
   return (
-    <ParentCard title="Picture packs" description={`${packsOpen} of ${rows.length} packs fully open`}>
+    <ParentCard title="画册" description={`${rows.length} 本画册中已完全解锁 ${packsOpen} 本`}>
       {grownUpRows.length === 0 ? (
-        <PackRows rows={kidRows} label="Packs and what is open" />
+        <PackRows rows={kidRows} label="画册及解锁情况" />
       ) : (
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-            <h3 className="text-xs font-bold tracking-wide text-muted-foreground uppercase">For your child</h3>
-            <PackRows rows={kidRows} label="Children's packs and what is open" />
+            <h3 className="text-xs font-bold tracking-wide text-muted-foreground uppercase">给孩子</h3>
+            <PackRows rows={kidRows} label="儿童画册及解锁情况" />
           </div>
           <div className="flex flex-col gap-2">
-            <h3 className="text-xs font-bold tracking-wide text-muted-foreground uppercase">For you</h3>
-            <PackRows rows={grownUpRows} label="Grown-up packs and what is open" />
+            <h3 className="text-xs font-bold tracking-wide text-muted-foreground uppercase">给你自己</h3>
+            <PackRows rows={grownUpRows} label="大人画册及解锁情况" />
           </div>
         </div>
       )}
       {!allOpen && (
         <Link href="/parent/billing" className={cn(buttonVariants(), 'h-11 self-start rounded-full px-5 font-bold')}>
-          Get more packs
+          获取更多画册
         </Link>
       )}
     </ParentCard>

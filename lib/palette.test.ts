@@ -30,7 +30,7 @@ describe('palettes', () => {
 
   it('accepts grown-up colors in saved artwork and names them', () => {
     expect(isColorKey('violet-deep')).toBe(true)
-    expect(colorLabel('violet-deep')).toBe('Plum')
+    expect(colorLabel('violet-deep')).toBe('梅紫')
     expect(isColorKey('violet-extra')).toBe(false)
   })
 

@@ -17,31 +17,31 @@ export function CloudSavingCard() {
   const syncLine =
     summary.state === 'synced'
       ? summary.total === 0
-        ? 'Garden pictures will be copied as they’re added.'
+        ? '花园图画添加后会自动备份。'
         : summary.total === 1
-          ? 'Your garden picture is saved.'
-          : `All ${summary.total} garden pictures saved.`
+          ? '你的花园图画已保存。'
+          : `全部 ${summary.total} 张花园图画已保存。`
       : summary.state === 'syncing'
         ? `Saving ${summary.saved} of ${summary.total}…`
         : summary.state === 'waiting' || summary.state === 'offline'
-          ? `${summary.waiting} of ${summary.total} not saved yet.`
+          ? `${summary.total} 张中有 ${summary.waiting} 张尚未保存。`
           : summary.state === 'unavailable'
-            ? 'Couldn’t check the cloud right now.'
+            ? '暂时无法查看云端状态。'
             : null
   const description =
     auth.status === 'loading' || (auth.status === 'signed-in' && !data && !error)
-      ? 'Checking…'
+      ? '正在检查…'
       : auth.status === 'signed-out'
-        ? 'Optional backup of garden pictures. Sign in to set it up.'
+        ? '可选的花园图画备份。登录后即可设置。'
         : error
-          ? 'We couldn’t check cloud saving right now.'
+          ? '暂时无法查看云端保存状态。'
           : isOn
-            ? `On. ${syncLine ?? 'Checking your cloud pictures…'}`
-            : 'Off. Pictures stay on this device only.'
+            ? `已开启。${syncLine ?? '正在检查你的云端图画…'}`
+            : '已关闭。图画仅保存在这台设备上。'
 
   return (
     <ParentCard
-      title="Cloud saving"
+      title="云端保存"
       description={description}
       badge={
         auth.status === 'signed-in' && data ? (
@@ -60,7 +60,7 @@ export function CloudSavingCard() {
         href="/parent/cloud-saving"
         className={cn(buttonVariants({ variant: 'outline' }), 'h-11 self-start rounded-full px-5 font-bold')}
       >
-        {isOn ? 'Manage cloud saving' : 'Read about cloud saving'}
+        {isOn ? '管理云端保存' : '了解云端保存'}
       </Link>
     </ParentCard>
   )

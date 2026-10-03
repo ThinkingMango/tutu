@@ -50,13 +50,13 @@ export function OrderSummary({ packs, withStandard, buyable, onPurchased }: Orde
       className="flex flex-col gap-5 rounded-3xl border-2 border-primary bg-card p-6 md:sticky md:top-24"
     >
       <h2 id="order-title" className="text-xl font-black">
-        Your order
+        你的订单
       </h2>
 
       <div aria-live="polite" className="flex flex-col gap-5">
         {empty ? (
           <p className="leading-relaxed text-muted-foreground">
-            Add the packs you want. The lowest bundle price is worked out for you.
+            添加你想要的画册，系统会自动为你计算最低组合价。
           </p>
         ) : (
           <>
@@ -88,8 +88,8 @@ export function OrderSummary({ packs, withStandard, buyable, onPurchased }: Orde
               </p>
               <p className="text-sm text-muted-foreground">
                 {quote.savingsCents > 0
-                  ? `One time. You save ${formatPrice(quote.savingsCents)} with the bundle.`
-                  : 'One time. Yours to keep.'}
+                  ? `一次性付款。组合购买为你节省 ${formatPrice(quote.savingsCents)}。`
+                  : '一次性付款，永久拥有。'}
               </p>
             </div>
           </>
@@ -99,7 +99,7 @@ export function OrderSummary({ packs, withStandard, buyable, onPurchased }: Orde
           <p className="flex items-start gap-2 rounded-2xl bg-secondary p-3 text-sm leading-relaxed">
             <Sparkles className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
             <span>
-              {`Add ${nudge.morePacks === 1 ? 'one more pack' : `${nudge.morePacks} more packs`} for just ${formatPrice(nudge.extraCents)} more and get ${nudge.offer.name.toLowerCase()}.`}
+              {`再添加 ${nudge.morePacks} 本画册，只需多付 ${formatPrice(nudge.extraCents)}，即可享受「${nudge.offer.name}」优惠。`}
             </span>
           </p>
         )}
@@ -110,7 +110,7 @@ export function OrderSummary({ packs, withStandard, buyable, onPurchased }: Orde
           href="/parent/sign-in?next=/parent/billing"
           className={cn(buttonVariants(), 'h-12 w-full rounded-full text-base font-bold')}
         >
-          Sign in to buy
+          登录后购买
         </Link>
       ) : (
         <div className="flex flex-col gap-2">
@@ -119,11 +119,11 @@ export function OrderSummary({ packs, withStandard, buyable, onPurchased }: Orde
             onClick={() => setCheckoutOpen(true)}
             className="h-12 w-full rounded-full text-base font-bold"
           >
-            {empty ? 'Buy' : `Buy for ${formatPrice(totalCents)}`}
+            {empty ? '购买' : `以 ${formatPrice(totalCents)} 购买`}
           </Button>
           <p className="flex items-center justify-center gap-1.5 text-center text-sm text-muted-foreground">
             <Lock className="size-3.5" aria-hidden="true" />
-            Secure one-time payment with Stripe
+            通过 Stripe 安全地一次性付款
           </p>
           <CheckoutDialog
             open={checkoutOpen}
@@ -139,12 +139,12 @@ export function OrderSummary({ packs, withStandard, buyable, onPurchased }: Orde
       )}
 
       <p className="text-center text-sm leading-relaxed text-muted-foreground">
-        {`Changed your mind? Full refund within ${REFUND_WINDOW_DAYS} days. `}
+        {`改变主意了？${REFUND_WINDOW_DAYS} 天内可全额退款。`}
         <Link
           href={REFUNDS_HREF}
           className="font-bold text-foreground underline underline-offset-4 outline-none focus-visible:rounded-sm focus-visible:ring-3 focus-visible:ring-ring/50"
         >
-          Refund policy
+          退款政策
         </Link>
       </p>
     </aside>

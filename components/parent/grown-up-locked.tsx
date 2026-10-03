@@ -17,11 +17,11 @@ export function GrownUpLocked({ mandala }: { mandala: Mandala }) {
           <Lock className="size-12" strokeWidth={2.5} aria-hidden="true" />
         </span>
       </div>
-      <h1 className="text-4xl font-black text-balance">This page is locked</h1>
+      <h1 className="text-4xl font-black text-balance">这一页已锁定</h1>
       <p className="max-w-sm text-lg leading-relaxed text-muted-foreground text-pretty">
-        {`Get ${pack.name} on the Pricing page to color it.`}
+        {`在价格页面获取${pack.name}后即可涂色。`}
       </p>
-      <ToolLink href="/parent/billing" label="See pricing" icon={<Tag strokeWidth={2.5} />} variant="primary" />
+      <ToolLink href="/parent/billing" label="查看价格" icon={<Tag strokeWidth={2.5} />} variant="primary" />
     </main>
   )
 }

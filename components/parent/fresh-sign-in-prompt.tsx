@@ -32,7 +32,7 @@ export function FreshSignInPrompt({ email, action, returnPath }: Props) {
       setSent(true)
       setSecondsLeft(RESEND_COOLDOWN_SECONDS)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'We couldn’t send the email. Please try again.')
+      setError(err instanceof Error ? err.message : '邮件发送失败，请再试一次。')
     } finally {
       setPending(false)
     }
@@ -49,24 +49,24 @@ export function FreshSignInPrompt({ email, action, returnPath }: Props) {
         <div className="flex flex-col gap-1 text-sm leading-relaxed" aria-live="polite">
           {sent ? (
             <>
-              <p className="font-bold">Check your email</p>
+              <p className="font-bold">请查收邮件</p>
               <p>
-                {'We sent a fresh link and code to '}
+                {'我们已将新的链接和验证码发送到 '}
                 <span className="font-bold break-all">{email}</span>
-                {`. Open the link in this browser, or type the code below. You then have 10 minutes to ${action}.`}
+                {`。请在这个浏览器中打开链接，或在下方输入验证码。之后你有 10 分钟时间${action}。`}
               </p>
             </>
           ) : (
             <>
-              <p className="font-bold">Confirm it’s you with a fresh sign-in email</p>
+              <p className="font-bold">通过新的登录邮件确认是你本人</p>
               <p>
-                {`To protect your child, only a grown-up who signed in during the last 10 minutes can ${action}. This stops anyone using an already signed-in family device from doing it.`}
+                {`为了保护孩子，只有在最近 10 分钟内登录的大人才能${action}。这样可以防止他人用已登录的家庭设备进行此操作。`}
               </p>
             </>
           )}
         </div>
       </div>
-      {sent && <EmailCodeForm email={email} submitLabel="Confirm" onVerified={refreshRecentSignIn} />}
+      {sent && <EmailCodeForm email={email} submitLabel="确认" onVerified={refreshRecentSignIn} />}
       {error && (
         <p role="alert" className="text-sm font-semibold text-destructive">
           {error}
@@ -79,12 +79,12 @@ export function FreshSignInPrompt({ email, action, returnPath }: Props) {
       >
         <Mail data-icon="inline-start" />
         {pending
-          ? 'Sending…'
+          ? '正在发送…'
           : secondsLeft > 0
-            ? `Send again in ${secondsLeft}s`
+            ? `${secondsLeft} 秒后可重新发送`
             : sent
-              ? 'Send again'
-              : 'Email me a link and code'}
+              ? '重新发送'
+              : '发送链接和验证码到我的邮箱'}
       </Button>
     </div>
   )

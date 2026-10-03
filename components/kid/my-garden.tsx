@@ -26,9 +26,9 @@ function EmptyGarden() {
         ))}
       </div>
       <div className="flex flex-col gap-2">
-        <p className="text-3xl font-black text-balance md:text-4xl">Nothing growing yet</p>
+        <p className="text-3xl font-black text-balance md:text-4xl">这里还空空的</p>
         <p className="text-lg font-bold leading-relaxed text-muted-foreground text-pretty">
-          {"Finish a picture and tap \u201CI\u2019m done\u201D. It will grow here."}
+          {'涂完一幅画，点一下“我涂好了”，它就会长在这里。'}
         </p>
       </div>
       <Link
@@ -36,7 +36,7 @@ function EmptyGarden() {
         className="tactile flex h-18 items-center gap-3 rounded-full bg-primary px-8 text-xl font-black text-primary-foreground outline-none [--tactile-edge:color-mix(in_oklch,var(--primary)_60%,var(--ink))] focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-4"
       >
         <Paintbrush className="size-7" strokeWidth={2.75} aria-hidden="true" />
-        Start coloring
+        开始涂色
       </Link>
     </div>
   )
@@ -56,19 +56,19 @@ export function MyGarden() {
   return (
     <div className="flex flex-col gap-6">
       <p className="text-lg font-bold text-muted-foreground">{pictureCount(artworks.length)}</p>
-      <ul aria-label="My pictures" className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:gap-7 lg:grid-cols-4">
+      <ul aria-label="我的图画" className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:gap-7 lg:grid-cols-4">
         {artworks.map((artwork) => {
           const version = library.templates.version(artwork.templateId, artwork.templateVersion)
           if (!version) return null
           const mandala = getMandala(artwork.templateId)
-          const name = mandala?.name ?? 'Flower'
+          const name = mandala?.name ?? '小花'
           const art = <MandalaArt version={version} fills={artwork.fills} className="size-full" />
           return (
             <li key={artwork.id} className="relative">
               {mandala ? (
                 <Link
                   href={`${colorHref(mandala)}?art=${encodeURIComponent(artwork.id)}`}
-                  aria-label={`Color ${name} again`}
+                  aria-label={`再给「${name}」涂一次`}
                   className="tactile flex aspect-square items-center justify-center rounded-[2rem] border-4 border-(--pack) bg-card p-3 outline-none [--tactile-edge:var(--pack-edge)] focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
                   {art}
@@ -80,8 +80,8 @@ export function MyGarden() {
               )}
               <button
                 type="button"
-                aria-label={`Take ${name} out of my garden`}
-                title="Take out"
+                aria-label={`把「${name}」从我的花园拿走`}
+                title="拿走"
                 onClick={() => {
                   setTarget(artwork)
                   setOpen(true)
@@ -99,11 +99,11 @@ export function MyGarden() {
         <CrossCheckDialog
           open={open}
           onOpenChange={setOpen}
-          title="Take it out?"
-          description="This flower will leave your garden."
+          title="要拿走吗？"
+          description="这朵花会离开你的花园。"
           preview={<RemovePreview version={targetVersion} fills={target.fills} />}
-          cancelLabel="No, keep it"
-          confirmLabel="Yes, take it out"
+          cancelLabel="不，留着它"
+          confirmLabel="好，拿走吧"
           onConfirm={() => library.removeFromGallery(target.id)}
         />
       )}

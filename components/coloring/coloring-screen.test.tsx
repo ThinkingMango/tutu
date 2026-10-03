@@ -48,15 +48,15 @@ const THREE_COLORS = { 'l0-p0': 'red', 'l0-p1': 'blue', center: 'blue' }
 
 async function colorThreeRegions(user: User) {
   await user.click(region('Petal 1'))
-  await user.click(screen.getByRole('radio', { name: 'Blue' }))
+  await user.click(screen.getByRole('radio', { name: '蓝色' }))
   await user.click(region('Petal 2'))
   await user.click(region('Flower center'))
 }
 
 async function startOver(user: User) {
-  await user.click(tool('Start over'))
+  await user.click(tool('重新开始'))
   const dialog = await screen.findByRole('dialog')
-  await user.click(within(dialog).getByRole('button', { name: 'Yes, start over' }))
+  await user.click(within(dialog).getByRole('button', { name: '好，重新开始' }))
   await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
 }
 
@@ -94,7 +94,7 @@ describe('coloring screen', () => {
 
     const second = openColoringPage(saved.id)
     expect(region('Petal 1, Red')).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: 'Back to My garden' })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: '回到我的花园' })).toBeInTheDocument()
     await second.user.click(region('Petal 3'))
     await second.user.click(tool("I'm done"))
 
@@ -121,7 +121,7 @@ describe('coloring screen', () => {
 
   it('cannot start over, undo, or redo on a flower that has no color yet', () => {
     openColoringPage()
-    expect(tool('Start over')).toBeDisabled()
+    expect(tool('重新开始')).toBeDisabled()
     expect(tool('Undo')).toBeDisabled()
     expect(tool('Redo')).toBeDisabled()
   })
@@ -130,9 +130,9 @@ describe('coloring screen', () => {
     const { user } = openColoringPage()
     await colorThreeRegions(user)
 
-    await user.click(tool('Start over'))
+    await user.click(tool('重新开始'))
     const dialog = await screen.findByRole('dialog')
-    expect(within(dialog).getByRole('img', { name: /colored flower will turn all white/i })).toBeInTheDocument()
+    expect(within(dialog).getByRole('img', { name: /涂好的花朵会全部变成白色/ })).toBeInTheDocument()
 
     await user.click(within(dialog).getByRole('button', { name: 'No, keep my colors' }))
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
@@ -174,7 +174,7 @@ describe('coloring screen', () => {
     const first = openColoringPage()
     await colorThreeRegions(first.user)
 
-    await first.user.click(screen.getByRole('radio', { name: 'Eraser' }))
+    await first.user.click(screen.getByRole('radio', { name: '橡皮擦' }))
     await first.user.click(region('Petal 2, Blue'))
     expect(region('Petal 2')).toBeInTheDocument()
     expect(region('Petal 1, Red')).toBeInTheDocument()
@@ -189,7 +189,7 @@ describe('coloring screen', () => {
 
   it('does not start an artwork when the eraser taps a blank flower', async () => {
     const { user, library } = openColoringPage()
-    await user.click(screen.getByRole('radio', { name: 'Eraser' }))
+    await user.click(screen.getByRole('radio', { name: '橡皮擦' }))
     await user.click(region('Petal 1'))
 
     expect(library.getState().artworks).toEqual({})
@@ -209,7 +209,7 @@ describe('coloring screen', () => {
     const { user, library } = openColoringPage()
     await colorThreeRegions(user)
     await user.click(tool("I'm done"))
-    await user.click(await screen.findByRole('button', { name: 'Keep going' }))
+    await user.click(await screen.findByRole('button', { name: '继续涂' }))
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
 
     await startOver(user)

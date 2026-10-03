@@ -29,7 +29,7 @@ export function ConsentNoticeArticle({ notice }: { notice: ConsentNotice }) {
     <article aria-labelledby="notice-title" className="flex flex-col gap-6 rounded-3xl border bg-card p-6 md:p-8">
       <header className="flex flex-col gap-2">
         <p className="text-xs font-bold tracking-wide text-muted-foreground uppercase">
-          {`Notice for parents · Version ${notice.version} · ${formatConsentDate(notice.approvedAt)}`}
+          {`家长须知 · 版本 ${notice.version} · ${formatConsentDate(notice.approvedAt)}`}
         </p>
         <h2 id="notice-title" className="text-2xl font-black text-balance">
           {notice.title}

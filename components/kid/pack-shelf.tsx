@@ -26,11 +26,11 @@ function coverPages(pages: Mandala[]) {
 function describe(pages: Mandala[], isUnlocked: IsUnlocked) {
   const open = pages.filter(isUnlocked)
   const locked = pages.length - open.length
-  const pictures = `${pages.length} ${pages.length === 1 ? 'picture' : 'pictures'}`
+  const pictures = `${pages.length} 幅图画`
   if (locked === 0) return pictures
-  if (open.length === 0) return `${pictures}, all locked`
-  const openWord = open.every((m) => m.tier === 'free') ? 'free' : 'open'
-  return `${open.length} ${openWord}, ${locked} locked`
+  if (open.length === 0) return `${pictures}，全部未解锁`
+  const openWord = open.every((m) => m.tier === 'free') ? '免费' : '可涂'
+  return `${open.length} 幅${openWord}，${locked} 幅未解锁`
 }
 
 function PackCover({ pack, isUnlocked }: { pack: Pack; isUnlocked: IsUnlocked }) {
@@ -42,7 +42,7 @@ function PackCover({ pack, isUnlocked }: { pack: Pack; isUnlocked: IsUnlocked })
   return (
     <Link
       href={packHref(pack.id)}
-      aria-label={`${pack.name}${pack.status === 'draft' ? ', draft' : ''}, ${summary}`}
+      aria-label={`${pack.name}${pack.status === 'draft' ? '，草稿' : ''}，${summary}`}
       style={packThemeStyle(pack.id)}
       className="pack-theme tactile relative flex h-full flex-col gap-4 rounded-[2.5rem] border-4 border-(--pack) bg-(--pack-tint) p-4 text-ink outline-none [--tactile-edge:var(--pack-edge)] focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-4 md:p-5"
     >
@@ -125,7 +125,7 @@ function ShelfSection({ id, title, icon, iconClass, note, packs, isUnlocked, off
 /** Same shape as the covers, so nothing jumps when the family's packs finish loading. */
 function ShelfPlaceholder() {
   return (
-    <div className="flex flex-col gap-5" aria-busy="true" aria-label="Loading picture packs">
+    <div className="flex flex-col gap-5" aria-busy="true" aria-label="正在加载图画包">
       <div className="h-12 w-64 rounded-full bg-secondary" />
       <div className={GRID}>
         {KIDS_PACKS.map((pack) => (
@@ -162,7 +162,7 @@ export function PackShelf() {
     <div className="flex flex-col gap-12">
       <ShelfSection
         id="open-packs"
-        title="Ready to color"
+        title="可以涂色啦"
         icon={<Paintbrush className="size-6" strokeWidth={2.75} />}
         iconClass="bg-swatch-pink"
         packs={open}
@@ -171,10 +171,10 @@ export function PackShelf() {
       {locked.length > 0 && (
         <ShelfSection
           id="sleeping-packs"
-          title="Ask a grown-up"
+          title="请大人帮忙"
           icon={<UsersRound className="size-6" strokeWidth={2.75} />}
           iconClass="bg-swatch-sky"
-          note="A grown-up can open these packs."
+          note="大人可以打开这些图画包。"
           packs={locked}
           isUnlocked={isUnlocked}
           offset={open.length}

@@ -17,8 +17,8 @@ const RESEND_COOLDOWN_SECONDS = 60
 export type LinkError = 'expired' | 'link'
 
 const LINK_ERROR_MESSAGES: Record<LinkError, string> = {
-  expired: 'That sign-in link has expired or was already used. Send yourself a new one below.',
-  link: 'That sign-in link didn’t work. If you asked for more than one, only the newest works. Send yourself a new one below.',
+  expired: '这个登录链接已过期或已被使用。请在下方重新发送一个。',
+  link: '这个登录链接无效。如果你请求了多次，只有最新的一封有效。请在下方重新发送一个。',
 }
 
 export function SignInForm({ next, linkError }: { next: string; linkError: LinkError | null }) {
@@ -44,7 +44,7 @@ export function SignInForm({ next, linkError }: { next: string; linkError: LinkE
       setSentTo(address.trim().toLowerCase())
       setSecondsLeft(RESEND_COOLDOWN_SECONDS)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
+      setError(err instanceof Error ? err.message : '出了点问题，请再试一次。')
     } finally {
       setPending(false)
     }
@@ -64,7 +64,7 @@ export function SignInForm({ next, linkError }: { next: string; linkError: LinkE
   if (auth.status === 'loading') {
     return (
       <p aria-live="polite" className="leading-relaxed text-muted-foreground">
-        {'Checking whether you’re signed in…'}
+        {'正在确认登录状态…'}
       </p>
     )
   }
@@ -73,14 +73,14 @@ export function SignInForm({ next, linkError }: { next: string; linkError: LinkE
     return (
       <div className="flex flex-col gap-5">
         <p className="leading-relaxed">
-          {'Signed in as '}
+          {'当前登录账号：'}
           <span className="font-bold break-all">{auth.user.email}</span>
-          {'.'}
+          {'。'}
         </p>
         {errorMessage}
         <div className="flex flex-wrap gap-3">
           <Link href={next} className={cn(buttonVariants(), 'h-11 rounded-full px-5 font-bold')}>
-            Continue
+            继续
           </Link>
           <SignOutButton className="px-5" />
         </div>
@@ -94,15 +94,15 @@ export function SignInForm({ next, linkError }: { next: string; linkError: LinkE
         <div className="flex items-start gap-3 rounded-2xl bg-secondary p-4" aria-live="polite">
           <MailCheck className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden="true" />
           <div className="flex flex-col gap-1 text-sm leading-relaxed">
-            <p className="font-bold">Check your email</p>
+            <p className="font-bold">请查收邮件</p>
             <p>
-              {'We sent a sign-in link and code to '}
+              {'我们已将登录链接和验证码发送到 '}
               <span className="font-bold break-all">{sentTo}</span>
-              {'. Tap the link on this device, or type the code below. Each works once, and only the newest email works.'}
+              {'。请在这台设备上点击链接，或在下方输入验证码。每个只能使用一次，且只有最新的邮件有效。'}
             </p>
           </div>
         </div>
-        <EmailCodeForm email={sentTo} submitLabel="Sign in" onVerified={() => router.replace(next)} />
+        <EmailCodeForm email={sentTo} submitLabel="登录" onVerified={() => router.replace(next)} />
         {errorMessage}
         <div className="flex flex-wrap gap-3">
           <Button
@@ -110,7 +110,7 @@ export function SignInForm({ next, linkError }: { next: string; linkError: LinkE
             disabled={pending || secondsLeft > 0}
             className="h-11 rounded-full px-5 font-bold"
           >
-            {pending ? 'Sending…' : secondsLeft > 0 ? `Send again in ${secondsLeft}s` : 'Send again'}
+            {pending ? '正在发送…' : secondsLeft > 0 ? `${secondsLeft} 秒后可重新发送` : '重新发送'}
           </Button>
           <Button
             variant="outline"
@@ -120,7 +120,7 @@ export function SignInForm({ next, linkError }: { next: string; linkError: LinkE
             }}
             className="h-11 rounded-full px-5 font-bold"
           >
-            Use a different email
+            使用其他邮箱
           </Button>
         </div>
       </div>
@@ -132,7 +132,7 @@ export function SignInForm({ next, linkError }: { next: string; linkError: LinkE
       {errorMessage}
       <div className="flex flex-col gap-2">
         <Label htmlFor="email" className="font-bold">
-          Email
+          电子邮箱
         </Label>
         <Input
           id="email"
@@ -151,11 +151,11 @@ export function SignInForm({ next, linkError }: { next: string; linkError: LinkE
 
       <Button type="submit" disabled={pending} className="h-12 rounded-full text-base font-bold">
         <Mail data-icon="inline-start" />
-        {pending ? 'Sending…' : 'Email me a sign-in link and code'}
+        {pending ? '正在发送…' : '发送登录链接和验证码到我的邮箱'}
       </Button>
 
       <p className="text-sm leading-relaxed text-muted-foreground">
-        No password needed. New here? The same link creates your parent account.
+        无需密码。第一次使用？同一个链接会为你创建家长账号。
       </p>
     </form>
   )

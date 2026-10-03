@@ -3,18 +3,18 @@
  * on their own and stay unchanged, because saved artwork stores these keys.
  */
 export const PALETTE = [
-  { key: 'red', label: 'Red' },
-  { key: 'pink', label: 'Pink' },
-  { key: 'orange', label: 'Orange' },
-  { key: 'peach', label: 'Peach' },
-  { key: 'yellow', label: 'Yellow' },
-  { key: 'lime', label: 'Lime' },
-  { key: 'green', label: 'Green' },
-  { key: 'sky', label: 'Sky blue' },
-  { key: 'blue', label: 'Blue' },
-  { key: 'purple', label: 'Purple' },
-  { key: 'brown', label: 'Brown' },
-  { key: 'gray', label: 'Gray' },
+  { key: 'red', label: '红色' },
+  { key: 'pink', label: '粉色' },
+  { key: 'orange', label: '橙色' },
+  { key: 'peach', label: '桃色' },
+  { key: 'yellow', label: '黄色' },
+  { key: 'lime', label: '青柠绿' },
+  { key: 'green', label: '绿色' },
+  { key: 'sky', label: '天蓝色' },
+  { key: 'blue', label: '蓝色' },
+  { key: 'purple', label: '紫色' },
+  { key: 'brown', label: '棕色' },
+  { key: 'gray', label: '灰色' },
 ] as const
 
 /**
@@ -23,57 +23,57 @@ export const PALETTE = [
  */
 export const GROWN_UP_FAMILIES = [
   {
-    name: 'Rose',
+    name: '玫瑰',
     colors: [
-      { key: 'rose-pale', label: 'Blush' },
-      { key: 'rose-soft', label: 'Pink' },
-      { key: 'rose-mid', label: 'Rose' },
-      { key: 'rose-deep', label: 'Wine' },
+      { key: 'rose-pale', label: '浅粉' },
+      { key: 'rose-soft', label: '粉色' },
+      { key: 'rose-mid', label: '玫瑰红' },
+      { key: 'rose-deep', label: '酒红' },
     ],
   },
   {
-    name: 'Sun',
+    name: '阳光',
     colors: [
-      { key: 'sun-pale', label: 'Butter' },
-      { key: 'sun-soft', label: 'Gold' },
-      { key: 'sun-mid', label: 'Tangerine' },
-      { key: 'sun-deep', label: 'Rust' },
+      { key: 'sun-pale', label: '奶油黄' },
+      { key: 'sun-soft', label: '金黄' },
+      { key: 'sun-mid', label: '橘色' },
+      { key: 'sun-deep', label: '铁锈红' },
     ],
   },
   {
-    name: 'Leaf',
+    name: '树叶',
     colors: [
-      { key: 'leaf-pale', label: 'Pistachio' },
-      { key: 'leaf-soft', label: 'Spring green' },
-      { key: 'leaf-mid', label: 'Leaf green' },
-      { key: 'leaf-deep', label: 'Forest' },
+      { key: 'leaf-pale', label: '开心果绿' },
+      { key: 'leaf-soft', label: '春绿' },
+      { key: 'leaf-mid', label: '叶绿' },
+      { key: 'leaf-deep', label: '森林绿' },
     ],
   },
   {
-    name: 'Sea',
+    name: '海洋',
     colors: [
-      { key: 'sea-pale', label: 'Mist' },
-      { key: 'sea-soft', label: 'Turquoise' },
-      { key: 'sea-mid', label: 'Ocean' },
-      { key: 'sea-deep', label: 'Cobalt' },
+      { key: 'sea-pale', label: '雾蓝' },
+      { key: 'sea-soft', label: '绿松石' },
+      { key: 'sea-mid', label: '海蓝' },
+      { key: 'sea-deep', label: '钴蓝' },
     ],
   },
   {
-    name: 'Violet',
+    name: '紫罗兰',
     colors: [
-      { key: 'violet-pale', label: 'Lavender' },
-      { key: 'violet-soft', label: 'Lilac' },
-      { key: 'violet-mid', label: 'Violet' },
-      { key: 'violet-deep', label: 'Plum' },
+      { key: 'violet-pale', label: '薰衣草紫' },
+      { key: 'violet-soft', label: '丁香紫' },
+      { key: 'violet-mid', label: '紫罗兰' },
+      { key: 'violet-deep', label: '梅紫' },
     ],
   },
   {
-    name: 'Earth',
+    name: '大地',
     colors: [
-      { key: 'earth-pale', label: 'Sand' },
-      { key: 'earth-soft', label: 'Stone' },
-      { key: 'earth-mid', label: 'Clay' },
-      { key: 'earth-deep', label: 'Cocoa' },
+      { key: 'earth-pale', label: '沙色' },
+      { key: 'earth-soft', label: '石灰色' },
+      { key: 'earth-mid', label: '陶土色' },
+      { key: 'earth-deep', label: '可可色' },
     ],
   },
 ] as const

@@ -38,7 +38,7 @@ const RETURN_PATH = '/parent/cloud-saving'
 type Flash = { kind: 'success' | 'files_remaining'; message: string }
 
 function errorMessage(err: unknown) {
-  return err instanceof Error ? err.message : 'That didn’t go through. Please try again.'
+  return err instanceof Error ? err.message : '操作没有成功，请再试一次。'
 }
 
 function minutes(ms: number) {
@@ -49,16 +49,16 @@ export function CloudSavingView() {
   const auth = useAuthState()
 
   if (auth.status === 'loading') {
-    return <p className="leading-relaxed text-muted-foreground">{'Checking whether you’re signed in…'}</p>
+    return <p className="leading-relaxed text-muted-foreground">{'正在确认登录状态…'}</p>
   }
 
   if (auth.status === 'signed-out') {
     return (
       <section className={PANEL}>
         <div className="flex flex-col gap-2">
-          <h2 className="text-xl font-extrabold">Sign in to set up cloud saving</h2>
+          <h2 className="text-xl font-extrabold">登录后即可开启云端保存</h2>
           <p className="leading-relaxed text-muted-foreground">
-            Cloud saving belongs to a parent account. Until then, pictures stay on this device.
+            云端保存需要家长账号。在此之前，图画只保存在这台设备上。
           </p>
         </div>
         <Link
@@ -66,7 +66,7 @@ export function CloudSavingView() {
           className={cn(buttonVariants(), 'h-11 self-start rounded-full px-5 font-bold')}
         >
           <LogIn data-icon="inline-start" />
-          Sign in
+          登录
         </Link>
       </section>
     )
@@ -85,7 +85,7 @@ function SignedInCloudSaving({ userId, email }: { userId: string; email: string 
     setRetrying(true)
     try {
       await removeCloudFiles(userId)
-      setFlash({ kind: 'success', message: 'All cloud picture files have been removed.' })
+      setFlash({ kind: 'success', message: '所有云端图画文件都已删除。' })
     } catch (err) {
       setFlash({ kind: 'files_remaining', message: errorMessage(err) })
     } finally {
@@ -106,22 +106,22 @@ function SignedInCloudSaving({ userId, email }: { userId: string; email: string 
           className="h-11 self-start rounded-full px-5 font-bold"
         >
           <RotateCw data-icon="inline-start" />
-          Try again
+          再试一次
         </Button>
       </section>
     )
   }
 
   if (!data) {
-    return <p className="leading-relaxed text-muted-foreground">Loading cloud saving…</p>
+    return <p className="leading-relaxed text-muted-foreground">正在加载云端保存…</p>
   }
 
   if (!data.notice) {
     return (
       <section className={PANEL}>
-        <h2 className="text-xl font-extrabold">{'Cloud saving isn’t available yet'}</h2>
+        <h2 className="text-xl font-extrabold">{'云端保存暂未开放'}</h2>
         <p className="leading-relaxed text-muted-foreground">
-          Pictures stay on this device. Nothing is sent anywhere.
+          图画只保存在这台设备上，不会发送到任何地方。
         </p>
       </section>
     )
@@ -153,7 +153,7 @@ function SignedInCloudSaving({ userId, email }: { userId: string; email: string 
               className="h-10 self-start rounded-full px-4 font-bold"
             >
               <RotateCw data-icon="inline-start" />
-              {retrying ? 'Removing…' : 'Remove remaining files'}
+              {retrying ? '正在删除…' : '删除剩余文件'}
             </Button>
           )}
         </div>
@@ -208,7 +208,7 @@ function ConsentStep({ email, notice, outdatedConsent, remainingMs, signedInMinu
       void cloudSync.syncNow()
       await onChanged({
         kind: 'success',
-        message: 'Cloud saving is on. Garden pictures on this device are being copied to your account.',
+        message: '云端保存已开启。这台设备上花园里的图画正在复制到你的账号。',
       })
     } catch (err) {
       if (err instanceof CloudConsentError && err.code === 'recent_sign_in_required') setServerSaysStale(true)
@@ -230,12 +230,12 @@ function ConsentStep({ email, notice, outdatedConsent, remainingMs, signedInMinu
           </span>
           <div className="flex flex-col gap-1">
             <h2 id="cloud-status-heading" className="text-xl font-extrabold">
-              {outdatedConsent ? 'The notice has been updated' : 'Cloud saving is off'}
+              {outdatedConsent ? '说明已更新' : '云端保存已关闭'}
             </h2>
             <p className="leading-relaxed text-muted-foreground text-pretty">
               {outdatedConsent
-                ? `You agreed to version ${outdatedConsent.noticeVersion}, which has been replaced. Cloud saving is paused until you read version ${notice.version} below and agree to it.`
-                : 'Pictures your child colors stay on this device only. Read the notice below to decide.'}
+                ? `你同意的是第 ${outdatedConsent.noticeVersion} 版说明，它已被替换。请阅读下方第 ${notice.version} 版并同意，在此之前云端保存会暂停。`
+                : '孩子涂色的图画只保存在这台设备上。请阅读下方说明后再决定。'}
             </p>
           </div>
         </div>
@@ -245,7 +245,7 @@ function ConsentStep({ email, notice, outdatedConsent, remainingMs, signedInMinu
 
       <section className={PANEL} aria-labelledby="permission-heading">
         <h2 id="permission-heading" className="text-xl font-extrabold">
-          Your permission
+          你的授权
         </h2>
 
         <label className="flex cursor-pointer items-start gap-3 rounded-2xl border p-4 has-[:checked]:border-primary">
@@ -266,14 +266,14 @@ function ConsentStep({ email, notice, outdatedConsent, remainingMs, signedInMinu
               className="h-12 self-start rounded-full px-6 text-base font-bold"
             >
               <Cloud data-icon="inline-start" />
-              {pending ? 'Turning on…' : 'Turn on cloud saving'}
+              {pending ? '正在开启…' : '开启云端保存'}
             </Button>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              {`You signed in ${signedInMinutesAgo ?? 1} min ago, so you have about ${minutes(remainingMs)} min to confirm. We record the date, notice version ${notice.version} and your recent sign-in.`}
+              {`你在 ${signedInMinutesAgo ?? 1} 分钟前登录，大约还有 ${minutes(remainingMs)} 分钟可以确认。我们会记录日期、说明版本 ${notice.version} 以及你最近的登录。`}
             </p>
           </div>
         ) : (
-          <FreshSignInPrompt email={email} action="turn on cloud saving" returnPath={RETURN_PATH} />
+          <FreshSignInPrompt email={email} action="开启云端保存" returnPath={RETURN_PATH} />
         )}
 
         {error && (
@@ -319,7 +319,7 @@ function CloudSavingOn({ userId, email, notice, latestNotice, consent, remaining
       setConfirmOpen(false)
       await onChanged({
         kind: 'success',
-        message: 'Cloud saving is off. Every cloud copy was deleted. Pictures on your devices are still there.',
+        message: '云端保存已关闭，所有云端副本均已删除。你设备上的图画仍然保留。',
       })
     } catch (err) {
       if (err instanceof CloudConsentError && err.code === 'recent_sign_in_required') {
@@ -349,10 +349,10 @@ function CloudSavingOn({ userId, email, notice, latestNotice, consent, remaining
           </span>
           <div className="flex flex-col gap-1">
             <h2 id="cloud-status-heading" className="text-xl font-extrabold">
-              Cloud saving is on
+              云端保存已开启
             </h2>
             <p className="leading-relaxed text-muted-foreground text-pretty">
-              {`You agreed to notice version ${consent.noticeVersion} on ${formatConsentDate(consent.givenAt)}.`}
+              {`你于 ${formatConsentDate(consent.givenAt)} 同意了第 ${consent.noticeVersion} 版说明。`}
             </p>
           </div>
         </div>
@@ -361,11 +361,11 @@ function CloudSavingOn({ userId, email, notice, latestNotice, consent, remaining
           <ConsentReceiptButton />
           <Button variant="outline" onClick={requestTurnOff} className="h-11 rounded-full px-5 font-bold">
             <CloudOff data-icon="inline-start" />
-            Turn off cloud saving
+            关闭云端保存
           </Button>
         </div>
         {needsFreshLink && (
-          <FreshSignInPrompt email={email} action="turn off cloud saving" returnPath={RETURN_PATH} />
+          <FreshSignInPrompt email={email} action="关闭云端保存" returnPath={RETURN_PATH} />
         )}
         {error && (
           <p role="alert" className="text-sm font-semibold text-destructive">
@@ -378,14 +378,14 @@ function CloudSavingOn({ userId, email, notice, latestNotice, consent, remaining
         <section className={PANEL} aria-labelledby="notice-updated-heading">
           <div className="flex flex-col gap-2">
             <h2 id="notice-updated-heading" className="text-xl font-extrabold">
-              {`We updated the notice to version ${newerNotice.version}`}
+              {`我们已将说明更新到第 ${newerNotice.version} 版`}
             </h2>
             <p className="leading-relaxed text-muted-foreground text-pretty">
-              {`${NOTICE_CHANGES[newerNotice.version] ?? 'The wording has changed.'} Your permission under version ${notice.version} stays in place, so there’s nothing you need to do.`}
+              {`${NOTICE_CHANGES[newerNotice.version] ?? '措辞有所调整。'}你在第 ${notice.version} 版下的授权依然有效，无需任何操作。`}
             </p>
           </div>
           <details className="rounded-2xl bg-secondary p-5">
-            <summary className="cursor-pointer font-bold">{`Read version ${newerNotice.version}`}</summary>
+            <summary className="cursor-pointer font-bold">{`阅读第 ${newerNotice.version} 版`}</summary>
             <div className="mt-5">
               <NoticeSections body={newerNotice.body} />
             </div>
@@ -395,7 +395,7 @@ function CloudSavingOn({ userId, email, notice, latestNotice, consent, remaining
 
       <details className="group rounded-3xl border bg-card p-6 md:p-8">
         <summary className="cursor-pointer font-extrabold">
-          {`Read the notice you agreed to (version ${notice.version})`}
+          {`阅读你同意的说明（第 ${notice.version} 版）`}
         </summary>
         <div className="mt-6">
           <NoticeSections body={notice.body} />
@@ -405,9 +405,9 @@ function CloudSavingOn({ userId, email, notice, latestNotice, consent, remaining
       <Dialog open={confirmOpen} onOpenChange={(open) => !pending && setConfirmOpen(open)}>
         <DialogContent className="gap-5 rounded-3xl p-6 sm:max-w-md" showCloseButton={!pending}>
           <DialogHeader>
-            <DialogTitle className="text-xl font-black">Turn off cloud saving?</DialogTitle>
+            <DialogTitle className="text-xl font-black">要关闭云端保存吗？</DialogTitle>
             <DialogDescription className="leading-relaxed">
-              {'This withdraws your permission and deletes every cloud copy of your child’s pictures. Pictures already on your devices stay there. You can turn it on again later.'}
+              {'这会撤回你的授权，并删除孩子图画的所有云端副本。已在你设备上的图画会保留。之后你可以再次开启。'}
             </DialogDescription>
           </DialogHeader>
           {error && (
@@ -420,7 +420,7 @@ function CloudSavingOn({ userId, email, notice, latestNotice, consent, remaining
               render={<Button variant="outline" className="h-11 rounded-full px-5 font-bold" />}
               disabled={pending}
             >
-              Keep it on
+              保持开启
             </DialogClose>
             <Button
               variant="destructive"
@@ -428,7 +428,7 @@ function CloudSavingOn({ userId, email, notice, latestNotice, consent, remaining
               disabled={pending}
               className="h-11 rounded-full px-5 font-bold"
             >
-              {pending ? 'Turning off…' : 'Turn off and delete'}
+              {pending ? '正在关闭…' : '关闭并删除'}
             </Button>
           </DialogFooter>
         </DialogContent>

@@ -26,7 +26,7 @@ export function MandalaTile({ mandala, locked }: { mandala: Mandala; locked: boo
 
   if (!locked) {
     return (
-      <Link href={colorHref(mandala)} aria-label={`Color ${mandala.name}`} className={tileClass}>
+      <Link href={colorHref(mandala)} aria-label={`给「${mandala.name}」涂色`} className={tileClass}>
         <MandalaArt version={version} fills={fills} className="size-full" />
       </Link>
     )
@@ -35,7 +35,7 @@ export function MandalaTile({ mandala, locked }: { mandala: Mandala; locked: boo
   return (
     <button
       type="button"
-      aria-label={`${mandala.name}, locked. Ask a grown-up.`}
+      aria-label={`「${mandala.name}」还没解锁，请大人帮忙。`}
       onClick={() => setAsking(true)}
       className={cn(tileClass, 'bg-[var(--pack-tint,var(--secondary))]')}
     >
@@ -49,7 +49,7 @@ export function MandalaTile({ mandala, locked }: { mandala: Mandala; locked: boo
           className="animate-bubble-in absolute inset-x-3 bottom-3 flex items-center justify-center gap-2 rounded-2xl bg-ink px-3 py-3 text-lg font-extrabold text-background"
         >
           <UsersRound className="size-6 shrink-0" strokeWidth={2.5} aria-hidden="true" />
-          Ask a grown-up
+          请大人帮忙
         </span>
       )}
     </button>

@@ -34,7 +34,7 @@ export function StandardUnlockCard({ unlocked, selected, onToggle }: StandardUnl
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
             <h3 id="standard-unlock" className="text-xl font-black">
-              Finish the Standard pack
+              解锁完整标准画册
             </h3>
             {unlocked ? (
               <span className="flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-xs font-bold text-foreground">
@@ -50,7 +50,7 @@ export function StandardUnlockCard({ unlocked, selected, onToggle }: StandardUnl
       </header>
 
       <p className="leading-relaxed text-muted-foreground text-pretty">
-        {`The first ${free} flowers are free for everyone, along with all twelve colors. This opens the other ${locked}.`}
+        {`前 ${free} 朵花和全部十二种颜色对所有人免费。购买后将解锁其余 ${locked} 朵。`}
       </p>
 
       <ul className="grid grid-cols-5 gap-2 sm:grid-cols-10" aria-label="Pictures in the Standard pack">
@@ -83,7 +83,7 @@ export function StandardUnlockCard({ unlocked, selected, onToggle }: StandardUnl
           className="h-12 self-start rounded-full px-6 text-base font-bold"
         >
           {selected ? <Check data-icon="inline-start" strokeWidth={3} /> : <Plus data-icon="inline-start" strokeWidth={3} />}
-          {selected ? 'In your order' : 'Add to order'}
+          {selected ? '已加入订单' : '加入订单'}
         </Button>
       )}
     </section>

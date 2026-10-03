@@ -14,7 +14,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { id } = await params
   const mandala = getMandala(id)
-  return { title: mandala ? `Color ${mandala.name}` : 'Picture not found' }
+  return { title: mandala ? `给「${mandala.name}」涂色` : '找不到这幅画' }
 }
 
 export default async function ColorPage({ params }: Params) {

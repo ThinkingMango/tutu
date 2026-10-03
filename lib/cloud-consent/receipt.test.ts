@@ -90,7 +90,7 @@ describe('buildConsentReceiptPdf', () => {
     const bytes = await buildConsentReceiptPdf(receipt())
     expect(new TextDecoder().decode(bytes.slice(0, 5))).toBe('%PDF-')
     const doc = await PDFDocument.load(bytes)
-    expect(doc.getTitle()).toBe('Cloud saving permission record')
+    expect(doc.getTitle()).toBe('云端保存授权记录')
     expect(doc.getAuthor()).toBe('SmartMango')
   })
 

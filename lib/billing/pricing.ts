@@ -17,9 +17,9 @@ export type PackOffer = Readonly<{
 }>
 
 export const PACK_OFFERS: readonly PackOffer[] = Object.freeze([
-  { id: 'single', name: 'One pack', packs: 1, priceCents: PACK_PRICE_CENTS },
-  { id: 'bundle-3', name: 'Any three packs', packs: 3, priceCents: 1299 },
-  { id: 'bundle-5', name: 'Any five packs', packs: 5, priceCents: 1999 },
+  { id: 'single', name: '单本画册', packs: 1, priceCents: PACK_PRICE_CENTS },
+  { id: 'bundle-3', name: '任选三本', packs: 3, priceCents: 1299 },
+  { id: 'bundle-5', name: '任选五本', packs: 5, priceCents: 1999 },
 ])
 
 const usd = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })

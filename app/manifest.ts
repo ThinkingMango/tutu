@@ -3,9 +3,10 @@ import type { MetadataRoute } from 'next'
 /** Lets families add Little Mandala to a tablet's home screen, where it opens full screen like an app. */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Little Mandala',
-    short_name: 'Mandala',
-    description: 'Calm flower mandala coloring for children ages 3 to 7.',
+    name: '小曼陀罗',
+    short_name: '小曼陀罗',
+    description: '为 3 至 7 岁儿童打造的宁静花朵曼陀罗涂色应用。',
+    lang: 'zh-CN',
     start_url: '/',
     scope: '/',
     display: 'standalone',
