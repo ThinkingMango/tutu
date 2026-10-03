@@ -27,7 +27,7 @@ export default async function ConfirmSignInPage({ searchParams }: Props) {
         {usable ? (
           <>
             <div className="flex flex-col gap-2">
-              <h1 className="text-2xl font-black text-balance">Finish signing in</h1>
+              <h1 className="text-2xl font-black text-balance">完成登录</h1>
               <p className="leading-relaxed text-muted-foreground text-pretty">
                 点击按钮，在这台设备上打开你的小小曼陀罗家长账号。
               </p>
@@ -46,7 +46,7 @@ export default async function ConfirmSignInPage({ searchParams }: Props) {
         ) : (
           <>
             <div className="flex flex-col gap-2">
-              <h1 className="text-2xl font-black text-balance">This link is incomplete</h1>
+              <h1 className="text-2xl font-black text-balance">此链接不完整</h1>
               <p className="leading-relaxed text-muted-foreground text-pretty">
                 登录链接不完整。请重新发送一个，并直接从邮件中打开。
               </p>

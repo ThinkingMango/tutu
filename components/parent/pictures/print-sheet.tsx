@@ -6,7 +6,7 @@ export function PrintSheet({ pictures }: { pictures: readonly ExportPicture[] })
   return (
     <div className="hidden text-foreground print:block">
       {pictures.length === 0 ? (
-        <p className="text-lg font-bold">No pictures chosen. Pick some on the Pictures page, then print again.</p>
+        <p className="text-lg font-bold">还没有选择图画。请先在“图画”页面选择，然后再次打印。</p>
       ) : (
         pictures.map((picture) => (
           <section
@@ -19,7 +19,7 @@ export function PrintSheet({ pictures }: { pictures: readonly ExportPicture[] })
               fills={picture.artwork.fills}
               className="aspect-square w-full max-w-[17cm]"
             />
-            <p className="text-base text-muted-foreground">{`Colored on ${picture.dateLabel}`}</p>
+            <p className="text-base text-muted-foreground">{`涂色于 ${picture.dateLabel}`}</p>
           </section>
         ))
       )}

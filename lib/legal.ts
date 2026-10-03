@@ -11,7 +11,7 @@ export const SUPPORT_HREF = '/support'
 export const INFO_LINKS = [
   { href: PRIVACY_HREF, label: 'Privacy' },
   { href: REFUNDS_HREF, label: 'Refunds' },
-  { href: SUPPORT_HREF, label: 'Help and support' },
+  { href: SUPPORT_HREF, label: '帮助与支持' },
 ] as const
 
 export function supportMailto(subject: string) {

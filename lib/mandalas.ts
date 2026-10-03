@@ -202,9 +202,9 @@ function circlePath(r: number) {
 }
 
 function layerNames(total: number) {
-  if (total === 1) return ['Petal']
-  if (total === 2) return ['Outer petal', 'Inner petal']
-  return ['Outer petal', 'Middle petal', 'Inner petal']
+  if (total === 1) return ['花瓣']
+  if (total === 2) return ['外层花瓣', '内层花瓣']
+  return ['外层花瓣', '中层花瓣', '内层花瓣']
 }
 
 function buildRegions({ layers, centerRadius }: PetalVersion): Region[] {
@@ -229,7 +229,7 @@ function buildRegions({ layers, centerRadius }: PetalVersion): Region[] {
     }
   })
 
-  regions.push({ id: 'center', d: circlePath(centerRadius), label: 'Flower center' })
+  regions.push({ id: 'center', d: circlePath(centerRadius), label: '花心' })
   return regions
 }
 

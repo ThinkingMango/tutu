@@ -11,7 +11,7 @@ export function InfoFooter() {
   return (
     <footer className="mt-auto border-t bg-background">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-4 px-5 py-6 md:flex-row md:items-center md:justify-between md:px-8">
-        <nav aria-label="Policies and help" className="-mx-3 flex flex-wrap gap-1">
+        <nav aria-label="政策与帮助" className="-mx-3 flex flex-wrap gap-1">
           {INFO_LINKS.map((link) => {
             const active = pathname === link.href
             return (

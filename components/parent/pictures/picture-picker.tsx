@@ -10,7 +10,7 @@ type PicturePickerProps = {
 
 export function PicturePicker({ pictures, isSelected, onToggle }: PicturePickerProps) {
   return (
-    <ul aria-label="Pictures to print or save" className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+    <ul aria-label="要打印或保存的图画" className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
       {pictures.map((picture) => (
         <li key={picture.artwork.id}>
           <label className="flex h-full cursor-pointer flex-col gap-3 rounded-3xl border-2 bg-card p-3 transition-colors has-checked:border-primary has-focus-visible:ring-3 has-focus-visible:ring-ring/50">

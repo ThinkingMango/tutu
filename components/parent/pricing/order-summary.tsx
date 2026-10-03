@@ -75,7 +75,7 @@ export function OrderSummary({ packs, withStandard, buyable, onPurchased }: Orde
               ))}
               {withStandard && (
                 <div className="flex items-baseline justify-between gap-3">
-                  <dt className="font-semibold">Standard pack unlock</dt>
+                  <dt className="font-semibold">标准画册解锁</dt>
                   <dd className="font-bold tabular-nums">{formatPrice(STANDARD_UNLOCK_CENTS)}</dd>
                 </div>
               )}

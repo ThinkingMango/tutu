@@ -72,13 +72,13 @@ describe('packs remembered for offline coloring', () => {
   it('never open another parent’s packs', async () => {
     saveRights('00000000-0000-4000-8000-000000000002', [row()])
     result.current = OFFLINE
-    await expect(fetchRights(['entitlements', PARENT])).rejects.toThrow(/couldn’t check/)
+    await expect(fetchRights(['entitlements', PARENT])).rejects.toThrow(/暂时无法查看/)
   })
 
   it('aren’t used when the server answers with an error rather than being unreachable', async () => {
     saveRights(PARENT, [row()])
     result.current = { data: null, error: { code: '42501', message: 'permission denied' } }
-    await expect(fetchRights(['entitlements', PARENT])).rejects.toThrow(/couldn’t check/)
+    await expect(fetchRights(['entitlements', PARENT])).rejects.toThrow(/暂时无法查看/)
   })
 
   it('are wiped when a parent signs out, so the next person on the tablet doesn’t inherit them', async () => {

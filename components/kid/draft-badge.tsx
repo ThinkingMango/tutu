@@ -5,7 +5,7 @@ export function DraftBadge({ pack }: { pack: Pack }) {
   if (pack.status !== 'draft') return null
   return (
     <span className="shrink-0 rounded-full border-2 border-dashed border-muted-foreground px-3 py-0.5 text-sm font-black tracking-wider text-muted-foreground uppercase">
-      Draft
+      草稿
     </span>
   )
 }

@@ -12,12 +12,12 @@ export type NoticeSection = { heading: string | null; paragraphs: string[] }
  * does should retire the older version instead.
  */
 export const NOTICE_CHANGES: Partial<Record<number, string>> = {
-  2: 'To get a copy of your data, you now email us instead of downloading it here. Nothing changes about what we save or who can see it.',
+  2: '如需获取数据副本，现在请发送邮件给我们，而不是在此处下载。我们保存的内容以及可查看的人员均未改变。',
 }
 
 /** The exact sentence the parent ticks. The permission record PDF quotes it word for word. */
 export function agreementStatement(noticeVersion: number) {
-  return `I am this child’s parent or legal guardian. I have read notice version ${noticeVersion} above and I agree to cloud saving as it describes.`
+  return `我是此孩子的父母或法定监护人。我已阅读上方第 ${noticeVersion} 版告知，并同意按其所述开启云端保存。`
 }
 
 /** The approved notice is stored as "## Heading" lines followed by one paragraph per line. */

@@ -72,7 +72,7 @@ export async function fetchRights([, parentId]: readonly [string, string]): Prom
     const saved = isUnreachable(error) ? readSavedRights() : null
     if (saved?.parentId === parentId) return activeRights(saved.rows, Date.now())
     console.error('Loading purchases failed', error.code)
-    throw new Error('We couldn’t check your purchases right now.')
+    throw new Error('暂时无法查看你的购买记录。')
   }
   saveRights(parentId, data as EntitlementRow[])
   return activeRights(data as EntitlementRow[], Date.now())

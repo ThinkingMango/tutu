@@ -32,11 +32,11 @@ export type Pack = Readonly<{
 const STANDARD: Pack = {
   id: 'standard',
   name: 'Standard',
-  description: 'Ten flower mandalas. Four are free for everyone, and six more open with a one-time unlock.',
+  description: '十幅花朵曼陀罗。其中四幅人人免费，另外六幅一次性解锁即可使用。',
   icon: 'flower-2',
   status: 'published',
   audience: 'children',
-  artSource: 'Original geometric artwork drawn in code for Little Mandala. No third-party images or licenses are used.',
+  artSource: '为小曼陀罗用代码绘制的原创几何图案。未使用任何第三方图片或授权。',
   soldSeparately: false,
 }
 
@@ -48,7 +48,7 @@ function tracedPack(source: TracedPack): Pack {
     icon: source.icon,
     status: source.status,
     audience: source.audience ?? 'children',
-    artSource: `Original line art made for Little Mandala with v0 image generation, then traced into tap-to-fill areas by scripts/trace-pack.mjs. Each source image is kept in art/${source.id}/source with its checksum. No third-party images or licenses are used.`,
+    artSource: `为小曼陀罗使用 v0 图像生成制作的原创线稿，再由 scripts/trace-pack.mjs 描摹成可点按填色的区域。每张源图及其校验值均保存在 art/${source.id}/source 中。未使用任何第三方图片或授权。`,
     soldSeparately: true,
   }
 }

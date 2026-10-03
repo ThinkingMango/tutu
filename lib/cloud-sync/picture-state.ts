@@ -15,12 +15,12 @@ export function pictureSaveState(snapshot: SyncSnapshot, artworkId: string): Pic
 }
 
 export const SAVE_STATE_LABEL: Record<PictureSaveState, { short: string; detail: string }> = {
-  'device-only': { short: 'This device only', detail: 'Only on this device. There is no cloud copy.' },
-  'in-cloud': { short: 'Also in your account', detail: 'On this device, with a copy in your account.' },
-  waiting: { short: 'Not in your account yet', detail: 'On this device. The cloud copy has not been made yet.' },
+  'device-only': { short: '仅在此设备', detail: '仅保存在这台设备上，没有云端副本。' },
+  'in-cloud': { short: '账户中也有', detail: '保存在这台设备上，你的账户中也有一份副本。' },
+  waiting: { short: '尚未存入账户', detail: '保存在这台设备上，云端副本尚未生成。' },
   'removed-elsewhere': {
-    short: 'This device only',
-    detail: 'On this device. It was taken out of the garden on another device, so it is not copied to your account.',
+    short: '仅在此设备',
+    detail: '保存在这台设备上。它已在另一台设备上从花园中移除，因此不会复制到你的账户。',
   },
-  checking: { short: 'Checking…', detail: 'On this device. Checking your account for a copy.' },
+  checking: { short: '检查中…', detail: '保存在这台设备上，正在检查你的账户中是否有副本。' },
 }

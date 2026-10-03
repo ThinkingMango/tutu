@@ -47,10 +47,10 @@ function storedDraftFills() {
 const THREE_COLORS = { 'l0-p0': 'red', 'l0-p1': 'blue', center: 'blue' }
 
 async function colorThreeRegions(user: User) {
-  await user.click(region('Petal 1'))
+  await user.click(region('花瓣 1'))
   await user.click(screen.getByRole('radio', { name: '蓝色' }))
-  await user.click(region('Petal 2'))
-  await user.click(region('Flower center'))
+  await user.click(region('花瓣 2'))
+  await user.click(region('花心'))
 }
 
 async function startOver(user: User) {
@@ -67,20 +67,20 @@ describe('coloring screen', () => {
     first.unmount()
 
     const second = openColoringPage()
-    expect(region('Petal 1')).toBeInTheDocument()
-    expect(region('Flower center')).toBeInTheDocument()
-    expect(tool('Undo')).toBeDisabled()
+    expect(region('花瓣 1')).toBeInTheDocument()
+    expect(region('花心')).toBeInTheDocument()
+    expect(tool('撤销')).toBeDisabled()
     expect(second.library.getState().artworks).toEqual({})
   })
 
   it('opens white from the pack after saving, and the picture waits in the garden', async () => {
     const first = openColoringPage()
     await colorThreeRegions(first.user)
-    await first.user.click(tool("I'm done"))
+    await first.user.click(tool('我涂好了'))
     first.unmount()
 
     const second = openColoringPage()
-    expect(region('Petal 1')).toBeInTheDocument()
+    expect(region('花瓣 1')).toBeInTheDocument()
     const [saved] = second.library.getState().gallery
     expect(saved.fills).toEqual(THREE_COLORS)
   })
@@ -88,15 +88,15 @@ describe('coloring screen', () => {
   it('opens a garden picture with its colors, and done updates that same picture', async () => {
     const first = openColoringPage()
     await colorThreeRegions(first.user)
-    await first.user.click(tool("I'm done"))
+    await first.user.click(tool('我涂好了'))
     const [saved] = first.library.getState().gallery
     first.unmount()
 
     const second = openColoringPage(saved.id)
-    expect(region('Petal 1, Red')).toBeInTheDocument()
+    expect(region('花瓣 1, 红色')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: '回到我的花园' })).toBeInTheDocument()
-    await second.user.click(region('Petal 3'))
-    await second.user.click(tool("I'm done"))
+    await second.user.click(region('花瓣 3'))
+    await second.user.click(tool('我涂好了'))
 
     const gallery = second.library.getState().gallery
     expect(gallery).toHaveLength(1)
@@ -106,24 +106,24 @@ describe('coloring screen', () => {
   it('leaves the garden picture unchanged when the child leaves it without saving', async () => {
     const first = openColoringPage()
     await colorThreeRegions(first.user)
-    await first.user.click(tool("I'm done"))
+    await first.user.click(tool('我涂好了'))
     const [saved] = first.library.getState().gallery
     first.unmount()
 
     const second = openColoringPage(saved.id)
-    await second.user.click(region('Petal 3'))
+    await second.user.click(region('花瓣 3'))
     second.unmount()
 
     const third = openColoringPage(saved.id)
-    expect(region('Petal 3')).toBeInTheDocument()
+    expect(region('花瓣 3')).toBeInTheDocument()
     expect(third.library.getState().gallery.map((a) => a.fills)).toEqual([THREE_COLORS])
   })
 
   it('cannot start over, undo, or redo on a flower that has no color yet', () => {
     openColoringPage()
     expect(tool('重新开始')).toBeDisabled()
-    expect(tool('Undo')).toBeDisabled()
-    expect(tool('Redo')).toBeDisabled()
+    expect(tool('撤销')).toBeDisabled()
+    expect(tool('重做')).toBeDisabled()
   })
 
   it('shows a colored-to-blank preview and keeps everything when the cross is tapped', async () => {
@@ -134,10 +134,10 @@ describe('coloring screen', () => {
     const dialog = await screen.findByRole('dialog')
     expect(within(dialog).getByRole('img', { name: /涂好的花朵会全部变成白色/ })).toBeInTheDocument()
 
-    await user.click(within(dialog).getByRole('button', { name: 'No, keep my colors' }))
+    await user.click(within(dialog).getByRole('button', { name: '不，留着我的颜色' }))
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
 
-    expect(region('Petal 1, Red')).toBeInTheDocument()
+    expect(region('花瓣 1, 红色')).toBeInTheDocument()
     expect(storedDraftFills()).toEqual(THREE_COLORS)
   })
 
@@ -146,28 +146,28 @@ describe('coloring screen', () => {
     await colorThreeRegions(user)
     await startOver(user)
 
-    expect(region('Petal 1')).toBeInTheDocument()
+    expect(region('花瓣 1')).toBeInTheDocument()
     expect(storedDraftFills()).toEqual({})
 
-    await user.click(tool('Undo'))
-    expect(region('Petal 1, Red')).toBeInTheDocument()
-    expect(region('Flower center, Blue')).toBeInTheDocument()
+    await user.click(tool('撤销'))
+    expect(region('花瓣 1, 红色')).toBeInTheDocument()
+    expect(region('花心, 蓝色')).toBeInTheDocument()
     expect(storedDraftFills()).toEqual(THREE_COLORS)
 
-    await user.click(tool('Redo'))
-    expect(region('Flower center')).toBeInTheDocument()
+    await user.click(tool('重做'))
+    expect(region('花心')).toBeInTheDocument()
     expect(storedDraftFills()).toEqual({})
-    expect(tool('Redo')).toBeDisabled()
+    expect(tool('重做')).toBeDisabled()
   })
 
   it('a new tap after undo drops what could be redone', async () => {
     const { user } = openColoringPage()
     await colorThreeRegions(user)
-    await user.click(tool('Undo'))
-    expect(tool('Redo')).toBeEnabled()
+    await user.click(tool('撤销'))
+    expect(tool('重做')).toBeEnabled()
 
-    await user.click(region('Petal 3'))
-    expect(tool('Redo')).toBeDisabled()
+    await user.click(region('花瓣 3'))
+    expect(tool('重做')).toBeDisabled()
   })
 
   it('erases a single part with the eraser, and undo and redo work on it', async () => {
@@ -175,25 +175,25 @@ describe('coloring screen', () => {
     await colorThreeRegions(first.user)
 
     await first.user.click(screen.getByRole('radio', { name: '橡皮擦' }))
-    await first.user.click(region('Petal 2, Blue'))
-    expect(region('Petal 2')).toBeInTheDocument()
-    expect(region('Petal 1, Red')).toBeInTheDocument()
+    await first.user.click(region('花瓣 2, 蓝色'))
+    expect(region('花瓣 2')).toBeInTheDocument()
+    expect(region('花瓣 1, 红色')).toBeInTheDocument()
     expect(storedDraftFills()).toEqual({ 'l0-p0': 'red', center: 'blue' })
 
-    await first.user.click(tool('Undo'))
-    expect(region('Petal 2, Blue')).toBeInTheDocument()
-    await first.user.click(tool('Redo'))
-    expect(region('Petal 2')).toBeInTheDocument()
-    expect(region('Flower center, Blue')).toBeInTheDocument()
+    await first.user.click(tool('撤销'))
+    expect(region('花瓣 2, 蓝色')).toBeInTheDocument()
+    await first.user.click(tool('重做'))
+    expect(region('花瓣 2')).toBeInTheDocument()
+    expect(region('花心, 蓝色')).toBeInTheDocument()
   })
 
   it('does not start an artwork when the eraser taps a blank flower', async () => {
     const { user, library } = openColoringPage()
     await user.click(screen.getByRole('radio', { name: '橡皮擦' }))
-    await user.click(region('Petal 1'))
+    await user.click(region('花瓣 1'))
 
     expect(library.getState().artworks).toEqual({})
-    expect(tool('Undo')).toBeDisabled()
+    expect(tool('撤销')).toBeDisabled()
   })
 
   it('saves to the garden only when the child taps done, not while autosaving', async () => {
@@ -201,20 +201,20 @@ describe('coloring screen', () => {
     await colorThreeRegions(user)
     expect(library.getState().gallery).toHaveLength(0)
 
-    await user.click(tool("I'm done"))
+    await user.click(tool('我涂好了'))
     expect(library.getState().gallery).toHaveLength(1)
   })
 
   it('protects the garden picture when the child keeps going and starts over', async () => {
     const { user, library } = openColoringPage()
     await colorThreeRegions(user)
-    await user.click(tool("I'm done"))
+    await user.click(tool('我涂好了'))
     await user.click(await screen.findByRole('button', { name: '继续涂' }))
     await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument())
 
     await startOver(user)
-    await user.click(tool('Undo'))
-    await user.click(tool('Redo'))
+    await user.click(tool('撤销'))
+    await user.click(tool('重做'))
 
     const [saved] = library.getState().gallery
     expect(saved.fills).toEqual(THREE_COLORS)

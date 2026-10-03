@@ -32,12 +32,12 @@ export function isCloudSavingOn(status: CloudConsentStatus | undefined) {
 type ErrorCode = 'recent_sign_in_required' | 'not_signed_in' | 'notice_not_available' | 'files_remaining' | 'unknown'
 
 const MESSAGES: Record<ErrorCode, string> = {
-  recent_sign_in_required: 'For your child’s safety, please confirm with a fresh sign-in email first.',
-  not_signed_in: 'Please sign in again to change cloud saving.',
-  notice_not_available: 'This notice was just replaced. Reload the page to read the current version.',
+  recent_sign_in_required: '为了孩子的安全，请先通过新的登录邮件确认身份。',
+  not_signed_in: '请重新登录后再更改云端保存设置。',
+  notice_not_available: '此告知刚刚已更新。请刷新页面阅读最新版本。',
   files_remaining:
-    'Cloud saving is off, but some picture files are still being removed. Please try removing them again.',
-  unknown: 'That didn’t go through. Please check your connection and try again.',
+    '云端保存已关闭，但部分图画文件仍在删除中。请再次尝试删除。',
+  unknown: '操作未成功。请检查网络连接后重试。',
 }
 
 export class CloudConsentError extends Error {
@@ -78,7 +78,7 @@ async function fetchCloudConsentStatus([, userId]: readonly [string, string]): P
 
   if (noticeResult.error || consentResult.error) {
     console.error('Loading cloud saving status failed', noticeResult.error?.code ?? consentResult.error?.code)
-    throw new Error('We couldn’t load cloud saving right now.')
+    throw new Error('暂时无法加载云端保存设置。')
   }
 
   const inForce = noticeResult.data

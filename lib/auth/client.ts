@@ -45,12 +45,12 @@ function rememberDestination(next: string) {
 }
 
 const TOO_MANY_EMAILS =
-  'We’ve sent too many sign-in emails for now. Check your inbox for an earlier link, or try again in about an hour.'
+  '登录邮件发送次数过多。请查看收件箱中之前的链接，或约一小时后再试。'
 
 function describeRateLimit(error: AuthError) {
   // Supabase's per-address cooldown says "only request this after 42 seconds"; the project-wide cap doesn't.
   const seconds = /after (\d+) seconds?/i.exec(error.message)?.[1]
-  if (seconds) return `Please wait ${seconds} seconds before asking for another sign-in email.`
+  if (seconds) return `请等待 ${seconds} 秒后再申请新的登录邮件。`
   return TOO_MANY_EMAILS
 }
 
@@ -60,16 +60,16 @@ function describeEmailLinkError(error: AuthError) {
     case 'over_request_rate_limit':
       return describeRateLimit(error)
     case 'email_address_invalid':
-      return 'That email address can’t receive sign-in links. Please use a different one.'
+      return '该邮箱地址无法接收登录链接，请换一个邮箱。'
     case 'email_address_not_authorized':
-      return 'Sign-in emails can’t be delivered to this address yet. Email sending is still being set up.'
+      return '暂时无法向该地址发送登录邮件，邮件服务仍在配置中。'
     case 'signup_disabled':
     case 'otp_disabled':
-      return 'New parent accounts aren’t being accepted right now.'
+      return '目前暂不接受新的家长账户注册。'
     default:
       if (error.status === 429) return describeRateLimit(error)
       console.error('Email link request failed', error.code ?? error.status)
-      return 'We couldn’t send the sign-in email. Please try again in a moment.'
+      return '登录邮件发送失败，请稍后再试。'
   }
 }
 
@@ -83,17 +83,17 @@ export function normalizeEmailCode(code: string) {
 function describeEmailCodeError(error: AuthError) {
   switch (error.code) {
     case 'over_request_rate_limit':
-      return 'Too many tries for now. Please wait a minute, then try again.'
+      return '尝试次数过多，请等待一分钟后再试。'
     case 'otp_expired':
     case 'otp_disabled':
-      return 'That code didn’t work. Use the code from the newest email: each code works once and expires after an hour.'
+      return '验证码无效。请使用最新邮件中的验证码：每个验证码只能使用一次，并在一小时后失效。'
     default:
-      if (error.status === 429) return 'Too many tries for now. Please wait a minute, then try again.'
+      if (error.status === 429) return '尝试次数过多，请等待一分钟后再试。'
       if (error.status === 401 || error.status === 403) {
-        return 'That code didn’t work. Use the code from the newest email: each code works once and expires after an hour.'
+        return '验证码无效。请使用最新邮件中的验证码：每个验证码只能使用一次，并在一小时后失效。'
       }
       console.error('Email code sign-in failed', error.code ?? error.status)
-      return 'We couldn’t check that code. Please try again in a moment.'
+      return '暂时无法验证该验证码，请稍后再试。'
   }
 }
 

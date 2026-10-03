@@ -36,7 +36,7 @@ describe('parent gate', () => {
     const { user, answer, input } = await openGate()
     await user.type(input, String(answer + 1))
     await user.click(screen.getByRole('button', { name: '继续' }))
-    expect(screen.getByRole('alert')).toHaveTextContent('Not quite')
+    expect(screen.getByRole('alert')).toHaveTextContent('不太对')
     expect(input).toHaveValue('')
     expect(parentGateStore.read()).toBe(false)
     expect(replace).not.toHaveBeenCalled()

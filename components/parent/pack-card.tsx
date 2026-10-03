@@ -44,7 +44,7 @@ export function PackCard({ pack, status, selected, onToggle, headingLevel: Headi
                 {status}
               </span>
             ) : (
-              <span className="text-sm font-bold text-muted-foreground">{`${formatPrice(PACK_PRICE_CENTS)} on its own`}</span>
+              <span className="text-sm font-bold text-muted-foreground">{`单独购买 ${formatPrice(PACK_PRICE_CENTS)}`}</span>
             )}
           </div>
           <p className="text-sm font-bold text-muted-foreground">{`${pages.length} pictures`}</p>
@@ -53,7 +53,7 @@ export function PackCard({ pack, status, selected, onToggle, headingLevel: Headi
 
       <p className="leading-relaxed text-muted-foreground text-pretty">{pack.description}</p>
 
-      <ul className="grid grid-cols-4 gap-2 sm:grid-cols-8" aria-label={`Pictures in ${pack.name}`}>
+      <ul className="grid grid-cols-4 gap-2 sm:grid-cols-8" aria-label={`「${pack.name}」中的图画`}>
         {pages.map((page) => (
           <li key={page.id} className="aspect-square rounded-xl bg-secondary p-1.5" title={page.name}>
             <MandalaArt version={latestVersion(page)} fills={EMPTY_FILLS} className="size-full" />

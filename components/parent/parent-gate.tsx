@@ -45,7 +45,7 @@ export function ParentGate({ next }: { next: string }) {
   return (
     <div className="flex w-full max-w-md flex-col items-center gap-8 text-center">
       <div className="flex flex-col gap-3">
-        <h1 className="text-3xl font-black text-balance">Grown-ups only</h1>
+        <h1 className="text-3xl font-black text-balance">仅限家长</h1>
         <p className="leading-relaxed text-muted-foreground text-pretty">
           设置和画册都在这里。回答问题即可继续。
         </p>

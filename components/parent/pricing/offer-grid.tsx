@@ -30,7 +30,7 @@ export function OfferGrid() {
 
             <p className="flex items-baseline gap-2">
               <span className="text-4xl font-black">{formatPrice(offer.priceCents)}</span>
-              <span className="text-sm text-muted-foreground">one time</span>
+              <span className="text-sm text-muted-foreground">一次性</span>
             </p>
 
             <div className="flex min-h-7 flex-wrap items-center gap-2 text-sm font-bold">

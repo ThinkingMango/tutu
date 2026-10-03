@@ -39,13 +39,13 @@ export function StandardUnlockCard({ unlocked, selected, onToggle }: StandardUnl
             {unlocked ? (
               <span className="flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-xs font-bold text-foreground">
                 <Check className="size-3.5" strokeWidth={3} aria-hidden="true" />
-                Unlocked
+                已解锁
               </span>
             ) : (
-              <span className="text-sm font-bold text-muted-foreground">{`${formatPrice(STANDARD_UNLOCK_CENTS)} one time`}</span>
+              <span className="text-sm font-bold text-muted-foreground">{`一次性 ${formatPrice(STANDARD_UNLOCK_CENTS)}`}</span>
             )}
           </div>
-          <p className="text-sm font-bold text-muted-foreground">{`${locked} more flower pictures`}</p>
+          <p className="text-sm font-bold text-muted-foreground">{`再解锁 ${locked} 张花朵图画`}</p>
         </div>
       </header>
 
@@ -53,7 +53,7 @@ export function StandardUnlockCard({ unlocked, selected, onToggle }: StandardUnl
         {`前 ${free} 朵花和全部十二种颜色对所有人免费。购买后将解锁其余 ${locked} 朵。`}
       </p>
 
-      <ul className="grid grid-cols-5 gap-2 sm:grid-cols-10" aria-label="Pictures in the Standard pack">
+      <ul className="grid grid-cols-5 gap-2 sm:grid-cols-10" aria-label="标准画册中的图画">
         {pages.map((page) => {
           const open = unlocked || page.tier === 'free'
           return (

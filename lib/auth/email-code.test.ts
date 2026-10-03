@@ -29,11 +29,11 @@ describe('signing in with the emailed code', () => {
 
   it('explains a wrong or expired code', async () => {
     verifyOtp.mockResolvedValue({ error: { code: 'otp_expired', status: 403, message: 'Token has expired or is invalid' } })
-    await expect(authClient.verifyEmailCode('parent@example.com', '000000')).rejects.toThrow('That code didn’t work')
+    await expect(authClient.verifyEmailCode('parent@example.com', '000000')).rejects.toThrow('验证码无效')
   })
 
   it('asks people to slow down after too many tries', async () => {
     verifyOtp.mockResolvedValue({ error: { code: 'over_request_rate_limit', status: 429, message: 'Too many' } })
-    await expect(authClient.verifyEmailCode('parent@example.com', '000000')).rejects.toThrow('Too many tries')
+    await expect(authClient.verifyEmailCode('parent@example.com', '000000')).rejects.toThrow('尝试次数过多')
   })
 })

@@ -40,12 +40,12 @@ const fishFlower = page((add, details) => {
   const eye = ellipse(36, -198, 13)
 
   around(6).forEach((angle, i) => {
-    add(`fish${i}-tail`, `Fish ${i + 1} tail`, turn(tail, angle))
-    add(`fish${i}`, `Fish ${i + 1}`, turn(body, angle))
+    add(`fish${i}-tail`, `第 ${i + 1} 条鱼的尾巴`, turn(tail, angle))
+    add(`fish${i}`, `第 ${i + 1} 条鱼`, turn(body, angle))
     details.push(dot(turn(eye, angle)))
   })
-  around(6, 30).forEach((angle, i) => add(`bubble${i}`, `Bubble ${i + 1}`, turn(ellipse(0, -300, 44), angle)))
-  add('center', 'Middle bubble', ellipse(0, 0, 105))
+  around(6, 30).forEach((angle, i) => add(`bubble${i}`, `泡泡 ${i + 1}`, turn(ellipse(0, -300, 44), angle)))
+  add('center', '中间的泡泡', ellipse(0, 0, 105))
 })
 
 /** A turtle seen from above whose shell is a six-petal flower. */
@@ -67,22 +67,22 @@ const turtleFlower = page((add, details) => {
   const flipper = smoothLoop([[-10, -40], [80, -58], [175, -42], [225, -8], [200, 18], [110, 30], [20, 38], [-10, 20]])
   const front = aim(flipper, edge(-40, 0.8), -28)
   const back = aim(scale(flipper, 0.7), edge(45, 0.8), 40)
-  add('flipper-front-left', 'Left front flipper', mirror(front))
-  add('flipper-front-right', 'Right front flipper', front)
-  add('flipper-back-left', 'Left back flipper', mirror(back))
-  add('flipper-back-right', 'Right back flipper', back)
-  add('tail', 'Turtle tail', roundedPolygon([[-42, 255], [42, 255], [0, 370]], 16))
-  add('head', 'Turtle head', ellipse(0, -330, 82, 95))
+  add('flipper-front-left', '左前鳍', mirror(front))
+  add('flipper-front-right', '右前鳍', front)
+  add('flipper-back-left', '左后鳍', mirror(back))
+  add('flipper-back-right', '右后鳍', back)
+  add('tail', '海龟尾巴', roundedPolygon([[-42, 255], [42, 255], [0, 370]], 16))
+  add('head', '海龟头', ellipse(0, -330, 82, 95))
 
   for (let k = 0; k < 6; k++) {
     const [phi0, phi1] = [-90 + 60 * k, -30 + 60 * k]
     add(
       `shell${k}`,
-      `Shell petal ${k + 1}`,
+      `龟壳花纹 ${k + 1}`,
       outline(hex(k), [hex(k + 1), edge(phi1), ...ellipseArc(0, cy, rx, ry, shellT(phi1), shellT(phi0))]),
     )
   }
-  add('center', 'Shell center', outline(hex(0), [hex(1), hex(2), hex(3), hex(4), hex(5)]))
+  add('center', '龟壳中心', outline(hex(0), [hex(1), hex(2), hex(3), hex(4), hex(5)]))
 
   details.push(dot(ellipse(-34, -352, 13)), dot(ellipse(34, -352, 13)))
   details.push(line(smoothLine([[-26, -302], [0, -290], [26, -302]])))
@@ -101,12 +101,12 @@ const shellBloom = page((add) => {
   const edges = [-48, -16, 16, 48]
 
   around(5).forEach((angle, i) => {
-    add(`shell${i}-hinge`, `Shell ${i + 1} hinge`, turn(hinge, angle))
+    add(`shell${i}-hinge`, `第 ${i + 1} 个贝壳的壳根`, turn(hinge, angle))
     for (let j = 0; j < 3; j++) {
-      add(`shell${i}-stripe${j}`, `Shell ${i + 1} stripe ${j + 1}`, turn(stripe(edges[j], edges[j + 1]), angle))
+      add(`shell${i}-stripe${j}`, `第 ${i + 1} 个贝壳的条纹 ${j + 1}`, turn(stripe(edges[j], edges[j + 1]), angle))
     }
   })
-  add('center', 'Pearl', ellipse(0, 0, 82))
+  add('center', '珍珠', ellipse(0, 0, 82))
 })
 
 /** A smiling starfish inside a ring of curling waves. */
@@ -126,9 +126,9 @@ const starfishWaves = page((add, details) => {
     [[28, -400], [30, -362], [92, -352]],
   ])
 
-  around(10).forEach((angle, i) => add(`wave${i}`, `Wave ${i + 1}`, turn(wave, angle)))
-  around(5).forEach((angle, i) => add(`arm${i}`, `Starfish arm ${i + 1}`, turn(arm, angle)))
-  add('center', 'Starfish middle', outline(corner(36), around(5, 36 + 72).map(corner)))
+  around(10).forEach((angle, i) => add(`wave${i}`, `波浪 ${i + 1}`, turn(wave, angle)))
+  around(5).forEach((angle, i) => add(`arm${i}`, `海星触手 ${i + 1}`, turn(arm, angle)))
+  add('center', '海星中心', outline(corner(36), around(5, 36 + 72).map(corner)))
 
   details.push(dot(ellipse(-32, -20, 12)), dot(ellipse(32, -20, 12)))
   details.push(line(smoothLine([[-30, 16], [0, 34], [30, 16]])))
@@ -156,8 +156,8 @@ const octopusHug = page((add, details) => {
   const tip: Pt = [end[0] + ((end[0] - beyond[0]) / len) * width(1), end[1] + ((end[1] - beyond[1]) / len) * width(1)]
   const tentacle = smoothLoop([...right, tip, ...left.reverse()])
 
-  around(8, 22.5).forEach((angle, i) => add(`arm${i}`, `Octopus arm ${i + 1}`, turn(tentacle, angle)))
-  add('center', 'Octopus head', ellipse(0, 0, 150))
+  around(8, 22.5).forEach((angle, i) => add(`arm${i}`, `章鱼触手 ${i + 1}`, turn(tentacle, angle)))
+  add('center', '章鱼头', ellipse(0, 0, 150))
 
   details.push(dot(ellipse(-50, -28, 18)), dot(ellipse(50, -28, 18)))
   details.push(line(smoothLine([[-46, 34], [0, 62], [46, 34]])))
@@ -169,17 +169,17 @@ const pufferBloom = page((add, details) => {
   const spike = roundedPolygon([[-40, -200], [40, -200], [0, -330]], 12)
   around(12)
     .filter((angle) => angle !== 90)
-    .forEach((angle, i) => add(`spike${i}`, `Spike ${i + 1}`, shift(turn(spike, angle), bx, 0)))
+    .forEach((angle, i) => add(`spike${i}`, `刺 ${i + 1}`, shift(turn(spike, angle), bx, 0)))
   add(
     'tail',
-    'Puffer fish tail',
+    '河豚尾巴',
     roundedPolygon([[bx + 190, -40], [bx + 190, 40], [bx + 340, 125], [bx + 300, 0], [bx + 340, -125]], 18),
   )
-  add('center', 'Puffer fish', ellipse(bx, 0, 225))
+  add('center', '河豚', ellipse(bx, 0, 225))
   const [from, to] = [rad(155), rad(25)]
   add(
     'belly',
-    'Puffer fish belly',
+    '河豚肚子',
     outline([bx + 225 * Math.cos(from), 225 * Math.sin(from)], [
       [[bx - 110, 40], [bx + 110, 40], [bx + 225 * Math.cos(to), 225 * Math.sin(to)]],
       ...ellipseArc(bx, 0, 225, 225, to, from),
@@ -213,12 +213,12 @@ const whaleCircle = page((add, details) => {
   const mouth = scale(smoothLine([[178, 10], [150, 24], [104, 26]]), size)
 
   around(4).forEach((angle, i) => {
-    add(`whale${i}-tail`, `Whale ${i + 1} tail`, bend(flukes, radius, angle))
-    add(`whale${i}-fin`, `Whale ${i + 1} fin`, bend(fin, radius, angle))
-    add(`whale${i}`, `Whale ${i + 1}`, bend(body, radius, angle))
+    add(`whale${i}-tail`, `第 ${i + 1} 头鲸鱼的尾巴`, bend(flukes, radius, angle))
+    add(`whale${i}-fin`, `第 ${i + 1} 头鲸鱼的鳍`, bend(fin, radius, angle))
+    add(`whale${i}`, `第 ${i + 1} 头鲸鱼`, bend(body, radius, angle))
     details.push(dot(bend(eye, radius, angle)), line(bend(mouth, radius, angle)))
   })
-  add('center', 'Middle bubble', ellipse(0, 0, 130))
+  add('center', '中间的泡泡', ellipse(0, 0, 130))
 })
 
 /** A crab waving both claws, with three legs on each side. */
@@ -237,14 +237,14 @@ const crabCove = page((add, details) => {
   const claw = pincer([270, -235], 92, -55, 24)
 
   legs.forEach((leg, i) => {
-    add(`leg-left${i}`, `Left leg ${i + 1}`, mirror(leg))
-    add(`leg-right${i}`, `Right leg ${i + 1}`, leg)
+    add(`leg-left${i}`, `左腿 ${i + 1}`, mirror(leg))
+    add(`leg-right${i}`, `右腿 ${i + 1}`, leg)
   })
-  add('arm-left', 'Left arm', mirror(arm))
-  add('arm-right', 'Right arm', arm)
-  add('claw-left', 'Left claw', mirror(claw))
-  add('claw-right', 'Right claw', claw)
-  add('center', 'Crab body', ellipse(0, 60, 215, 150))
+  add('arm-left', '左臂', mirror(arm))
+  add('arm-right', '右臂', arm)
+  add('claw-left', '左钳', mirror(claw))
+  add('claw-right', '右钳', claw)
+  add('center', '螃蟹身体', ellipse(0, 60, 215, 150))
 
   const stalk = outline([55, -80], [[70, -160]], false)
   details.push(line(stalk), line(mirror(stalk)))
